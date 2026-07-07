@@ -195,7 +195,16 @@ const CHITS = [
 const METER_WHEEL = [10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 90];
 const YARD_WHEEL = [25, 30, 30, 35, 35, 40, 40, 45, 10, 105];
 
-function contest(oB, dB) { let o, dv; do { o = d100() + oB; dv = d100() + dB; } while (o === dv); return { win: o > dv, o, d: dv }; }
+function contest(oB, dB) {
+  let oDie, dDie, o, dv;
+  do {
+    oDie = d100();
+    dDie = d100();
+    o = oDie + oB;
+    dv = dDie + dB;
+  } while (o === dv);
+  return { win: o > dv, o, d: dv, oDie, dDie };
+}
 function takeaway(dB, oB) { const dr = d100() + dB, or = d100() + oB; return { taken: dr - or >= TAKEAWAY_MARGIN, dr, or }; }
 const shortGain = () => d(10), longGain = () => d(10) + d(10);
 
@@ -213,6 +222,67 @@ function TeamLogo({ t, size = 44, radius = 10, fit = "contain", style }) {
         alt={`${t.city} ${t.name} logo`}
         style={{ width: "100%", height: "100%", objectFit: fit, objectPosition: "center", display: "block" }}
       />
+    </div>
+  );
+}
+
+function DieFace({ label, sides, value, tone = "#FFD86B", size = 58 }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4, flexShrink: 0 }}>
+      <div style={{ fontFamily: "Courier New, monospace", fontSize: 8, color: "#8FA08F", letterSpacing: 1 }}>{label}</div>
+      <div style={{
+        width: size, height: size, borderRadius: sides === 100 ? 14 : 10,
+        background: `linear-gradient(145deg, #FFF4B8 0%, ${tone} 58%, #7C5208 100%)`,
+        border: "2px solid #FFF1A8", boxShadow: `0 0 14px ${tone}66, inset 0 0 12px #0004`,
+        display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+        transform: sides === 8 ? "rotate(45deg)" : "none",
+      }}>
+        <div style={{ transform: sides === 8 ? "rotate(-45deg)" : "none", textAlign: "center" }}>
+          <div style={{ fontFamily: "Impact, sans-serif", fontSize: value >= 100 ? 22 : 26, color: "#241904", lineHeight: 1 }}>{value}</div>
+          <div style={{ fontFamily: "Courier New, monospace", fontSize: 9, color: "#4B3408", fontWeight: "bold" }}>d{sides}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function DiceMath({ title, die, bonus, total, winner }) {
+  return (
+    <div style={{
+      display: "flex", alignItems: "center", justifyContent: "center", gap: 9, flexWrap: "wrap",
+      padding: "8px 10px", borderRadius: 10, background: winner ? "#203419" : "#241514",
+      border: `1px solid ${winner ? "#9BD53C" : "#7E3930"}`,
+      boxShadow: winner ? "0 0 14px #9BD53C33" : "none",
+    }}>
+      <DieFace label={title} sides={100} value={die} tone={winner ? "#9BD53C" : "#FF8A70"} />
+      <div style={{ fontFamily: "Impact, sans-serif", fontSize: 18, color: "#8FA08F" }}>+</div>
+      <div style={{ minWidth: 48 }}>
+        <div style={{ fontFamily: "Impact, sans-serif", fontSize: 23, color: "#E9E4D3", lineHeight: 1 }}>+{bonus}</div>
+        <div style={{ fontFamily: "Courier New, monospace", fontSize: 8, color: "#8FA08F" }}>BONUS</div>
+      </div>
+      <div style={{ fontFamily: "Impact, sans-serif", fontSize: 18, color: "#8FA08F" }}>=</div>
+      <div style={{ minWidth: 52 }}>
+        <div style={{ fontFamily: "Impact, sans-serif", fontSize: 30, color: winner ? "#9BD53C" : "#FF8A70", lineHeight: 1 }}>{total}</div>
+        <div style={{ fontFamily: "Courier New, monospace", fontSize: 8, color: "#8FA08F" }}>TOTAL</div>
+      </div>
+    </div>
+  );
+}
+
+function OutcomeDicePanel({ reveal }) {
+  const outcomeDice = [reveal.outcomeDie, reveal.completionDie].filter(Boolean);
+  if (!outcomeDice.length) return null;
+  return (
+    <div style={{ display: "flex", justifyContent: "center", gap: 10, flexWrap: "wrap", marginTop: 10 }}>
+      {outcomeDice.map((die, i) => (
+        <div key={`${die.label}-${i}`} style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 10px", border: "1px solid #2C5A44", borderRadius: 10, background: "#08120C" }}>
+          <DieFace label={die.label} sides={die.sides} value={die.value} tone={die.tone || "#FFD86B"} size={46} />
+          <div style={{ textAlign: "left", maxWidth: 150 }}>
+            <div style={{ fontFamily: "Impact, sans-serif", fontSize: 12, color: "#FFD86B", letterSpacing: 1 }}>{die.title}</div>
+            <div style={{ fontFamily: "Courier New, monospace", fontSize: 9, color: "#B9C4B4", lineHeight: 1.35 }}>{die.note}</div>
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
@@ -410,6 +480,7 @@ export default function App() {
     if (c.win) {
       if (play.type === "run") {
         const rod = d(8);
+        g.reveal.outcomeDie = { label: "ROD", sides: 8, value: rod, title: "Run Outcome", note: rod === 1 ? "Fumble check triggered" : "Run table result" };
         if (rod === 1) {
           const tk = takeaway(primaryDef.diff + (primaryDef.ab.intB || 0), sk.diff);
           if (tk.taken) { g.stats.tos++; log(`ROD 1 — FUMBLE! ${defT.city} rips it out (${tk.dr} vs ${tk.or})! The crowd makes a sound like a kettle.`, "bad"); endDrive("fumble"); return; }
@@ -423,6 +494,7 @@ export default function App() {
         startChase(sk, gain);
       } else {
         const pod = d(8);
+        g.reveal.outcomeDie = { label: "POD", sides: 8, value: pod, title: "Pass Outcome", note: pod === 1 ? "Interception check" : pod === 6 ? "Contested ball" : "Pass table result" };
         if (pod === 1) {
           const tk = takeaway(primaryDef.diff + (primaryDef.ab.intB || 0), qb.diff);
           if (tk.taken) { g.stats.tos++; log(`POD 1 — INTERCEPTED by ${primaryDef.name}! ${qb.name} would like a word with his arm.`, "bad"); endDrive("int"); return; }
@@ -437,6 +509,7 @@ export default function App() {
         let compl = sk.pct ? sk.pct[play.depth] : 30;
         if (hasChit(g.possession, "weaver")) { compl += 10; markUsed(g.possession, "weaver"); }
         const cr = d100();
+        g.reveal.completionDie = { label: "CATCH", sides: 100, value: cr, title: "Completion Roll", note: `Needs ${compl} or less`, tone: cr <= compl ? "#9BD53C" : "#FF8A70" };
         if (cr > compl) { log(`${qb.name} → ${sk.name} (${["10m", "20m", "20+m"][play.depth]}): ${cr} vs ${compl}% — INCOMPLETE. The ball had other plans.`, "play"); advanceDown(0); return; }
         let gain = play.depth === 0 ? shortGain() : play.depth === 1 ? longGain() : longGain() + 10;
         const bonus = pod === 5 ? " STIFF-ARM!" : pod === 7 ? " SPECTACULAR CATCH!" : pod === 8 ? " HURDLE!" : "";
@@ -446,6 +519,7 @@ export default function App() {
       }
     } else {
       const dd = d(6);
+      g.reveal.outcomeDie = { label: "DOD", sides: 6, value: dd, title: "Defense Outcome", note: dd === 1 ? "Loss or sack" : dd === 3 || dd === 4 ? "Takeaway chance" : "Defensive stop" };
       if (dd === 1) { const loss = play.type === "pass" ? d(10) + (primaryDef.ab.sackB ? 2 : 0) : 5; log(play.type === "pass" ? `SACK! ${defTrio[0].name} arrives with paperwork. -${loss}m.` : `Swallowed in the backfield. -5m.`, "bad2"); advanceDown(-loss); return; }
       if (dd === 2 || dd === 6) { log(`STUFFED at the line. The wall files this under 'correspondence.'`, "bad2"); advanceDown(0); return; }
       if (dd === 3) {
@@ -671,12 +745,19 @@ export default function App() {
                 </div>
                 <div style={{ display: "flex", justifyContent: "center", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
                   {g.reveal.offTrio.map((c, i) => <ArenaCard key={"o" + i} card={c} teamId={g.possession} size={0.85} slam roleTag={["BLOCKER", "QB", "SKILL"][i]} chosen={g.reveal.rolls.win} />)}
-                  <div style={{ textAlign: "center", minWidth: 96 }}>
+                  <div style={{ display: "none" }}>
                     <div style={{ fontFamily: "Impact, sans-serif", fontSize: 30, color: g.reveal.rolls.win ? "#9BD53C" : "#FF8A70", textShadow: "0 2px 0 #000" }}>{g.reveal.rolls.o}</div>
                     <div style={{ fontSize: 9, color: "#8FA08F", fontFamily: "Courier New, monospace" }}>+{g.reveal.oB} total</div>
                     <div style={{ fontFamily: "Impact, sans-serif", fontSize: 18, color: "#FFD86B", margin: "2px 0" }}>⚔</div>
                     <div style={{ fontFamily: "Impact, sans-serif", fontSize: 30, color: !g.reveal.rolls.win ? "#9BD53C" : "#FF8A70", textShadow: "0 2px 0 #000" }}>{g.reveal.rolls.d}</div>
                     <div style={{ fontSize: 9, color: "#8FA08F", fontFamily: "Courier New, monospace" }}>+{g.reveal.dB} total</div>
+                  </div>
+                  <div style={{ textAlign: "center", minWidth: 260, maxWidth: 330, flex: "0 1 330px" }}>
+                    <div style={{ fontFamily: "Impact, sans-serif", fontSize: 13, color: "#FFD86B", letterSpacing: 2, marginBottom: 6 }}>SNAP DICE</div>
+                    <DiceMath title="OFF d100" die={g.reveal.rolls.oDie} bonus={g.reveal.oB} total={g.reveal.rolls.o} winner={g.reveal.rolls.win} />
+                    <div style={{ fontFamily: "Impact, sans-serif", fontSize: 18, color: "#FFD86B", margin: "5px 0" }}>VS</div>
+                    <DiceMath title="DEF d100" die={g.reveal.rolls.dDie} bonus={g.reveal.dB} total={g.reveal.rolls.d} winner={!g.reveal.rolls.win} />
+                    <OutcomeDicePanel reveal={g.reveal} />
                   </div>
                   {g.reveal.defTrio.map((c, i) => <ArenaCard key={"d" + i} card={c} teamId={g.possession === playerTeam ? aiTeam : playerTeam} size={0.85} slam roleTag={["LINE", "LB", "DB"][i]} chosen={!g.reveal.rolls.win} />)}
                 </div>

@@ -3,6 +3,7 @@ import estesLogo from "./assets/logos/ESTES.jpg";
 import londonLogo from "./assets/logos/LONDON.jpg";
 import miamiLogo from "./assets/logos/MIAMI.jpg";
 import assamLogo from "./assets/logos/ASSAM.jpg";
+import gameLogo from "./assets/logos/GameLogo.png";
 
 /* ============================================================
    CUSTOMER BUTTCHEEKS: GRIDIRON CARD BATTLE — ARENA EDITION
@@ -808,10 +809,12 @@ function FieldBar({ spot, line, possession, teams }) {
 function Title({ onPlay }) {
   return (
     <div style={{ minHeight: "100vh", background: "radial-gradient(ellipse at 50% 15%, #1A4530 0%, #0B1F16 55%, #040A06 100%)", color: "#E9E4D3", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", fontFamily: "Verdana, sans-serif", padding: 20, textAlign: "center" }}>
-      <div style={{ fontSize: 54 }}>🏈</div>
-      <div style={{ fontFamily: "Courier New, monospace", color: "#8FA08F", letterSpacing: 4, fontSize: 12, marginTop: 8 }}>THE POLYMATIC FOOTBALL LEAGUE · SEASON 27 · 2151</div>
-      <h1 style={{ fontFamily: "Impact, sans-serif", fontSize: "clamp(42px, 9vw, 92px)", margin: "10px 0 0", color: "#FFD86B", letterSpacing: 3, textShadow: "0 6px 0 #3A2E0E, 0 12px 24px #000" }}>CUSTOMER BUTTCHEEKS</h1>
-      <div style={{ fontFamily: "Impact, sans-serif", fontSize: 24, color: "#9BB53C", letterSpacing: 6, marginTop: 4 }}>GRIDIRON CARD BATTLE — ARENA EDITION</div>
+      <img
+        src={gameLogo}
+        alt="Customer Buttcheeks, The Polymatic Football Card Game logo"
+        style={{ width: "min(84vw, 520px)", maxHeight: "min(58vh, 520px)", objectFit: "contain", display: "block", filter: "drop-shadow(0 18px 30px #000B)", marginBottom: 12 }}
+      />
+      <div style={{ fontFamily: "Impact, sans-serif", fontSize: 24, color: "#9BB53C", letterSpacing: 6, marginTop: 4 }}>ARENA EDITION</div>
       <p style={{ maxWidth: 540, color: "#B9C4B4", fontSize: 13, lineHeight: 1.7, marginTop: 16 }}>
         Commit <b style={{ color: "#FFD86B" }}>three cards</b> in secret. Your opponent does the same.
         SNAP — and everything is revealed. Blocker, QB, and playmaker against Line, Backer, and Back.

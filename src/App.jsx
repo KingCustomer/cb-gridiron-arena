@@ -168,6 +168,21 @@ const TEAMS = {
   },
 };
 
+const comingSoonLogoModules = import.meta.glob("./assets/logos/*.{jpg,jpeg,png}", { eager: true, import: "default" });
+const ACTIVE_LOGO_FILES = new Set(["ASSAM.jpg", "ESTES.jpg", "LONDON.jpg", "MIAMI.jpg", "GameLogo.png"]);
+const CITY_LABELS = { DC: "D.C.", LA: "L.A.", NY: "New York", UN: "U.N." };
+const prettyCity = (fileName) => {
+  const base = fileName.replace(/\.[^.]+$/, "");
+  return CITY_LABELS[base] || base.toLowerCase().replace(/\b\w/g, (ch) => ch.toUpperCase());
+};
+const COMING_SOON_TEAMS = Object.entries(comingSoonLogoModules)
+  .map(([path, logo]) => {
+    const fileName = path.split("/").pop();
+    return { id: fileName.replace(/\.[^.]+$/, "").toLowerCase(), city: prettyCity(fileName), fileName, logo };
+  })
+  .filter((t) => !ACTIVE_LOGO_FILES.has(t.fileName))
+  .sort((a, b) => a.city.localeCompare(b.city));
+
 const CHITS = [
   { id: 8, name: "Jets", desc: "WR1: +10 extra meters on won 1:1s", tag: "jets" },
   { id: 12, name: "Trough O' Chowder", desc: "Your D-Line +10 all game", tag: "trough" },
@@ -825,6 +840,31 @@ function Title({ onPlay }) {
   );
 }
 
+function ComingSoonCard({ team }) {
+  return (
+    <div
+      aria-disabled="true"
+      style={{
+        width: 235, borderRadius: 14, overflow: "hidden", position: "relative",
+        border: "3px solid #405348", background: "linear-gradient(170deg,#172018,#080D09)",
+        boxShadow: "0 6px 14px #0007", opacity: 0.78,
+      }}
+    >
+      <div style={{ height: 130, background: "#101610", borderBottom: "1px solid #405348", overflow: "hidden", filter: "saturate(.72) brightness(.78)" }}>
+        <img src={team.logo} alt={`${team.city} logo`} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
+      </div>
+      <div style={{ position: "absolute", top: 10, right: 10, background: "#FFD86B", color: "#251904", border: "1px solid #FFF1A8", borderRadius: 999, padding: "5px 9px", fontFamily: "Impact, sans-serif", fontSize: 11, letterSpacing: 1.2, boxShadow: "0 3px 10px #0008" }}>
+        COMING SOON!
+      </div>
+      <div style={{ padding: 12 }}>
+        <div style={{ fontFamily: "Impact, sans-serif", fontSize: 18, color: "#D8C98A", letterSpacing: 1 }}>{team.city.toUpperCase()}</div>
+        <div style={{ fontSize: 9, color: "#8FA08F", fontFamily: "Courier New, monospace", margin: "4px 0 8px" }}>EXPANSION FRANCHISE</div>
+        <div style={{ fontSize: 11, color: "#A8B5A6", lineHeight: 1.5, minHeight: 34 }}>Roster cards are still being stocked in the Store.</div>
+      </div>
+    </div>
+  );
+}
+
 function Select({ playerTeam, setPlayerTeam, aiTeam, setAiTeam, mode, setMode, onNext }) {
   const ids = Object.keys(TEAMS);
   return (
@@ -856,6 +896,7 @@ function Select({ playerTeam, setPlayerTeam, aiTeam, setAiTeam, mode, setMode, o
             </div>
           );
         })}
+        {COMING_SOON_TEAMS.map((team) => <ComingSoonCard key={team.id} team={team} />)}
       </div>
       <div style={{ textAlign: "center", marginTop: 22, display: "flex", gap: 10, justifyContent: "center", alignItems: "center", flexWrap: "wrap" }}>
         <Btn small onClick={() => setMode(mode === "quick" ? "full" : "quick")}>MODE: {mode === "quick" ? "QUICK (2 drives/side/qtr)" : "FULL RULES (4)"}</Btn>

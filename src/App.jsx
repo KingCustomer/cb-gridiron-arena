@@ -1,4 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
+import estesLogo from "./assets/logos/ESTES.jpg";
+import londonLogo from "./assets/logos/LONDON.jpg";
+import miamiLogo from "./assets/logos/MIAMI.jpg";
+import assamLogo from "./assets/logos/ASSAM.jpg";
 
 /* ============================================================
    CUSTOMER BUTTCHEEKS: GRIDIRON CARD BATTLE — ARENA EDITION
@@ -52,6 +56,7 @@ const TEAMS = {
   estes: {
     id: "estes", city: "Estes Park", name: "Simulacra", conf: "THE HAVES · Prime",
     color: "#8E7CC3", color2: "#C9C4D4", dark: "#241C38", glyph: "◈",
+    logo: estesLogo, logoBg: "#2BD229",
     identity: "Clone-perfect precision. Elite twins at QB.",
     tendency: { run: 0.45, deep: 0.4 },
     offense: [
@@ -79,6 +84,7 @@ const TEAMS = {
   london: {
     id: "london", city: "London", name: "Amplified Gentry", conf: "THE HAVES · Nova",
     color: "#1F3A93", color2: "#E3B23C", dark: "#0E1B3A", glyph: "♛",
+    logo: londonLogo, logoBg: "#F0BC00",
     identity: "Old money, new arms. Saxby hunts one last title.",
     tendency: { run: 0.5, deep: 0.5 },
     offense: [
@@ -106,6 +112,7 @@ const TEAMS = {
   miami: {
     id: "miami", city: "Miami", name: "United Workers Party", conf: "THE HAVE NOTS · Plebian",
     color: "#B3202C", color2: "#E3B23C", dark: "#33090D", glyph: "☭",
+    logo: miamiLogo, logoBg: "#FFFFFF",
     identity: "Seize the meters of production.",
     tendency: { run: 0.4, deep: 0.25 },
     offense: [
@@ -133,6 +140,7 @@ const TEAMS = {
   assam: {
     id: "assam", city: "Assam", name: "Creeping Death", conf: "THE HAVE NOTS · Prole",
     color: "#2E7D32", color2: "#9BB53C", dark: "#0C1F0E", glyph: "〇",
+    logo: assamLogo, logoBg: "#F41515",
     identity: "The serpent runs and runs and runs.",
     tendency: { run: 0.72, deep: 0.15 },
     offense: [
@@ -176,6 +184,23 @@ function takeaway(dB, oB) { const dr = d100() + dB, or = d100() + oB; return { t
 const shortGain = () => d(10), longGain = () => d(10) + d(10);
 
 /* ============ CARD COMPONENTS ============ */
+function TeamLogo({ t, size = 44, radius = 10, fit = "contain", style }) {
+  return (
+    <div style={{
+      width: size, height: size, borderRadius: radius, overflow: "hidden", flexShrink: 0,
+      background: t.logoBg || t.dark, border: `2px solid ${t.color2}`,
+      display: "flex", alignItems: "center", justifyContent: "center",
+      ...style,
+    }}>
+      <img
+        src={t.logo}
+        alt={`${t.city} ${t.name} logo`}
+        style={{ width: "100%", height: "100%", objectFit: fit, objectPosition: "center", display: "block" }}
+      />
+    </div>
+  );
+}
+
 function ArenaCard({ card, teamId, size = 1, faceDown, slam, dimmed, chosen, onClick, roleTag }) {
   const t = TEAMS[teamId];
   const r = rarity(card ? card.diff : 0);
@@ -183,7 +208,7 @@ function ArenaCard({ card, teamId, size = 1, faceDown, slam, dimmed, chosen, onC
   if (faceDown) {
     return (
       <div style={{ width: W, height: H, borderRadius: 12 * size, flexShrink: 0, background: `repeating-linear-gradient(45deg, ${t.dark}, ${t.dark} 8px, #0A0F0B 8px, #0A0F0B 16px)`, border: `3px solid ${t.color2}`, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", boxShadow: "0 6px 16px rgba(0,0,0,.6)" }}>
-        <div style={{ fontSize: 34 * size, color: t.color2 }}>{t.glyph}</div>
+        <TeamLogo t={t} size={54 * size} radius={10 * size} style={{ boxShadow: "0 4px 10px #0008" }} />
         <div style={{ fontFamily: "Impact, sans-serif", fontSize: 11 * size, letterSpacing: 2, color: t.color2, marginTop: 6 }}>COMMITTED</div>
         <div style={{ fontSize: 7 * size, color: "#8FA08F", marginTop: 4, fontFamily: "Courier New, monospace" }}>PROPERTY OF THE STORE</div>
       </div>
@@ -206,7 +231,7 @@ function ArenaCard({ card, teamId, size = 1, faceDown, slam, dimmed, chosen, onC
         {/* art window */}
         <div style={{ height: 74 * size, background: `radial-gradient(circle at 50% 35%, ${t.color}66, ${t.dark} 75%)`, display: "flex", alignItems: "center", justifyContent: "center", position: "relative", borderBottom: `2px solid ${t.color2}88` }}>
           <div style={{ fontSize: 40 * size, filter: "drop-shadow(0 4px 4px #000)" }}>{portrait(card, teamId)}</div>
-          <div style={{ position: "absolute", bottom: 3, right: 6, fontSize: 12 * size, color: t.color2, opacity: 0.8 }}>{t.glyph}</div>
+          <TeamLogo t={t} size={22 * size} radius={4 * size} style={{ position: "absolute", bottom: 3, right: 6, border: `1px solid ${t.color2}` }} />
           {roleTag && <div style={{ position: "absolute", top: 3, left: 5, fontSize: 7.5 * size, fontFamily: "Impact, sans-serif", letterSpacing: 1, background: "#000A", color: "#FFE28A", padding: "2px 5px", borderRadius: 4 }}>{roleTag}</div>}
         </div>
         {/* name */}
@@ -749,7 +774,7 @@ export default function App() {
   function ScoreCell({ t, s, poss, right, label }) {
     return (
       <div style={{ display: "flex", alignItems: "center", gap: 10, flexDirection: right ? "row-reverse" : "row" }}>
-        <div style={{ width: 44, height: 44, borderRadius: 10, background: `linear-gradient(160deg, ${t.color}, ${t.dark})`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24, color: "#fff", border: `2px solid ${t.color2}`, boxShadow: poss ? `0 0 14px ${t.color}` : "none" }}>{t.glyph}</div>
+        <TeamLogo t={t} size={48} radius={10} style={{ border: `2px solid ${poss ? "#FFD86B" : t.color2}`, boxShadow: poss ? `0 0 16px ${t.color}` : "none" }} />
         <div style={{ textAlign: right ? "right" : "left" }}>
           <div style={{ fontSize: 8, color: "#8FA08F", fontFamily: "Courier New, monospace", letterSpacing: 1 }}>{label}</div>
           <div style={{ fontFamily: "Impact, sans-serif", fontSize: 13, letterSpacing: 1, color: poss ? "#FFD86B" : "#E9E4D3" }}>{t.city.toUpperCase()} {poss ? "●" : ""}</div>
@@ -809,9 +834,12 @@ function Select({ playerTeam, setPlayerTeam, aiTeam, setAiTeam, mode, setMode, o
           return (
             <div key={id} onClick={() => { if (isP) { setPlayerTeam(null); return; } if (isA) { setAiTeam(null); return; } if (!playerTeam) setPlayerTeam(id); else if (!aiTeam && id !== playerTeam) setAiTeam(id); }}
               style={{ width: 235, cursor: "pointer", borderRadius: 14, overflow: "hidden", border: `3px solid ${isP ? "#FFD86B" : isA ? "#D6482F" : t.color2}`, background: `linear-gradient(170deg, ${t.dark}, #0A0F0B)`, transform: isP || isA ? "translateY(-5px)" : "none", transition: "all .2s", boxShadow: isP ? "0 0 22px #FFD86B66" : isA ? "0 0 22px #D6482F66" : "0 6px 14px #0007" }}>
+              <div style={{ height: 130, background: t.logoBg || t.dark, borderBottom: `1px solid ${t.color2}`, overflow: "hidden" }}>
+                <img src={t.logo} alt={`${t.city} ${t.name} logo`} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
+              </div>
               <div style={{ background: `linear-gradient(90deg, ${t.color}, ${t.dark})`, padding: "10px 12px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <span style={{ fontFamily: "Impact, sans-serif", fontSize: 16, color: "#fff", letterSpacing: 1 }}>{t.city.toUpperCase()}</span>
-                <span style={{ fontSize: 22, color: "#fff" }}>{t.glyph}</span>
+                <TeamLogo t={t} size={30} radius={6} style={{ border: "1px solid #FFFFFFAA" }} />
               </div>
               <div style={{ padding: 12 }}>
                 <div style={{ fontFamily: "Impact, sans-serif", fontSize: 18, color: t.color2 }}>{t.name}</div>
@@ -868,6 +896,11 @@ function Final({ g, playerTeam, aiTeam, onAgain }) {
     <div style={{ minHeight: "100vh", background: "radial-gradient(ellipse at 50% 30%, #1A4530, #040A06)", color: "#E9E4D3", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", fontFamily: "Verdana, sans-serif", padding: 20, textAlign: "center" }}>
       <div style={{ fontSize: 50 }}>{won ? "🏆" : "🍛"}</div>
       <div style={{ fontFamily: "Impact, sans-serif", fontSize: 18, letterSpacing: 4, color: "#8FA08F", marginTop: 6 }}>FINAL — SEASON 27</div>
+      <div style={{ display: "flex", alignItems: "center", gap: 14, marginTop: 14 }}>
+        <TeamLogo t={TEAMS[playerTeam]} size={74} radius={12} style={{ border: `2px solid ${TEAMS[playerTeam].color2}` }} />
+        <div style={{ fontFamily: "Impact, sans-serif", fontSize: 18, color: "#FFD86B", letterSpacing: 2 }}>VS</div>
+        <TeamLogo t={TEAMS[aiTeam]} size={74} radius={12} style={{ border: `2px solid ${TEAMS[aiTeam].color2}` }} />
+      </div>
       <div style={{ fontFamily: "Impact, sans-serif", fontSize: "clamp(36px,8vw,76px)", color: "#FFD86B", margin: "8px 0", textShadow: "0 4px 0 #3A2E0E" }}>
         {TEAMS[playerTeam].city.toUpperCase()} {pS} — {aS} {TEAMS[aiTeam].city.toUpperCase()}
       </div>

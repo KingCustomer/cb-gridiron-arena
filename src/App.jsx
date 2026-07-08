@@ -1,9 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import estesLogo from "./assets/logos/ESTES.jpg";
-import londonLogo from "./assets/logos/LONDON.jpg";
-import miamiLogo from "./assets/logos/MIAMI.jpg";
-import assamLogo from "./assets/logos/ASSAM.jpg";
-import gameLogo from "./assets/logos/GameLogo.png";
 
 /* ============================================================
    CUSTOMER BUTTCHEEKS: GRIDIRON CARD BATTLE — ARENA EDITION
@@ -39,6 +34,13 @@ const FLAVOR = {
   "Larry Awl": "The Gentry's invoice for touching their quarterback.",
   "Deacon Patel": "The people's sack artist. Seizes the means of protection.",
   "Bishnu Baruah": "The Creep. You will hear the grass whisper first.",
+  "Limsong": "The Psycho Siamese.",
+  "Elliot Eagan": "Moonshot.",
+  "Pu Hoontrakul": "Thai-phoon.",
+  "Rameses Al-Masri": "Son of The Nile.",
+  "Ali": "Silent and Deadly.",
+  "Hannibal Babafemi": "Apophis.",
+  "Ibrahim Imhotep": "The Mummy.",
 };
 const FLAVOR_POOL = {
   QB: ["Throws darts. Occasionally at teammates.", "Reads defenses like a menu."],
@@ -51,13 +53,14 @@ const FLAVOR_POOL = {
 };
 const flavorOf = (c) => FLAVOR[c.name] || (FLAVOR_POOL[c.pos.replace(/\d/g, "").replace("ILB", "D").replace("OLB", "D").replace("CB", "D").replace("SS", "D").replace("FS", "D").replace("DE", "D").replace("NT", "D")] || FLAVOR_POOL.D)[c.name.length % 2];
 const rarity = (diff) => diff >= 25 ? { label: "LEGENDARY", frame: "linear-gradient(135deg,#FFB347,#FF6B1A,#FFD700)", glow: "#FF9C33" } : diff >= 15 ? { label: "RARE", frame: "linear-gradient(135deg,#F5D06A,#B8860B,#F5E5A0)", glow: "#E3B23C" } : diff >= 10 ? { label: "UNCOMMON", frame: "linear-gradient(135deg,#C0C8D0,#7E8B99,#DDE4EA)", glow: "#9FB2C4" } : { label: "COMMON", frame: "linear-gradient(135deg,#8A7B63,#5E523F,#A79878)", glow: "#8A7B63" };
+const LOGOS = import.meta.glob("./assets/logos/*.{jpg,jpeg,png}", { eager: true, import: "default" });
+const logoFor = (fileName) => LOGOS[`./assets/logos/${fileName}`];
 
 /* ---------------- TEAM DATA (PolySCHEDULE, curated) ---------------- */
 const TEAMS = {
   estes: {
     id: "estes", city: "Estes Park", name: "Simulacra", conf: "THE HAVES · Prime",
-    color: "#8E7CC3", color2: "#C9C4D4", dark: "#241C38", glyph: "◈",
-    logo: estesLogo, logoBg: "#2BD229",
+    color: "#8E7CC3", color2: "#C9C4D4", dark: "#241C38", glyph: "◈", logo: logoFor("ESTES.jpg"), logoBg: "#2BD229",
     identity: "Clone-perfect precision. Elite twins at QB.",
     tendency: { run: 0.45, deep: 0.4 },
     offense: [
@@ -84,8 +87,7 @@ const TEAMS = {
   },
   london: {
     id: "london", city: "London", name: "Amplified Gentry", conf: "THE HAVES · Nova",
-    color: "#1F3A93", color2: "#E3B23C", dark: "#0E1B3A", glyph: "♛",
-    logo: londonLogo, logoBg: "#F0BC00",
+    color: "#1F3A93", color2: "#E3B23C", dark: "#0E1B3A", glyph: "♛", logo: logoFor("LONDON.jpg"), logoBg: "#F0BC00",
     identity: "Old money, new arms. Saxby hunts one last title.",
     tendency: { run: 0.5, deep: 0.5 },
     offense: [
@@ -112,8 +114,7 @@ const TEAMS = {
   },
   miami: {
     id: "miami", city: "Miami", name: "United Workers Party", conf: "THE HAVE NOTS · Plebian",
-    color: "#B3202C", color2: "#E3B23C", dark: "#33090D", glyph: "☭",
-    logo: miamiLogo, logoBg: "#FFFFFF",
+    color: "#B3202C", color2: "#E3B23C", dark: "#33090D", glyph: "☭", logo: logoFor("MIAMI.jpg"), logoBg: "#FFFFFF",
     identity: "Seize the meters of production.",
     tendency: { run: 0.4, deep: 0.25 },
     offense: [
@@ -140,8 +141,7 @@ const TEAMS = {
   },
   assam: {
     id: "assam", city: "Assam", name: "Creeping Death", conf: "THE HAVE NOTS · Prole",
-    color: "#2E7D32", color2: "#9BB53C", dark: "#0C1F0E", glyph: "〇",
-    logo: assamLogo, logoBg: "#F41515",
+    color: "#2E7D32", color2: "#9BB53C", dark: "#0C1F0E", glyph: "〇", logo: logoFor("ASSAM.jpg"), logoBg: "#F41515",
     identity: "The serpent runs and runs and runs.",
     tendency: { run: 0.72, deep: 0.15 },
     offense: [
@@ -166,22 +166,61 @@ const TEAMS = {
       { pos: "FS", name: "Mira Kalita", diff: 7, ab: { intB: 4 } },
     ],
   },
+  bangkok: {
+    id: "bangkok", city: "Bangkok", name: "Royal Mass Hysteria", conf: "THE HAVE NOTS · Hoi Polloi",
+    color: "#ee0c20", color2: "#ffffff", dark: "#ffd401", glyph: "🐘", logo: logoFor("BANGKOK.jpg"), logoBg: "#ffd401",
+    identity: "Mad with love, for The Game.",
+    tendency: { run: 0.4, deep: 0.5 },
+    offense: [
+      { pos: "QB1", name: "Limsong", diff: 20, pct: [80, 60, 45], ab: { deadEye: 3 } },
+      { pos: "QB2", name: "Isinthon Jitjang", diff: 9, pct: [60, 40, 20], ab: { osrRun: 3 } },
+      { pos: "RB1", name: "Tong Supjira", diff: 12, pct: [60, 45, 10], ab: { osrRun: 6 } },
+      { pos: "WR1", name: "Elliot Eagan", diff: 30, pct: [80, 75, 75], ab: { osr11: 8 } },
+      { pos: "WR2", name: "Sarawong Bidaya", diff: 20, pct: [85, 55, 40], ab: { osrPass: 2 } },
+      { pos: "TE1", name: "Poon Serawongchai", diff: 15, pct: [85, 75, 65], ab: { osrPass: 7 } },
+      { pos: "FB1", name: "Nopjira Ongkara", diff: 8, pct: [40, 35, 10], ab: { osrRun: 6 } },
+      { pos: "OL", name: "Braxton Crofts", diff: 20, pct: null, ab: { osrRun: 10 } },
+      { pos: "OL", name: "Suda Kessawi", diff: 15, pct: null, ab: { osrPass: 5 } },
+    ],
+    defense: [
+      { pos: "DE", name: "Pu Hoontrakul", diff: 33, ab: { sackB: 10 } },
+      { pos: "NT", name: "Sumatra Lamsam", diff: 25, ab: { dsrRun: 8 } },
+      { pos: "ILB", name: "Thomas Barr", diff: 15, ab: { intB: 5 } },
+      { pos: "OLB", name: "Hiran Duchanee", diff: 8, ab: { dsrRun: 5 } },
+      { pos: "CB1", name: "Zack Mueller", diff: 11, ab: { dsrPass: 4 } },
+      { pos: "CB2", name: "Ira Clasp", diff: 8, ab: { dsrPass: 2 } },
+      { pos: "SS", name: "Thamrong Cheosakul", diff: 14, ab: { intB: 4 } },
+      { pos: "FS", name: "Kusa Somboon", diff: 9, ab: { dsrPass: 2 } },
+    ],
+  },
+  cairo: {
+    id: "cairo", city: "Cairo", name: "Twice-Risen Pharoahs", conf: "THE HAVES · Alpha",
+    color: "#ead11d", color2: "#0000fe", dark: "#fe0000", glyph: "☥", logo: logoFor("CAIRO.jpg"), logoBg: "#fe0000",
+    identity: "Egypt is Eternal.",
+    tendency: { run: 0.6, deep: 0.4 },
+    offense: [
+      { pos: "QB1", name: "Rameses Al-Masri", diff: 22, pct: [85, 70, 45], ab: { osrPass: 9 } },
+      { pos: "QB2", name: "Hasan Latakia", diff: 17, pct: [65, 55, 35], ab: { osrPass: 7 } },
+      { pos: "RB1", name: "Mustafa Ebo", diff: 18, pct: [60, 35, 10], ab: { osrRun: 6 } },
+      { pos: "WR1", name: "Ali", diff: 25, pct: [70, 65, 85], ab: { osrPass: 6 } },
+      { pos: "WR2", name: "Isis Abrax", diff: 20, pct: [85, 55, 40], ab: { osrPass: 2 } },
+      { pos: "TE1", name: "Ammon Bast", diff: 15, pct: [85, 75, 65], ab: { osrPass: 7 } },
+      { pos: "FB1", name: "Anubis Re", diff: 36, pct: [90, 75, 50], ab: { dsrPen: 8 } },
+      { pos: "OL", name: "Henry Lo", diff: 22, pct: null, ab: { osrPass: 10 } },
+      { pos: "OL", name: "Nigel Carberry", diff: 25, pct: null, ab: { osrRun: 12 } },
+    ],
+    defense: [
+      { pos: "DE", name: "Hannibal Babafemi", diff: 23, ab: { dsrRun: 8 } },
+      { pos: "NT", name: "Ibrahim Imhotep", diff: 35, ab: { sackB: 10 } },
+      { pos: "ILB", name: "Troy Dye", diff: 20, ab: { dsrRun: 7 } },
+      { pos: "OLB", name: "Emir Ibn-Farsi", diff: 14, ab: { dsrPass: 6 } },
+      { pos: "CB1", name: "Rakeem DeJardin", diff: 17, ab: { dsrPass: 5 } },
+      { pos: "CB2", name: "Sean McTavish", diff: 12, ab: { dsrRun: 4 } },
+      { pos: "SS", name: "Karl Hapsburg", diff: 20, ab: { intB: 6 } },
+      { pos: "FS", name: "Eliphaz Nasser", diff: 13, ab: { dsrPass: 3 } },
+    ],
+  },
 };
-
-const comingSoonLogoModules = import.meta.glob("./assets/logos/*.{jpg,jpeg,png}", { eager: true, import: "default" });
-const ACTIVE_LOGO_FILES = new Set(["ASSAM.jpg", "ESTES.jpg", "LONDON.jpg", "MIAMI.jpg", "GameLogo.png"]);
-const CITY_LABELS = { DC: "D.C.", LA: "L.A.", NY: "New York", UN: "U.N." };
-const prettyCity = (fileName) => {
-  const base = fileName.replace(/\.[^.]+$/, "");
-  return CITY_LABELS[base] || base.toLowerCase().replace(/\b\w/g, (ch) => ch.toUpperCase());
-};
-const COMING_SOON_TEAMS = Object.entries(comingSoonLogoModules)
-  .map(([path, logo]) => {
-    const fileName = path.split("/").pop();
-    return { id: fileName.replace(/\.[^.]+$/, "").toLowerCase(), city: prettyCity(fileName), fileName, logo };
-  })
-  .filter((t) => !ACTIVE_LOGO_FILES.has(t.fileName))
-  .sort((a, b) => a.city.localeCompare(b.city));
 
 const CHITS = [
   { id: 8, name: "Jets", desc: "WR1: +10 extra meters on won 1:1s", tag: "jets" },
@@ -195,21 +234,34 @@ const CHITS = [
 const METER_WHEEL = [10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 90];
 const YARD_WHEEL = [25, 30, 30, 35, 35, 40, 40, 45, 10, 105];
 
-function contest(oB, dB) {
-  let oDie, dDie, o, dv;
-  do {
-    oDie = d100();
-    dDie = d100();
-    o = oDie + oB;
-    dv = dDie + dB;
-  } while (o === dv);
-  return { win: o > dv, o, d: dv, oDie, dDie };
-}
+/* ---- The remaining franchises still in the tunnel (names + logo files from CB_Assets/Logs) ---- */
+const COMING_SOON = [
+  { city: "LA", name: "Firm of Pheir, Payne & Suffering", color: "#C9A227", glyph: "\u2696\uFE0F", logo: "/logos/LA.jpg", conf: "HAVES \u00B7 Prime" },
+  { city: "Rome", name: "The Roman Legion", color: "#8E1B1B", glyph: "\u{1F3DB}\uFE0F", logo: "/logos/ROME.jpg", conf: "HAVES \u00B7 Prime" },
+  { city: "The UN", name: "Global Alliance", color: "#3B7DD8", glyph: "\u{1F310}", logo: "/logos/UN.jpg", conf: "HAVES \u00B7 Prime" },
+  { city: "DC", name: "Old Glory", color: "#1F3A93", glyph: "\u2B50", logo: "/logos/DC.jpg", conf: "HAVES \u00B7 Nova" },
+  { city: "Tokyo", name: "TASC Masters", color: "#D92B7A", glyph: "\u26E9\uFE0F", logo: "/logos/TOKYO.jpg", conf: "HAVES \u00B7 Nova" },
+  { city: "Incan Empire", name: "Obsidian Pumas", color: "#3C2A4D", glyph: "\u{1F406}", logo: "/logos/INCA.jpg", conf: "HAVES \u00B7 Nova" },
+  { city: "San Fu-Kuo", name: "Mitsune-Gumi Ronin", color: "#B34700", glyph: "\u{1F3EF}", logo: "/logos/SF.jpg", conf: "HAVES \u00B7 Alpha" },
+  { city: "Sydney", name: "Copper Locusts", color: "#B87333", glyph: "\u{1F997}", logo: "/logos/SYDNEY.jpg", conf: "HAVES \u00B7 Alpha" },
+  { city: "Paris", name: "Reign of Terror", color: "#4B1E6B", glyph: "\u269C\uFE0F", logo: "/logos/PARIS.jpg", conf: "HAVES \u00B7 Alpha" },
+  { city: "Munich", name: "Teutonic Machine", color: "#4A4A4A", glyph: "\u2699\uFE0F", logo: "/logos/MUNICH.jpg", conf: "HAVE NOTS \u00B7 Hoi Polloi" },
+  { city: "Saigon", name: "Amalgamated Clanship", color: "#C0392B", glyph: "\u{1F409}", logo: "/logos/SAIGON.jpg", conf: "HAVE NOTS \u00B7 Hoi Polloi" },
+  { city: "Tashkent", name: "Miasmatic Plague", color: "#5B7F2B", glyph: "\u2623\uFE0F", logo: "/logos/TASHKENT.jpg", conf: "HAVE NOTS \u00B7 Hoi Polloi" },
+  { city: "Mumbai", name: "Federation of Scientists", color: "#0E7490", glyph: "\u269B\uFE0F", logo: "/logos/MUMBAI.jpg", conf: "HAVE NOTS \u00B7 Plebian" },
+  { city: "Chicagoland", name: "Organized Labor", color: "#8A4B08", glyph: "\u2692\uFE0F", logo: "/logos/CHICAGO.jpg", conf: "HAVE NOTS \u00B7 Plebian" },
+  { city: "Mexico City", name: "V2 Immortals", color: "#0F7B4A", glyph: "\u{1F480}", logo: "/logos/MEXICO.jpg", conf: "HAVE NOTS \u00B7 Plebian" },
+  { city: "NY", name: "Illuminati", color: "#101010", glyph: "\u{1F441}\uFE0F", logo: "/logos/NY.jpg", conf: "HAVE NOTS \u00B7 Prole" },
+  { city: "Ottawa", name: "Iron Maples", color: "#A61C1C", glyph: "\u{1F341}", logo: "/logos/OTTOWA.jpg", conf: "HAVE NOTS \u00B7 Prole" },
+  { city: "Moscow", name: "Atomic Energy Federation", color: "#B8860B", glyph: "\u2622\uFE0F", logo: "/logos/MOSCOW.jpg", conf: "HAVE NOTS \u00B7 Prole" },
+];
+
+function contest(oB, dB) { let o, dv, ro, rd; do { ro = d100(); rd = d100(); o = ro + oB; dv = rd + dB; } while (o === dv); return { win: o > dv, o, d: dv, ro, rd }; }
 function takeaway(dB, oB) { const dr = d100() + dB, or = d100() + oB; return { taken: dr - or >= TAKEAWAY_MARGIN, dr, or }; }
 const shortGain = () => d(10), longGain = () => d(10) + d(10);
 
 /* ============ CARD COMPONENTS ============ */
-function TeamLogo({ t, size = 44, radius = 10, fit = "contain", style }) {
+function TeamLogo({ t, size = 42, radius = 9, fit = "contain", style }) {
   return (
     <div style={{
       width: size, height: size, borderRadius: radius, overflow: "hidden", flexShrink: 0,
@@ -217,72 +269,11 @@ function TeamLogo({ t, size = 44, radius = 10, fit = "contain", style }) {
       display: "flex", alignItems: "center", justifyContent: "center",
       ...style,
     }}>
-      <img
-        src={t.logo}
-        alt={`${t.city} ${t.name} logo`}
-        style={{ width: "100%", height: "100%", objectFit: fit, objectPosition: "center", display: "block" }}
-      />
-    </div>
-  );
-}
-
-function DieFace({ label, sides, value, tone = "#FFD86B", size = 58 }) {
-  return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4, flexShrink: 0 }}>
-      <div style={{ fontFamily: "Courier New, monospace", fontSize: 8, color: "#8FA08F", letterSpacing: 1 }}>{label}</div>
-      <div style={{
-        width: size, height: size, borderRadius: sides === 100 ? 14 : 10,
-        background: `linear-gradient(145deg, #FFF4B8 0%, ${tone} 58%, #7C5208 100%)`,
-        border: "2px solid #FFF1A8", boxShadow: `0 0 14px ${tone}66, inset 0 0 12px #0004`,
-        display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-        transform: sides === 8 ? "rotate(45deg)" : "none",
-      }}>
-        <div style={{ transform: sides === 8 ? "rotate(-45deg)" : "none", textAlign: "center" }}>
-          <div style={{ fontFamily: "Impact, sans-serif", fontSize: value >= 100 ? 22 : 26, color: "#241904", lineHeight: 1 }}>{value}</div>
-          <div style={{ fontFamily: "Courier New, monospace", fontSize: 9, color: "#4B3408", fontWeight: "bold" }}>d{sides}</div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function DiceMath({ title, die, bonus, total, winner }) {
-  return (
-    <div style={{
-      display: "flex", alignItems: "center", justifyContent: "center", gap: 9, flexWrap: "wrap",
-      padding: "8px 10px", borderRadius: 10, background: winner ? "#203419" : "#241514",
-      border: `1px solid ${winner ? "#9BD53C" : "#7E3930"}`,
-      boxShadow: winner ? "0 0 14px #9BD53C33" : "none",
-    }}>
-      <DieFace label={title} sides={100} value={die} tone={winner ? "#9BD53C" : "#FF8A70"} />
-      <div style={{ fontFamily: "Impact, sans-serif", fontSize: 18, color: "#8FA08F" }}>+</div>
-      <div style={{ minWidth: 48 }}>
-        <div style={{ fontFamily: "Impact, sans-serif", fontSize: 23, color: "#E9E4D3", lineHeight: 1 }}>+{bonus}</div>
-        <div style={{ fontFamily: "Courier New, monospace", fontSize: 8, color: "#8FA08F" }}>BONUS</div>
-      </div>
-      <div style={{ fontFamily: "Impact, sans-serif", fontSize: 18, color: "#8FA08F" }}>=</div>
-      <div style={{ minWidth: 52 }}>
-        <div style={{ fontFamily: "Impact, sans-serif", fontSize: 30, color: winner ? "#9BD53C" : "#FF8A70", lineHeight: 1 }}>{total}</div>
-        <div style={{ fontFamily: "Courier New, monospace", fontSize: 8, color: "#8FA08F" }}>TOTAL</div>
-      </div>
-    </div>
-  );
-}
-
-function OutcomeDicePanel({ reveal }) {
-  const outcomeDice = [reveal.outcomeDie, reveal.completionDie].filter(Boolean);
-  if (!outcomeDice.length) return null;
-  return (
-    <div style={{ display: "flex", justifyContent: "center", gap: 10, flexWrap: "wrap", marginTop: 10 }}>
-      {outcomeDice.map((die, i) => (
-        <div key={`${die.label}-${i}`} style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 10px", border: "1px solid #2C5A44", borderRadius: 10, background: "#08120C" }}>
-          <DieFace label={die.label} sides={die.sides} value={die.value} tone={die.tone || "#FFD86B"} size={46} />
-          <div style={{ textAlign: "left", maxWidth: 150 }}>
-            <div style={{ fontFamily: "Impact, sans-serif", fontSize: 12, color: "#FFD86B", letterSpacing: 1 }}>{die.title}</div>
-            <div style={{ fontFamily: "Courier New, monospace", fontSize: 9, color: "#B9C4B4", lineHeight: 1.35 }}>{die.note}</div>
-          </div>
-        </div>
-      ))}
+      {t.logo ? (
+        <img src={t.logo} alt={`${t.city} ${t.name} logo`} style={{ width: "100%", height: "100%", objectFit: fit, objectPosition: "center", display: "block" }} />
+      ) : (
+        <span style={{ fontSize: size * 0.52, color: "#fff" }}>{t.glyph}</span>
+      )}
     </div>
   );
 }
@@ -357,9 +348,53 @@ function Btn({ children, onClick, big, small, disabled, gold }) {
   );
 }
 
+/* ============ DICE (visual KEY: white OSD, red DSD, blue POD, orange ROD, dark-red DOD, green yardage/catch) ============ */
+const DIE_STYLE = {
+  OSD: { bg: "#F2EFE2", fg: "#1B2A1B", edge: "#B9B4A2", shape: "d100", label: "OSD" },
+  DSD: { bg: "#B3202C", fg: "#FFF", edge: "#7A1119", shape: "d100", label: "DSD" },
+  POD: { bg: "#1D4ED8", fg: "#FFF", edge: "#0F2E8F", shape: "d8", label: "POD" },
+  ROD: { bg: "#EA580C", fg: "#FFF", edge: "#9A3806", shape: "d8", label: "ROD" },
+  DOD: { bg: "#7A1119", fg: "#FFD86B", edge: "#4A0A0F", shape: "d6", label: "DOD" },
+  CATCH: { bg: "#15803D", fg: "#FFF", edge: "#0B4A22", shape: "d100", label: "CATCH" },
+  YARD: { bg: "#15803D", fg: "#FFF", edge: "#0B4A22", shape: "d10", label: "YARDS" },
+};
+function Die({ kind, val, sub, i = 0 }) {
+  const s = DIE_STYLE[kind] || DIE_STYLE.OSD;
+  const sz = 46;
+  const diamond = s.shape === "d8" || s.shape === "d10";
+  return (
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 3, minWidth: sz + 14 }}>
+      <div className="cb-die" style={{ width: sz, height: sz, animationDelay: `${i * 0.12}s` }}>
+        <div style={{
+          width: "100%", height: "100%",
+          background: `linear-gradient(155deg, ${s.bg}, ${s.edge})`,
+          border: `2px solid ${s.edge}`,
+          borderRadius: s.shape === "d100" ? "50%" : 8,
+          transform: diamond ? "rotate(45deg) scale(.82)" : "none",
+          display: "flex", alignItems: "center", justifyContent: "center",
+          boxShadow: "0 4px 10px #000A, inset 0 2px 3px #FFFFFF44",
+        }}>
+          <span style={{ transform: diamond ? "rotate(-45deg)" : "none", fontFamily: "Impact, sans-serif", fontSize: 19, color: s.fg, textShadow: "0 1px 1px #0007" }}>{val}</span>
+        </div>
+      </div>
+      <div style={{ fontFamily: "Courier New, monospace", fontSize: 8, letterSpacing: 1, color: "#8FA08F" }}>{s.label}{sub ? ` ${sub}` : ""}</div>
+    </div>
+  );
+}
+function DiceTray({ dice }) {
+  if (!dice || !dice.length) return null;
+  return (
+    <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", gap: 10, marginTop: 12, padding: "10px 12px", background: "#00000055", border: "1px dashed #2C5A44", borderRadius: 10 }}>
+      {dice.map((d0, i) => <Die key={i} kind={d0.k} val={d0.v} sub={d0.sub} i={i} />)}
+    </div>
+  );
+}
+
 const CSS = `
 @keyframes cbSlam { 0% { transform: scale(1.6) rotate(-4deg); opacity: 0; } 60% { transform: scale(.96) rotate(1deg); opacity: 1; } 100% { transform: scale(1) rotate(0); } }
 .cb-slam { animation: cbSlam .45s cubic-bezier(.2,1.4,.4,1); }
+@keyframes cbTumble { 0% { transform: rotate(-200deg) scale(.15); opacity: 0; } 70% { transform: rotate(14deg) scale(1.15); opacity: 1; } 100% { transform: rotate(0) scale(1); } }
+.cb-die { animation: cbTumble .55s cubic-bezier(.2,1.3,.4,1) both; }
 .cb-btn:hover:not(:disabled) { filter: brightness(1.12); transform: translateY(-1px); }
 .cb-btn:active:not(:disabled) { transform: translateY(2px); box-shadow: none !important; }
 @keyframes cbPulse { 0%,100% { box-shadow: 0 0 14px #E3B23C55; } 50% { box-shadow: 0 0 30px #E3B23CBB; } }
@@ -473,14 +508,14 @@ export default function App() {
     if (isPlayerOff) { play.type === "run" ? g.playerRuns++ : g.playerPasses++; }
     const oB = offBonus(offTrio, play), dB = defBonus(defTrio, play, offTrio);
     const c = contest(oB, dB);
-    g.reveal = { offTrio, defTrio, play, rolls: c, oB, dB };
+    g.reveal = { offTrio, defTrio, play, rolls: c, oB, dB, dice: [{ k: "OSD", v: c.ro, sub: `+${oB}` }, { k: "DSD", v: c.rd, sub: `+${dB}` }] };
     const [blk, qb, sk] = offTrio;
     const primaryDef = play.type === "run" ? defTrio[0] : defTrio[2];
 
     if (c.win) {
       if (play.type === "run") {
         const rod = d(8);
-        g.reveal.outcomeDie = { label: "ROD", sides: 8, value: rod, title: "Run Outcome", note: rod === 1 ? "Fumble check triggered" : "Run table result" };
+        g.reveal.dice.push({ k: "ROD", v: rod });
         if (rod === 1) {
           const tk = takeaway(primaryDef.diff + (primaryDef.ab.intB || 0), sk.diff);
           if (tk.taken) { g.stats.tos++; log(`ROD 1 — FUMBLE! ${defT.city} rips it out (${tk.dr} vs ${tk.or})! The crowd makes a sound like a kettle.`, "bad"); endDrive("fumble"); return; }
@@ -494,7 +529,7 @@ export default function App() {
         startChase(sk, gain);
       } else {
         const pod = d(8);
-        g.reveal.outcomeDie = { label: "POD", sides: 8, value: pod, title: "Pass Outcome", note: pod === 1 ? "Interception check" : pod === 6 ? "Contested ball" : "Pass table result" };
+        g.reveal.dice.push({ k: "POD", v: pod });
         if (pod === 1) {
           const tk = takeaway(primaryDef.diff + (primaryDef.ab.intB || 0), qb.diff);
           if (tk.taken) { g.stats.tos++; log(`POD 1 — INTERCEPTED by ${primaryDef.name}! ${qb.name} would like a word with his arm.`, "bad"); endDrive("int"); return; }
@@ -509,7 +544,7 @@ export default function App() {
         let compl = sk.pct ? sk.pct[play.depth] : 30;
         if (hasChit(g.possession, "weaver")) { compl += 10; markUsed(g.possession, "weaver"); }
         const cr = d100();
-        g.reveal.completionDie = { label: "CATCH", sides: 100, value: cr, title: "Completion Roll", note: `Needs ${compl} or less`, tone: cr <= compl ? "#9BD53C" : "#FF8A70" };
+        g.reveal.dice.push({ k: "CATCH", v: cr, sub: `vs ${compl}%` });
         if (cr > compl) { log(`${qb.name} → ${sk.name} (${["10m", "20m", "20+m"][play.depth]}): ${cr} vs ${compl}% — INCOMPLETE. The ball had other plans.`, "play"); advanceDown(0); return; }
         let gain = play.depth === 0 ? shortGain() : play.depth === 1 ? longGain() : longGain() + 10;
         const bonus = pod === 5 ? " STIFF-ARM!" : pod === 7 ? " SPECTACULAR CATCH!" : pod === 8 ? " HURDLE!" : "";
@@ -519,7 +554,7 @@ export default function App() {
       }
     } else {
       const dd = d(6);
-      g.reveal.outcomeDie = { label: "DOD", sides: 6, value: dd, title: "Defense Outcome", note: dd === 1 ? "Loss or sack" : dd === 3 || dd === 4 ? "Takeaway chance" : "Defensive stop" };
+      g.reveal.dice.push({ k: "DOD", v: dd });
       if (dd === 1) { const loss = play.type === "pass" ? d(10) + (primaryDef.ab.sackB ? 2 : 0) : 5; log(play.type === "pass" ? `SACK! ${defTrio[0].name} arrives with paperwork. -${loss}m.` : `Swallowed in the backfield. -5m.`, "bad2"); advanceDown(-loss); return; }
       if (dd === 2 || dd === 6) { log(`STUFFED at the line. The wall files this under 'correspondence.'`, "bad2"); advanceDown(0); return; }
       if (dd === 3) {
@@ -745,22 +780,16 @@ export default function App() {
                 </div>
                 <div style={{ display: "flex", justifyContent: "center", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
                   {g.reveal.offTrio.map((c, i) => <ArenaCard key={"o" + i} card={c} teamId={g.possession} size={0.85} slam roleTag={["BLOCKER", "QB", "SKILL"][i]} chosen={g.reveal.rolls.win} />)}
-                  <div style={{ display: "none" }}>
+                  <div style={{ textAlign: "center", minWidth: 96 }}>
                     <div style={{ fontFamily: "Impact, sans-serif", fontSize: 30, color: g.reveal.rolls.win ? "#9BD53C" : "#FF8A70", textShadow: "0 2px 0 #000" }}>{g.reveal.rolls.o}</div>
                     <div style={{ fontSize: 9, color: "#8FA08F", fontFamily: "Courier New, monospace" }}>+{g.reveal.oB} total</div>
                     <div style={{ fontFamily: "Impact, sans-serif", fontSize: 18, color: "#FFD86B", margin: "2px 0" }}>⚔</div>
                     <div style={{ fontFamily: "Impact, sans-serif", fontSize: 30, color: !g.reveal.rolls.win ? "#9BD53C" : "#FF8A70", textShadow: "0 2px 0 #000" }}>{g.reveal.rolls.d}</div>
                     <div style={{ fontSize: 9, color: "#8FA08F", fontFamily: "Courier New, monospace" }}>+{g.reveal.dB} total</div>
                   </div>
-                  <div style={{ textAlign: "center", minWidth: 260, maxWidth: 330, flex: "0 1 330px" }}>
-                    <div style={{ fontFamily: "Impact, sans-serif", fontSize: 13, color: "#FFD86B", letterSpacing: 2, marginBottom: 6 }}>SNAP DICE</div>
-                    <DiceMath title="OFF d100" die={g.reveal.rolls.oDie} bonus={g.reveal.oB} total={g.reveal.rolls.o} winner={g.reveal.rolls.win} />
-                    <div style={{ fontFamily: "Impact, sans-serif", fontSize: 18, color: "#FFD86B", margin: "5px 0" }}>VS</div>
-                    <DiceMath title="DEF d100" die={g.reveal.rolls.dDie} bonus={g.reveal.dB} total={g.reveal.rolls.d} winner={!g.reveal.rolls.win} />
-                    <OutcomeDicePanel reveal={g.reveal} />
-                  </div>
                   {g.reveal.defTrio.map((c, i) => <ArenaCard key={"d" + i} card={c} teamId={g.possession === playerTeam ? aiTeam : playerTeam} size={0.85} slam roleTag={["LINE", "LB", "DB"][i]} chosen={!g.reveal.rolls.win} />)}
                 </div>
+                <DiceTray dice={g.reveal.dice} />
               </div>
             ) : g.phase === "commitOff" || g.phase === "commitDef" ? (
               <div>
@@ -905,43 +934,22 @@ function FieldBar({ spot, line, possession, teams }) {
 function Title({ onPlay }) {
   return (
     <div style={{ minHeight: "100vh", background: "radial-gradient(ellipse at 50% 15%, #1A4530 0%, #0B1F16 55%, #040A06 100%)", color: "#E9E4D3", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", fontFamily: "Verdana, sans-serif", padding: 20, textAlign: "center" }}>
-      <img
-        src={gameLogo}
-        alt="Customer Buttcheeks, The Polymatic Football Card Game logo"
-        style={{ width: "min(84vw, 520px)", maxHeight: "min(58vh, 520px)", objectFit: "contain", display: "block", filter: "drop-shadow(0 18px 30px #000B)", marginBottom: 12 }}
-      />
-      <div style={{ fontFamily: "Impact, sans-serif", fontSize: 24, color: "#9BB53C", letterSpacing: 6, marginTop: 4 }}>ARENA EDITION</div>
+      {logoFor("GameLogo.png") ? (
+        <img
+          src={logoFor("GameLogo.png")}
+          alt="Customer Buttcheeks, The Polymatic Football Card Game logo"
+          style={{ width: "min(84vw, 520px)", maxHeight: "min(58vh, 520px)", objectFit: "contain", display: "block", filter: "drop-shadow(0 18px 30px #000B)", marginBottom: 12 }}
+        />
+      ) : <div style={{ fontSize: 54 }}>🏈</div>}
+      <div style={{ fontFamily: "Courier New, monospace", color: "#8FA08F", letterSpacing: 4, fontSize: 12, marginTop: 8 }}>THE POLYMATIC FOOTBALL LEAGUE · SEASON 27 · 2151</div>
+      <h1 style={{ fontFamily: "Impact, sans-serif", fontSize: "clamp(42px, 9vw, 92px)", margin: "10px 0 0", color: "#FFD86B", letterSpacing: 3, textShadow: "0 6px 0 #3A2E0E, 0 12px 24px #000" }}>CUSTOMER BUTTCHEEKS</h1>
+      <div style={{ fontFamily: "Impact, sans-serif", fontSize: 24, color: "#9BB53C", letterSpacing: 6, marginTop: 4 }}>GRIDIRON CARD BATTLE — ARENA EDITION</div>
       <p style={{ maxWidth: 540, color: "#B9C4B4", fontSize: 13, lineHeight: 1.7, marginTop: 16 }}>
         Commit <b style={{ color: "#FFD86B" }}>three cards</b> in secret. Your opponent does the same.
         SNAP — and everything is revealed. Blocker, QB, and playmaker against Line, Backer, and Back.
         Best dice with the best math wins the down. <b style={{ color: "#FFD86B" }}>No game may be decided by a field goal.</b>
       </p>
       <div style={{ marginTop: 22 }}><Btn big gold onClick={onPlay}>ENTER THE ARENA ➤</Btn></div>
-    </div>
-  );
-}
-
-function ComingSoonCard({ team }) {
-  return (
-    <div
-      aria-disabled="true"
-      style={{
-        width: 235, borderRadius: 14, overflow: "hidden", position: "relative",
-        border: "3px solid #405348", background: "linear-gradient(170deg,#172018,#080D09)",
-        boxShadow: "0 6px 14px #0007", opacity: 0.78,
-      }}
-    >
-      <div style={{ height: 130, background: "#101610", borderBottom: "1px solid #405348", overflow: "hidden", filter: "saturate(.72) brightness(.78)" }}>
-        <img src={team.logo} alt={`${team.city} logo`} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
-      </div>
-      <div style={{ position: "absolute", top: 10, right: 10, background: "#FFD86B", color: "#251904", border: "1px solid #FFF1A8", borderRadius: 999, padding: "5px 9px", fontFamily: "Impact, sans-serif", fontSize: 11, letterSpacing: 1.2, boxShadow: "0 3px 10px #0008" }}>
-        COMING SOON!
-      </div>
-      <div style={{ padding: 12 }}>
-        <div style={{ fontFamily: "Impact, sans-serif", fontSize: 18, color: "#D8C98A", letterSpacing: 1 }}>{team.city.toUpperCase()}</div>
-        <div style={{ fontSize: 9, color: "#8FA08F", fontFamily: "Courier New, monospace", margin: "4px 0 8px" }}>EXPANSION FRANCHISE</div>
-        <div style={{ fontSize: 11, color: "#A8B5A6", lineHeight: 1.5, minHeight: 34 }}>Roster cards are still being stocked in the Store.</div>
-      </div>
     </div>
   );
 }
@@ -958,9 +966,11 @@ function Select({ playerTeam, setPlayerTeam, aiTeam, setAiTeam, mode, setMode, o
           return (
             <div key={id} onClick={() => { if (isP) { setPlayerTeam(null); return; } if (isA) { setAiTeam(null); return; } if (!playerTeam) setPlayerTeam(id); else if (!aiTeam && id !== playerTeam) setAiTeam(id); }}
               style={{ width: 235, cursor: "pointer", borderRadius: 14, overflow: "hidden", border: `3px solid ${isP ? "#FFD86B" : isA ? "#D6482F" : t.color2}`, background: `linear-gradient(170deg, ${t.dark}, #0A0F0B)`, transform: isP || isA ? "translateY(-5px)" : "none", transition: "all .2s", boxShadow: isP ? "0 0 22px #FFD86B66" : isA ? "0 0 22px #D6482F66" : "0 6px 14px #0007" }}>
-              <div style={{ height: 130, background: t.logoBg || t.dark, borderBottom: `1px solid ${t.color2}`, overflow: "hidden" }}>
-                <img src={t.logo} alt={`${t.city} ${t.name} logo`} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
-              </div>
+              {t.logo && (
+                <div style={{ height: 130, background: t.logoBg || t.dark, borderBottom: `1px solid ${t.color2}`, overflow: "hidden" }}>
+                  <img src={t.logo} alt={`${t.city} ${t.name} logo`} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
+                </div>
+              )}
               <div style={{ background: `linear-gradient(90deg, ${t.color}, ${t.dark})`, padding: "10px 12px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <span style={{ fontFamily: "Impact, sans-serif", fontSize: 16, color: "#fff", letterSpacing: 1 }}>{t.city.toUpperCase()}</span>
                 <TeamLogo t={t} size={30} radius={6} style={{ border: "1px solid #FFFFFFAA" }} />
@@ -977,11 +987,46 @@ function Select({ playerTeam, setPlayerTeam, aiTeam, setAiTeam, mode, setMode, o
             </div>
           );
         })}
-        {COMING_SOON_TEAMS.map((team) => <ComingSoonCard key={team.id} team={team} />)}
       </div>
       <div style={{ textAlign: "center", marginTop: 22, display: "flex", gap: 10, justifyContent: "center", alignItems: "center", flexWrap: "wrap" }}>
         <Btn small onClick={() => setMode(mode === "quick" ? "full" : "quick")}>MODE: {mode === "quick" ? "QUICK (2 drives/side/qtr)" : "FULL RULES (4)"}</Btn>
         <Btn big gold onClick={onNext} disabled={!playerTeam || !aiTeam}>STAKE YOUR CHITS ➤</Btn>
+      </div>
+
+      {/* ======== THE REST OF THE LEAGUE — COMING SOON ======== */}
+      <div style={{ marginTop: 34, textAlign: "center" }}>
+        <div style={{ fontFamily: "Impact, sans-serif", fontSize: 18, letterSpacing: 3, color: "#8FA08F" }}>THE REST OF THE LEAGUE</div>
+        <div style={{ fontSize: 10, color: "#5E7263", fontFamily: "Courier New, monospace", marginBottom: 14 }}>18 franchises still in the tunnel · logo files pre-wired for the PC build</div>
+        <div style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "center", maxWidth: 1060, margin: "0 auto" }}>
+          {COMING_SOON.map((t) => (
+            <div key={t.city} title={`${t.city} ${t.name} — coming soon`} style={{
+              width: 150, borderRadius: 12, overflow: "hidden", position: "relative",
+              border: "2px solid #3A4A3E", background: "linear-gradient(170deg, #131B14, #0A0F0B)",
+              filter: "saturate(.45)", cursor: "not-allowed",
+            }}>
+              {/* crest */}
+              <div style={{ height: 74, display: "flex", alignItems: "center", justifyContent: "center", background: `radial-gradient(circle at 50% 40%, ${t.color}44, #0A0F0B 78%)`, borderBottom: `2px solid ${t.color}55` }}>
+                {logoFor(t.logo.split("/").pop()) ? (
+                  <img src={logoFor(t.logo.split("/").pop())} alt={t.city} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+                ) : (
+                  <span style={{ fontSize: 34, filter: "drop-shadow(0 3px 3px #000)" }}>{t.glyph}</span>
+                )}
+              </div>
+              <div style={{ padding: "7px 8px 26px" }}>
+                <div style={{ fontFamily: "Impact, sans-serif", fontSize: 12.5, letterSpacing: 1, color: "#C9CFC4" }}>{t.city.toUpperCase()}</div>
+                <div style={{ fontSize: 9, color: t.color, fontWeight: "bold", lineHeight: 1.25, minHeight: 22 }}>{t.name}</div>
+                <div style={{ fontSize: 7.5, color: "#5E7263", fontFamily: "Courier New, monospace", marginTop: 2 }}>{t.conf}</div>
+              </div>
+              {/* COMING SOON ribbon */}
+              <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, background: "repeating-linear-gradient(45deg,#C89019,#C89019 10px,#A46F0C 10px,#A46F0C 20px)", padding: "3px 0", textAlign: "center" }}>
+                <span style={{ fontFamily: "Impact, sans-serif", fontSize: 10, letterSpacing: 2, color: "#241A02", textShadow: "0 1px 0 #F5D06A" }}>🔒 COMING SOON!</span>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div style={{ fontSize: 9, color: "#5E7263", fontFamily: "Courier New, monospace", marginTop: 12 }}>
+          On the PC build: drop the 24 logo files into public/logos/ and set logoImg: true on each team — the crests swap in automatically.
+        </div>
       </div>
     </div>
   );
@@ -1021,11 +1066,6 @@ function Final({ g, playerTeam, aiTeam, onAgain }) {
     <div style={{ minHeight: "100vh", background: "radial-gradient(ellipse at 50% 30%, #1A4530, #040A06)", color: "#E9E4D3", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", fontFamily: "Verdana, sans-serif", padding: 20, textAlign: "center" }}>
       <div style={{ fontSize: 50 }}>{won ? "🏆" : "🍛"}</div>
       <div style={{ fontFamily: "Impact, sans-serif", fontSize: 18, letterSpacing: 4, color: "#8FA08F", marginTop: 6 }}>FINAL — SEASON 27</div>
-      <div style={{ display: "flex", alignItems: "center", gap: 14, marginTop: 14 }}>
-        <TeamLogo t={TEAMS[playerTeam]} size={74} radius={12} style={{ border: `2px solid ${TEAMS[playerTeam].color2}` }} />
-        <div style={{ fontFamily: "Impact, sans-serif", fontSize: 18, color: "#FFD86B", letterSpacing: 2 }}>VS</div>
-        <TeamLogo t={TEAMS[aiTeam]} size={74} radius={12} style={{ border: `2px solid ${TEAMS[aiTeam].color2}` }} />
-      </div>
       <div style={{ fontFamily: "Impact, sans-serif", fontSize: "clamp(36px,8vw,76px)", color: "#FFD86B", margin: "8px 0", textShadow: "0 4px 0 #3A2E0E" }}>
         {TEAMS[playerTeam].city.toUpperCase()} {pS} — {aS} {TEAMS[aiTeam].city.toUpperCase()}
       </div>

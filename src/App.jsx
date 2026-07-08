@@ -104,7 +104,7 @@ const TEAMS = {
   },
   london: {
     id: "london", city: "London", name: "Amplified Gentry", conf: "THE HAVES · Nova",
-    color: "#1F3A93", color2: "#E3B23C", dark: "#0E1B3A", glyph: "♛", logo: "/logos/LONDON.jpg", logoImg: false,
+    color: "#1F3A93", color2: "#E3B23C", dark: "#0E1B3A", glyph: "🎩", logo: "/logos/LONDON.jpg", logoImg: false,
     identity: "Old money, new arms. Saxby hunts one last title.",
     tendency: { run: 0.5, deep: 0.5 },
     offense: [
@@ -494,6 +494,10 @@ const CSS = `
 .cb-die { animation: cbTumble .55s cubic-bezier(.2,1.3,.4,1) both; }
 @keyframes cbBeg { 0%,100% { transform: scale(1); box-shadow: 0 0 12px #FFD86B66; } 50% { transform: scale(1.08); box-shadow: 0 0 30px #FFD86BEE; } }
 .cb-tapdie { animation: cbBeg 1.1s infinite; cursor: pointer; }
+@keyframes cbTrailFade { 0% { opacity: .95; } 65% { opacity: .85; } 100% { opacity: 0; } }
+.cb-trail { animation: cbTrailFade 1.8s ease-out forwards; }
+@keyframes cbHop { 0% { transform: translate(-50%,-50%) scale(1); } 35% { transform: translate(-50%,-62%) scale(1.18); } 100% { transform: translate(-50%,-50%) scale(1); } }
+.cb-hop { animation: cbHop .55s ease; transform: translate(-50%,-50%); }
 .cb-btn:hover:not(:disabled) { filter: brightness(1.12); transform: translateY(-1px); }
 .cb-btn:active:not(:disabled) { transform: translateY(2px); box-shadow: none !important; }
 @keyframes cbPulse { 0%,100% { box-shadow: 0 0 14px #E3B23C55; } 50% { box-shadow: 0 0 30px #E3B23CBB; } }
@@ -1103,19 +1107,58 @@ export default function App() {
 }
 
 function FieldBar({ spot, line, possession, teams }) {
-  const pct = Math.max(0, Math.min(100, (spot / FIELD) * 100));
-  const fdPct = Math.max(0, Math.min(100, ((line + TO_GAIN) / FIELD) * 100));
-  const tA = TEAMS[teams[0]], tB = TEAMS[teams[1]], offT = TEAMS[possession];
+  // v3.2 — top-down field of play: team glyphs as pieces, dotted play trail w/ arrows
+  const prevRef = useRef(spot);
+  const [trail, setTrail] = useState(null);
+  useEffect(() => {
+    if (prevRef.current !== spot) {
+      setTrail({ from: prevRef.current, to: spot, id: Date.now() });
+      prevRef.current = spot;
+    }
+  }, [spot]);
+  const pc = (m) => Math.max(0, Math.min(100, (m / FIELD) * 100));
+  const pct = pc(spot), fdPct = pc(line + TO_GAIN);
+  const offT = TEAMS[possession];
+  const defT = TEAMS[teams[0] === possession ? teams[1] : teams[0]];
+  const gain = trail && trail.to > trail.from;
+  const oDots = [spot - 4, spot - 7, spot - 10].filter((m) => m > 2);
+  const xDots = [spot + 8, spot + 12].filter((m) => m < FIELD - 2);
   return (
     <div style={{ margin: "8px 0 12px" }}>
-      <div style={{ position: "relative", height: 28, background: "repeating-linear-gradient(90deg,#17362A 0,#17362A 9.09%,#1C4234 9.09%,#1C4234 18.18%)", borderRadius: 8, border: "1px solid #2C5A44", overflow: "hidden" }}>
-        <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "5%", background: tA.color + "77" }} />
-        <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: "5%", background: tB.color + "77" }} />
-        <div style={{ position: "absolute", left: `${fdPct}%`, top: 0, bottom: 0, width: 2, background: "#FFD86B" }} />
-        <div style={{ position: "absolute", left: `calc(${pct}% - 9px)`, top: 3, width: 18, height: 22, background: `linear-gradient(160deg, ${offT.color}, ${offT.dark})`, border: "2px solid #FFD86B", borderRadius: 4, transition: "left .5s ease", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10 }}>{"🏈"}</div>
+      <div style={{ position: "relative", height: 62, borderRadius: 10, border: "2px solid #2C5A44", overflow: "hidden",
+        background: "repeating-linear-gradient(90deg,#1A5233 0,#1A5233 9.09%,#14472B 9.09%,#14472B 18.18%)" }}>
+        {/* chalk yard lines + hashes */}
+        <div style={{ position: "absolute", inset: 0, background: "repeating-linear-gradient(90deg, transparent 0, transparent calc(9.09% - 1px), #E9E4D355 calc(9.09% - 1px), #E9E4D355 9.09%)" }} />
+        <div style={{ position: "absolute", left: 0, right: 0, top: 14, height: 2, background: "repeating-linear-gradient(90deg, #E9E4D344 0 3px, transparent 3px 14px)" }} />
+        <div style={{ position: "absolute", left: 0, right: 0, bottom: 14, height: 2, background: "repeating-linear-gradient(90deg, #E9E4D344 0 3px, transparent 3px 14px)" }} />
+        {/* end zones: attacking right (defense色), own goal left */}
+        <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "5%", background: `linear-gradient(90deg, ${offT.color}AA, ${offT.color}33)`, borderRight: "2px solid #E9E4D366" }} />
+        <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: "5%", background: `linear-gradient(270deg, ${defT.color}AA, ${defT.color}33)`, borderLeft: "2px solid #E9E4D366" }} />
+        {/* LOS + first-down chains */}
+        <div style={{ position: "absolute", left: `${pct}%`, top: 0, bottom: 0, width: 2, background: "#5EC3E8AA" }} />
+        <div style={{ position: "absolute", left: `${fdPct}%`, top: 0, bottom: 0, width: 2, background: "#FFD86B", boxShadow: "0 0 8px #FFD86B" }} />
+        {/* play trail: marching dots + arrowhead, fades after each play */}
+        {trail && Math.abs(trail.to - trail.from) > 0 && (
+          <div key={trail.id} className="cb-trail" onAnimationEnd={() => setTrail(null)}
+            style={{ position: "absolute", top: "50%", height: 4, transform: "translateY(-50%)",
+              left: `${pc(Math.min(trail.from, trail.to))}%`, width: `${Math.abs(pc(trail.to) - pc(trail.from))}%`,
+              background: `repeating-linear-gradient(90deg, ${gain ? "#FFD86B" : "#FF8A70"} 0 6px, transparent 6px 13px)` }}>
+            <span style={{ position: "absolute", [gain ? "right" : "left"]: -9, top: -8, fontSize: 13, color: gain ? "#FFD86B" : "#FF8A70", textShadow: "0 1px 2px #000" }}>{gain ? "►" : "◄"}</span>
+          </div>
+        )}
+        {/* formation dots: teammates (o) behind the ball, defenders (x) beyond */}
+        {oDots.map((m, i) => (
+          <div key={"o" + i} style={{ position: "absolute", left: `${pc(m)}%`, top: i % 2 ? "68%" : "24%", transform: "translate(-50%,-50%)", width: 8, height: 8, borderRadius: "50%", border: `2px solid ${offT.color2}`, opacity: 0.75, transition: "left .6s ease" }} />
+        ))}
+        {xDots.map((m, i) => (
+          <div key={"x" + i} style={{ position: "absolute", left: `${pc(m)}%`, top: i % 2 ? "70%" : "26%", transform: "translate(-50%,-50%)", fontSize: 11, fontWeight: "bold", color: defT.color2, opacity: 0.85, transition: "left .6s ease", textShadow: "0 1px 1px #000" }}>✕</div>
+        ))}
+        {/* THE PIECES: offense glyph carries the ball; defense glyph shadows the LOS */}
+        <div key={"d" + spot} style={{ position: "absolute", left: `${pc(Math.min(spot + 4, FIELD - 3))}%`, top: "50%", transform: "translate(-50%,-50%)", width: 22, height: 22, borderRadius: "50%", background: `linear-gradient(160deg, ${defT.color}, ${defT.dark})`, border: `2px solid ${defT.color2}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, color: "#fff", transition: "left .6s ease", textShadow: "0 1px 1px #000" }}>{defT.glyph}</div>
+        <div key={"p" + spot} className="cb-hop" style={{ position: "absolute", left: `${pct}%`, top: "50%", width: 28, height: 28, borderRadius: "50%", background: `linear-gradient(160deg, ${offT.color}, ${offT.dark})`, border: "2.5px solid #FFD86B", boxShadow: "0 0 12px #FFD86B88, 0 3px 6px #000A", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15, color: "#fff", zIndex: 2, transition: "left .6s ease", textShadow: "0 1px 1px #000" }}>{offT.glyph}</div>
       </div>
       <div style={{ display: "flex", justifyContent: "space-between", fontSize: 9, color: "#8FA08F", marginTop: 2, fontFamily: "Courier New, monospace" }}>
-        <span>OWN GOAL</span><span>BALL AT {spot}m · {FIELD - spot} TO PAY DIRT</span><span>END ZONE</span>
+        <span>◄ OWN GOAL</span><span>{offT.glyph} BALL AT {spot}m · {FIELD - spot} TO PAY DIRT ⟶</span><span>END ZONE ►</span>
       </div>
     </div>
   );

@@ -515,6 +515,7 @@ export default function App() {
   const [aiStaked, setAiStaked] = useState([]);
   const [g, setG] = useState(null);
   const [sel, setSel] = useState({});
+  const [expandedSlot, setExpandedSlot] = useState(null);
   const logRef = useRef(null);
   useEffect(() => { const s = document.createElement("style"); s.textContent = CSS; document.head.appendChild(s); return () => s.remove(); }, []);
 
@@ -535,7 +536,7 @@ export default function App() {
       log: [{ t: "sys", m: `COIN FLIP — ${T(first).city} receives. The machine is already studying your habits.` }],
       stats: { plays: 0, tds: 0, tos: 0 },
     });
-    setSel({});
+    setSel({}); setExpandedSlot(null);
     setScreen("game");
   }
 
@@ -875,7 +876,7 @@ export default function App() {
     startSnapPhase();
   }
   function startSnapPhase() {
-    setSel({});
+    setSel({}); setExpandedSlot(null);
     const isPO = g.possession === playerTeam;
     if (isPO) { g.aiCommit = aiPickDef(); g.phase = "commitOff"; }
     else {
@@ -927,11 +928,26 @@ export default function App() {
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", background: "linear-gradient(180deg,#0C1810,#070D09)", border: "2px solid #C89019", borderRadius: 14, padding: "8px 16px", boxShadow: "inset 0 0 24px #000, 0 4px 18px #0009" }}>
         <ScoreCell t={pT} s={g.score[playerTeam]} poss={g.possession === playerTeam} label="YOU" />
         <div style={{ textAlign: "center" }}>
-          <div style={{ fontFamily: "Impact, sans-serif", fontSize: 14, letterSpacing: 3, color: "#FFD86B" }}>{g.ot ? "☠ OVERTIME ☠" : `QUARTER ${g.qtr}`}</div>
-          <div style={{ fontFamily: "Courier New, monospace", fontSize: 10, color: "#8FA08F" }}>DRIVE {g.driveNum}/{drivesPerQtr} · DOWN {g.down} · {Math.max(0, TO_GAIN - (g.spot - g.line))} TO GO</div>
-          {(lastHalf() || lastGame()) && !g.ot && <div style={{ fontSize: 9, color: "#FFD86B", fontFamily: "Courier New, monospace" }} className="cb-pulse">★ CLUTCH DRIVE — BONUS SCORING ★</div>}
+          <div style={{ fontFamily: "Impact, sans-serif", fontSize: 16, letterSpacing: 3, color: "#FFD86B" }}>{g.ot ? "☠ OVERTIME ☠" : `QUARTER ${g.qtr}`}</div>
+          <div style={{ fontFamily: "Courier New, monospace", fontSize: 12, color: "#8FA08F" }}>DRIVE {g.driveNum}/{drivesPerQtr} · DOWN {g.down} · {Math.max(0, TO_GAIN - (g.spot - g.line))} TO GO</div>
+          {(lastHalf() || lastGame()) && !g.ot && <div style={{ fontSize: 11, color: "#FFD86B", fontFamily: "Courier New, monospace" }} className="cb-pulse">★ CLUTCH DRIVE — BONUS SCORING ★</div>}
         </div>
         <ScoreCell t={aT} s={g.score[aiTeam]} poss={g.possession === aiTeam} right label="THE MACHINE" />
+      </div>
+
+      {/* 2151 BROADCAST — full-width strip under the scoreboard */}
+      <div style={{ marginTop: 10, background: "#0A120D", border: "1px solid #2C5A44", borderRadius: 14, padding: "10px 14px" }}>
+        <div style={{ fontFamily: "Impact, sans-serif", letterSpacing: 2, fontSize: 15, color: "#FFD86B", marginBottom: 6 }}>{"📡"} 2151 BROADCAST</div>
+        <div ref={logRef} style={{ overflowY: "auto", maxHeight: 128, fontFamily: "Courier New, monospace", fontSize: 13.5, lineHeight: 1.5 }}>
+          {g.log.map((e, i) => (
+            <div key={i} style={{
+              padding: "4px 8px", borderRadius: 4, marginBottom: 3,
+              color: e.t === "score" ? "#FFD86B" : e.t === "bad" ? "#FF8A70" : e.t === "bad2" ? "#D6A15E" : e.t === "good" ? "#9BD53C" : e.t === "flag" ? "#FFD34D" : "#B9C4B4",
+              background: e.t === "score" ? "#3A2E0E" : e.t === "bad" ? "#3A160E" : "transparent",
+              opacity: i === 0 ? 1 : 0.85,
+            }}>{e.m}</div>
+          ))}
+        </div>
       </div>
 
       <FieldBar spot={g.spot} line={g.line} possession={g.possession} teams={[playerTeam, aiTeam]} />
@@ -941,14 +957,14 @@ export default function App() {
           <div style={{ background: "linear-gradient(180deg,#0F1D14,#0A130D)", border: "1px solid #2C5A44", borderRadius: 14, padding: 14, minHeight: 330 }}>
             {g.reveal ? (
               <div>
-                <div style={{ textAlign: "center", fontFamily: "Impact, sans-serif", letterSpacing: 2, fontSize: 13, color: "#FFD86B", marginBottom: 10 }}>
+                <div style={{ textAlign: "center", fontFamily: "Impact, sans-serif", letterSpacing: 2, fontSize: 15, color: "#FFD86B", marginBottom: 10 }}>
                   {g.reveal.play.type === "run" ? "RUN PLAY" : `PASS — ${["10m", "20m", "20+m"][g.reveal.play.depth]}`} · CARDS REVEALED
                 </div>
                 <div style={{ display: "flex", justifyContent: "center", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
                   {g.reveal.offTrio.map((c, i) => <ArenaCard key={"o" + i} card={c} teamId={g.possession} size={0.85} slam roleTag={["BLOCKER", "QB", "SKILL"][i]} chosen={g.reveal.rolls ? g.reveal.rolls.win : false} />)}
                   <div style={{ textAlign: "center", minWidth: 96 }}>
                     <div style={{ fontFamily: "Impact, sans-serif", fontSize: 30, color: !g.reveal.rolls ? "#5E7263" : g.reveal.rolls.win ? "#9BD53C" : "#FF8A70", textShadow: "0 2px 0 #000" }}>{g.reveal.rolls ? g.reveal.rolls.o : "—"}</div>
-                    <div style={{ fontSize: 9, color: "#8FA08F", fontFamily: "Courier New, monospace" }}>total</div>
+                    <div style={{ fontSize: 11, color: "#8FA08F", fontFamily: "Courier New, monospace" }}>total</div>
                     <div style={{ fontFamily: "Impact, sans-serif", fontSize: 18, color: "#FFD86B", margin: "2px 0" }}>⚔</div>
                     <div style={{ fontFamily: "Impact, sans-serif", fontSize: 30, color: !g.reveal.rolls ? "#5E7263" : !g.reveal.rolls.win ? "#9BD53C" : "#FF8A70", textShadow: "0 2px 0 #000" }}>{g.reveal.rolls ? g.reveal.rolls.d : "—"}</div>
                     <div style={{ fontSize: 9, color: "#8FA08F", fontFamily: "Courier New, monospace" }}>total</div>
@@ -959,33 +975,66 @@ export default function App() {
               </div>
             ) : g.phase === "commitOff" || g.phase === "commitDef" ? (
               <div>
-                <div style={{ textAlign: "center", fontFamily: "Impact, sans-serif", letterSpacing: 2, fontSize: 13, color: "#FFD86B", marginBottom: 8 }}>
+                <div style={{ textAlign: "center", fontFamily: "Impact, sans-serif", letterSpacing: 2, fontSize: 15, color: "#FFD86B", marginBottom: 6 }}>
                   {g.phase === "commitOff" ? "BUILD YOUR ATTACK — PICK 3 CARDS" : "BUILD YOUR WALL — PICK 3 CARDS"}
                 </div>
-                <div style={{ display: "flex", justifyContent: "center", gap: 8, marginBottom: 12 }}>
-                  {[0, 1, 2].map((i) => <ArenaCard key={i} faceDown teamId={g.phase === "commitOff" ? g.other : g.possession} card={null} size={0.55} />)}
-                </div>
-                <div style={{ textAlign: "center", fontSize: 10, color: "#8FA08F", fontFamily: "Courier New, monospace", marginBottom: 10 }}>
+                <div style={{ textAlign: "center", fontSize: 12, color: "#8FA08F", fontFamily: "Courier New, monospace", marginBottom: 12 }}>
                   {g.phase === "commitOff" ? `${defT.city} has committed its 3 defenders… face down. Rude.` : `${offT.city} has committed its attack… face down. Typical.`}
                 </div>
-                {slotOrder.map((slot) => (
-                  <div key={slot} style={{ marginBottom: 8 }}>
-                    <div style={{ fontFamily: "Courier New, monospace", fontSize: 10, letterSpacing: 1, color: sel[slot] ? "#9BD53C" : "#FFD86B", marginBottom: 4 }}>
-                      {slotLabels[slot]} {sel[slot] ? `— ${sel[slot].name} ✓` : "— choose:"}
+
+                {/* THREE SLOTS — tap to expand & pick, mirroring the opponent's 3-card layout */}
+                <div style={{ display: "flex", justifyContent: "center", gap: 10, marginBottom: 10, flexWrap: "wrap" }}>
+                  {slotOrder.map((slot) => {
+                    const picked = sel[slot];
+                    const isOpen = expandedSlot === slot;
+                    const shortLabel = { BLOCKER: "BLOCKER", QB: "QB", SKILL: "SKILL", LINE: "LINEMAN", BACKER: "LINEBACKER", BACK: "BACK" }[slot];
+                    return (
+                      <div key={slot} onClick={() => setExpandedSlot(isOpen ? null : slot)}
+                        style={{ cursor: "pointer", width: 128, height: 182, borderRadius: 12, flexShrink: 0, position: "relative",
+                          transition: "all .18s", transform: isOpen ? "translateY(-4px)" : "none" }}>
+                        {picked ? (
+                          <div style={{ transform: "scale(0.82)", transformOrigin: "top center" }}>
+                            <ArenaCard card={picked} teamId={isPlayerOff ? g.possession : g.other} size={1} roleTag={shortLabel}
+                              chosen={isOpen} />
+                          </div>
+                        ) : (
+                          <div style={{ width: "100%", height: "100%", borderRadius: 12, border: `3px dashed ${isOpen ? "#FFD86B" : "#2C5A44"}`,
+                            background: isOpen ? "#122017" : "#0C160F", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+                            boxShadow: isOpen ? "0 0 18px #FFD86B55" : "none" }}>
+                            <div style={{ fontSize: 30, color: isOpen ? "#FFD86B" : "#3C6B50" }}>{isOpen ? "▾" : "＋"}</div>
+                            <div style={{ fontFamily: "Impact, sans-serif", fontSize: 13, letterSpacing: 1, color: isOpen ? "#FFD86B" : "#6C8574", marginTop: 6 }}>{shortLabel}</div>
+                            <div style={{ fontFamily: "Courier New, monospace", fontSize: 9, color: "#5E7263", marginTop: 4 }}>{isOpen ? "PICKING…" : "TAP TO PICK"}</div>
+                          </div>
+                        )}
+                        {picked && <div style={{ position: "absolute", top: -6, right: -6, background: "#0E8A4A", color: "#fff", borderRadius: "50%", width: 22, height: 22, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, border: "2px solid #04220F" }}>✓</div>}
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* EXPANDED PICKER — shows available cards for the open slot */}
+                {expandedSlot && (
+                  <div style={{ background: "#0C160F", border: "1px solid #2C5A44", borderRadius: 12, padding: "10px 10px 6px", marginBottom: 10 }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
+                      <div style={{ fontFamily: "Courier New, monospace", fontSize: 12, letterSpacing: 1, color: "#FFD86B" }}>
+                        {slotLabels[expandedSlot]} {sel[expandedSlot] ? `— ${sel[expandedSlot].name} ✓` : "— choose one:"}
+                      </div>
+                      <span onClick={() => setExpandedSlot(null)} style={{ cursor: "pointer", fontFamily: "Courier New, monospace", fontSize: 11, color: "#8FA08F" }}>close ✕</span>
                     </div>
                     <div style={{ display: "flex", gap: 6, overflowX: "auto", paddingBottom: 4 }}>
-                      {trioSlots[slot].map((c) => {
-                        const takenElsewhere = slotOrder.some((s2) => s2 !== slot && sel[s2] === c);
-                        return <ArenaCard key={c.name + slot} card={c} teamId={isPlayerOff ? g.possession : g.other} size={0.62}
-                          chosen={sel[slot] === c} dimmed={takenElsewhere}
-                          onClick={() => { if (!takenElsewhere) setSel({ ...sel, [slot]: sel[slot] === c ? null : c }); }} />;
+                      {trioSlots[expandedSlot].map((c) => {
+                        const takenElsewhere = slotOrder.some((s2) => s2 !== expandedSlot && sel[s2] === c);
+                        return <ArenaCard key={c.name + expandedSlot} card={c} teamId={isPlayerOff ? g.possession : g.other} size={0.7}
+                          chosen={sel[expandedSlot] === c} dimmed={takenElsewhere}
+                          onClick={() => { if (!takenElsewhere) { setSel({ ...sel, [expandedSlot]: sel[expandedSlot] === c ? null : c }); setExpandedSlot(null); } }} />;
                       })}
                     </div>
                   </div>
-                ))}
+                )}
+
                 {g.phase === "commitOff" && (
                   <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center", marginTop: 4 }}>
-                    <span style={{ fontFamily: "Courier New, monospace", fontSize: 10, color: "#FFD86B" }}>PLAY CALL:</span>
+                    <span style={{ fontFamily: "Courier New, monospace", fontSize: 12, color: "#FFD86B" }}>PLAY CALL:</span>
                     <Btn small onClick={() => setSel({ ...sel, play: { type: "run" } })} gold={sel.play?.type === "run"}>RUN</Btn>
                     {[0, 1, 2].map((dp) => (
                       <Btn key={dp} small gold={sel.play?.type === "pass" && sel.play.depth === dp}
@@ -997,7 +1046,7 @@ export default function App() {
                 )}
               </div>
             ) : (
-              <div style={{ textAlign: "center", padding: "60px 0", color: "#5E7263", fontFamily: "Courier New, monospace", fontSize: 12 }}>
+              <div style={{ textAlign: "center", padding: "60px 0", color: "#5E7263", fontFamily: "Courier New, monospace", fontSize: 14 }}>
                 {g.phase === "spin" ? "The Meter Wheel awaits its spin…" : "The table is being cleared…"}
               </div>
             )}
@@ -1054,7 +1103,7 @@ export default function App() {
             )}
             {g.phase === "fourth" && (
               <div>
-                <div style={{ fontFamily: "Courier New, monospace", fontSize: 11, color: "#FFD86B", marginBottom: 8 }}>4TH DOWN — {FIELD - g.spot}m TO THE END ZONE</div>
+                <div style={{ fontFamily: "Courier New, monospace", fontSize: 13, color: "#FFD86B", marginBottom: 8 }}>4TH DOWN — {FIELD - g.spot}m TO THE END ZONE</div>
                 <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
                   <Btn onClick={act(() => startSnapPhase())}>GO FOR IT</Btn>
                   <Btn onClick={act(tryFG)} disabled={heroBlocks()}>{heroBlocks() ? "FG — HERO RULE!" : `FIELD GOAL (~${Math.round(Math.max(20, 90 - 1.2 * (FIELD - g.spot)))}%)`}</Btn>
@@ -1072,20 +1121,8 @@ export default function App() {
           </div>
         </div>
 
-        <div style={{ flex: "1 1 280px", minWidth: 260 }}>
-          <div style={{ background: "#0A120D", border: "1px solid #2C5A44", borderRadius: 14, padding: 12, height: 520, display: "flex", flexDirection: "column" }}>
-            <div style={{ fontFamily: "Impact, sans-serif", letterSpacing: 2, fontSize: 13, color: "#FFD86B", marginBottom: 8 }}>{"📡"} 2151 BROADCAST</div>
-            <div ref={logRef} style={{ overflowY: "auto", flex: 1, fontFamily: "Courier New, monospace", fontSize: 11.5, lineHeight: 1.5 }}>
-              {g.log.map((e, i) => (
-                <div key={i} style={{
-                  padding: "4px 6px", borderRadius: 4, marginBottom: 3,
-                  color: e.t === "score" ? "#FFD86B" : e.t === "bad" ? "#FF8A70" : e.t === "bad2" ? "#D6A15E" : e.t === "good" ? "#9BD53C" : e.t === "flag" ? "#FFD34D" : "#B9C4B4",
-                  background: e.t === "score" ? "#3A2E0E" : e.t === "bad" ? "#3A160E" : "transparent",
-                  opacity: i === 0 ? 1 : 0.85,
-                }}>{e.m}</div>
-              ))}
-            </div>
-          </div>
+        <div style={{ flex: "1 1 300px", minWidth: 280 }}>
+          <StatsPanel g={g} pT={pT} aT={aT} playerTeam={playerTeam} aiTeam={aiTeam} drivesPerQtr={drivesPerQtr} />
         </div>
       </div>
       <HelpFab />
@@ -1097,9 +1134,9 @@ export default function App() {
       <div style={{ display: "flex", alignItems: "center", gap: 10, flexDirection: right ? "row-reverse" : "row" }}>
         <div style={{ width: 44, height: 44, borderRadius: 10, background: `linear-gradient(160deg, ${t.color}, ${t.dark})`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24, color: "#fff", border: `2px solid ${t.color2}`, boxShadow: poss ? `0 0 14px ${t.color}` : "none", overflow: "hidden" }}><Crest t={t} size={24} /></div>
         <div style={{ textAlign: right ? "right" : "left" }}>
-          <div style={{ fontSize: 8, color: "#8FA08F", fontFamily: "Courier New, monospace", letterSpacing: 1 }}>{label}</div>
-          <div style={{ fontFamily: "Impact, sans-serif", fontSize: 13, letterSpacing: 1, color: poss ? "#FFD86B" : "#E9E4D3" }}>{t.city.toUpperCase()} {poss ? "●" : ""}</div>
-          <div style={{ fontFamily: "Impact, sans-serif", fontSize: 32, color: "#FFD86B", lineHeight: 1, textShadow: "0 2px 0 #3A2E0E" }}>{s}</div>
+          <div style={{ fontSize: 10, color: "#8FA08F", fontFamily: "Courier New, monospace", letterSpacing: 1 }}>{label}</div>
+          <div style={{ fontFamily: "Impact, sans-serif", fontSize: 15, letterSpacing: 1, color: poss ? "#FFD86B" : "#E9E4D3" }}>{t.city.toUpperCase()} {poss ? "●" : ""}</div>
+          <div style={{ fontFamily: "Impact, sans-serif", fontSize: 38, color: "#FFD86B", lineHeight: 1, textShadow: "0 2px 0 #3A2E0E" }}>{s}</div>
         </div>
       </div>
     );
@@ -1124,13 +1161,13 @@ function FieldBar({ spot, line, possession, teams }) {
   const oDots = [spot - 4, spot - 7, spot - 10].filter((m) => m > 2);
   const xDots = [spot + 8, spot + 12].filter((m) => m < FIELD - 2);
   return (
-    <div style={{ margin: "8px 0 12px" }}>
-      <div style={{ position: "relative", height: 62, borderRadius: 10, border: "2px solid #2C5A44", overflow: "hidden",
+    <div style={{ margin: "10px 0 16px", width: "100%" }}>
+      <div style={{ position: "relative", height: 104, borderRadius: 12, border: "3px solid #2C5A44", overflow: "hidden",
         background: "repeating-linear-gradient(90deg,#1A5233 0,#1A5233 9.09%,#14472B 9.09%,#14472B 18.18%)" }}>
         {/* chalk yard lines + hashes */}
         <div style={{ position: "absolute", inset: 0, background: "repeating-linear-gradient(90deg, transparent 0, transparent calc(9.09% - 1px), #E9E4D355 calc(9.09% - 1px), #E9E4D355 9.09%)" }} />
-        <div style={{ position: "absolute", left: 0, right: 0, top: 14, height: 2, background: "repeating-linear-gradient(90deg, #E9E4D344 0 3px, transparent 3px 14px)" }} />
-        <div style={{ position: "absolute", left: 0, right: 0, bottom: 14, height: 2, background: "repeating-linear-gradient(90deg, #E9E4D344 0 3px, transparent 3px 14px)" }} />
+        <div style={{ position: "absolute", left: 0, right: 0, top: 24, height: 2, background: "repeating-linear-gradient(90deg, #E9E4D344 0 3px, transparent 3px 14px)" }} />
+        <div style={{ position: "absolute", left: 0, right: 0, bottom: 24, height: 2, background: "repeating-linear-gradient(90deg, #E9E4D344 0 3px, transparent 3px 14px)" }} />
         {/* end zones: attacking right (defense色), own goal left */}
         <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "5%", background: `linear-gradient(90deg, ${offT.color}AA, ${offT.color}33)`, borderRight: "2px solid #E9E4D366" }} />
         <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: "5%", background: `linear-gradient(270deg, ${defT.color}AA, ${defT.color}33)`, borderLeft: "2px solid #E9E4D366" }} />
@@ -1148,18 +1185,74 @@ function FieldBar({ spot, line, possession, teams }) {
         )}
         {/* formation dots: teammates (o) behind the ball, defenders (x) beyond */}
         {oDots.map((m, i) => (
-          <div key={"o" + i} style={{ position: "absolute", left: `${pc(m)}%`, top: i % 2 ? "68%" : "24%", transform: "translate(-50%,-50%)", width: 8, height: 8, borderRadius: "50%", border: `2px solid ${offT.color2}`, opacity: 0.75, transition: "left .6s ease" }} />
+          <div key={"o" + i} style={{ position: "absolute", left: `${pc(m)}%`, top: i % 2 ? "70%" : "22%", transform: "translate(-50%,-50%)", width: 11, height: 11, borderRadius: "50%", border: `2px solid ${offT.color2}`, opacity: 0.75, transition: "left .6s ease" }} />
         ))}
         {xDots.map((m, i) => (
-          <div key={"x" + i} style={{ position: "absolute", left: `${pc(m)}%`, top: i % 2 ? "70%" : "26%", transform: "translate(-50%,-50%)", fontSize: 11, fontWeight: "bold", color: defT.color2, opacity: 0.85, transition: "left .6s ease", textShadow: "0 1px 1px #000" }}>✕</div>
+          <div key={"x" + i} style={{ position: "absolute", left: `${pc(m)}%`, top: i % 2 ? "72%" : "24%", transform: "translate(-50%,-50%)", fontSize: 15, fontWeight: "bold", color: defT.color2, opacity: 0.85, transition: "left .6s ease", textShadow: "0 1px 1px #000" }}>✕</div>
         ))}
         {/* THE PIECES: offense glyph carries the ball; defense glyph shadows the LOS */}
-        <div key={"d" + spot} style={{ position: "absolute", left: `${pc(Math.min(spot + 4, FIELD - 3))}%`, top: "50%", transform: "translate(-50%,-50%)", width: 22, height: 22, borderRadius: "50%", background: `linear-gradient(160deg, ${defT.color}, ${defT.dark})`, border: `2px solid ${defT.color2}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, color: "#fff", transition: "left .6s ease", textShadow: "0 1px 1px #000" }}>{defT.glyph}</div>
-        <div key={"p" + spot} className="cb-hop" style={{ position: "absolute", left: `${pct}%`, top: "50%", width: 28, height: 28, borderRadius: "50%", background: `linear-gradient(160deg, ${offT.color}, ${offT.dark})`, border: "2.5px solid #FFD86B", boxShadow: "0 0 12px #FFD86B88, 0 3px 6px #000A", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15, color: "#fff", zIndex: 2, transition: "left .6s ease", textShadow: "0 1px 1px #000" }}>{offT.glyph}</div>
+        <div key={"d" + spot} style={{ position: "absolute", left: `${pc(Math.min(spot + 4, FIELD - 3))}%`, top: "50%", transform: "translate(-50%,-50%)", width: 34, height: 34, borderRadius: "50%", background: `linear-gradient(160deg, ${defT.color}, ${defT.dark})`, border: `2px solid ${defT.color2}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, color: "#fff", transition: "left .6s ease", textShadow: "0 1px 1px #000" }}>{defT.glyph}</div>
+        <div key={"p" + spot} className="cb-hop" style={{ position: "absolute", left: `${pct}%`, top: "50%", width: 42, height: 42, borderRadius: "50%", background: `linear-gradient(160deg, ${offT.color}, ${offT.dark})`, border: "3px solid #FFD86B", boxShadow: "0 0 16px #FFD86B88, 0 3px 6px #000A", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22, color: "#fff", zIndex: 2, transition: "left .6s ease", textShadow: "0 1px 1px #000" }}>{offT.glyph}</div>
       </div>
-      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 9, color: "#8FA08F", marginTop: 2, fontFamily: "Courier New, monospace" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 11, color: "#8FA08F", marginTop: 4, fontFamily: "Courier New, monospace" }}>
         <span>◄ OWN GOAL</span><span>{offT.glyph} BALL AT {spot}m · {FIELD - spot} TO PAY DIRT ⟶</span><span>END ZONE ►</span>
       </div>
+    </div>
+  );
+}
+
+function StatsPanel({ g, pT, aT, playerTeam, aiTeam, drivesPerQtr }) {
+  const runs = g.playerRuns - 1, passes = g.playerPasses - 1; // seeded at 1
+  const callTotal = Math.max(1, runs + passes);
+  const runPct = Math.round((runs / callTotal) * 100);
+  const toGo = Math.max(0, TO_GAIN - (g.spot - g.line));
+  const row = (label, val, color) => (
+    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", padding: "5px 0", borderBottom: "1px solid #ffffff10" }}>
+      <span style={{ fontFamily: "Courier New, monospace", fontSize: 12, color: "#8FA08F", letterSpacing: 1 }}>{label}</span>
+      <span style={{ fontFamily: "Impact, sans-serif", fontSize: 18, color: color || "#F2EFE2" }}>{val}</span>
+    </div>
+  );
+  return (
+    <div style={{ background: "#0A120D", border: "1px solid #2C5A44", borderRadius: 14, padding: 14, minHeight: 330, display: "flex", flexDirection: "column", gap: 4 }}>
+      <div style={{ fontFamily: "Impact, sans-serif", letterSpacing: 2, fontSize: 15, color: "#FFD86B", marginBottom: 6, display: "flex", alignItems: "center", gap: 8 }}>
+        <span>📊</span> PLAYER STATS
+      </div>
+
+      {/* scoreline */}
+      <div style={{ display: "flex", justifyContent: "space-between", background: "#0E1A13", borderRadius: 10, padding: "8px 12px", marginBottom: 6, border: "1px solid #2C5A44" }}>
+        <div style={{ textAlign: "center", flex: 1 }}>
+          <div style={{ fontFamily: "Courier New, monospace", fontSize: 10, color: "#8FA08F", letterSpacing: 1 }}>{pT.city.toUpperCase()}</div>
+          <div style={{ fontFamily: "Impact, sans-serif", fontSize: 30, color: g.possession === playerTeam ? "#FFD86B" : "#E9E4D3" }}>{g.score[playerTeam]}</div>
+        </div>
+        <div style={{ alignSelf: "center", fontFamily: "Impact, sans-serif", fontSize: 14, color: "#5E7263" }}>vs</div>
+        <div style={{ textAlign: "center", flex: 1 }}>
+          <div style={{ fontFamily: "Courier New, monospace", fontSize: 10, color: "#8FA08F", letterSpacing: 1 }}>{aT.city.toUpperCase()}</div>
+          <div style={{ fontFamily: "Impact, sans-serif", fontSize: 30, color: g.possession === aiTeam ? "#FFD86B" : "#E9E4D3" }}>{g.score[aiTeam]}</div>
+        </div>
+      </div>
+
+      {/* game situation */}
+      <div style={{ fontFamily: "Courier New, monospace", fontSize: 10, color: "#FFD86B", letterSpacing: 1, marginTop: 2, marginBottom: 2 }}>SITUATION</div>
+      {row(g.ot ? "OVERTIME" : "QUARTER", g.ot ? "☠" : g.qtr, "#FFD86B")}
+      {row("DRIVE", `${g.driveNum}/${drivesPerQtr}`)}
+      {row("DOWN", g.down)}
+      {row("YARDS TO GO", `${toGo}m`)}
+      {row("BALL ON", `${g.spot}m`)}
+      {row("POSSESSION", g.possession === playerTeam ? "YOU ●" : "MACHINE", g.possession === playerTeam ? "#9BD53C" : "#FF8A70")}
+
+      {/* box score */}
+      <div style={{ fontFamily: "Courier New, monospace", fontSize: 10, color: "#FFD86B", letterSpacing: 1, marginTop: 8, marginBottom: 2 }}>BOX SCORE</div>
+      {row("PLAYS RUN", g.stats.plays)}
+      {row("TOUCHDOWNS", g.stats.tds, "#9BD53C")}
+      {row("TURNOVERS", g.stats.tos, g.stats.tos > 0 ? "#FF8A70" : "#F2EFE2")}
+
+      {/* play-calling tendency */}
+      <div style={{ fontFamily: "Courier New, monospace", fontSize: 10, color: "#FFD86B", letterSpacing: 1, marginTop: 8, marginBottom: 4 }}>YOUR TENDENCY</div>
+      <div style={{ display: "flex", height: 20, borderRadius: 6, overflow: "hidden", border: "1px solid #2C5A44" }}>
+        <div style={{ width: `${runPct}%`, background: "linear-gradient(90deg,#3C9663,#2A6B45)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "Impact, sans-serif", fontSize: 10, color: "#F6F3E6" }}>{runPct >= 18 ? `RUN ${runPct}%` : ""}</div>
+        <div style={{ flex: 1, background: "linear-gradient(90deg,#2E5A8E,#1E3E63)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "Impact, sans-serif", fontSize: 10, color: "#F6F3E6" }}>{100 - runPct >= 18 ? `PASS ${100 - runPct}%` : ""}</div>
+      </div>
+      <div style={{ fontFamily: "Courier New, monospace", fontSize: 9, color: "#5E7263", marginTop: 4 }}>{runs + passes} offensive calls tracked · the Machine reads this.</div>
     </div>
   );
 }

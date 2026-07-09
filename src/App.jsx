@@ -215,6 +215,756 @@ const TEAMS = {
       { pos: "FS1", slot: "DB", name: "Ana Gautami", kind: "F", diff: 7, ab: { intB: 4 } },
     ],
   },
+  la: {
+    id: "la", city: "Los Angeles", name: "Firm of Pheir, Payne & Suffering", conf: "THE HAVES · Prime",
+    color: "#C9A227", color2: "#D9D9D9", dark: "#3A2F0A", glyph: "⚖️", logo: "/logos/LA.jpg", logoImg: false,
+    identity: "Josh Allen Bills · OVR 90",
+    tendency: { run: 0.45, deep: 0.3 },
+    offense: [
+      { pos: "QB1", slot: "QB", name: "Blackburn Fitzpatrick", kind: "M", diff: 28, pct: [86, 63, 50], ab: { deadEye: 9 }, elite: true },
+      { pos: "QB2", slot: "QB", name: "E.G. Shapiro", kind: "M", diff: 19, pct: [83, 58, 44], ab: { osrPass: 7 }, elite: true },
+      { pos: "RB1", slot: "SKL", name: "Kingdom Foxx", kind: "M", diff: 19, pct: [52, 42, 20], ab: {  } },
+      { pos: "WR1", slot: "SKL", name: "Keyshawn Mingo", kind: "M", diff: 26, pct: [88, 77, 66], ab: { osrPass: 9 }, elite: true },
+      { pos: "WR2", slot: "SKL", name: "Othello Dior", kind: "M", diff: 17, pct: [80, 72, 55], ab: {  } },
+      { pos: "WR3", slot: "SKL", name: "Demetrius Shaw", kind: "M", diff: 13, pct: [78, 66, 48], ab: {  } },
+      { pos: "TE1", slot: "SKL", name: "Orville Skinner", kind: "M", diff: 17, pct: [66, 72, 74], ab: {  } },
+      { pos: "TE2", slot: "SKL", name: "Wang Hongwen", kind: "M", diff: 13, pct: [62, 66, 68], ab: {  } },
+      { pos: "FB1", slot: "BLK", name: "Walt Wyman", kind: "M", diff: 10, pct: null, ab: {  } },
+      { pos: "LT", slot: "BLK", name: "Clarence Timmons", kind: "M", diff: 19, pct: null, ab: {  } },
+      { pos: "LG", slot: "BLK", name: "Mykal Willis", kind: "M", diff: 16, pct: null, ab: {  } },
+      { pos: "C", slot: "BLK", name: "Bjorn Braun", kind: "M", diff: 14, pct: null, ab: {  } },
+      { pos: "RG", slot: "BLK", name: "Roger Saw", kind: "M", diff: 14, pct: null, ab: {  } },
+      { pos: "RT", slot: "BLK", name: "Omar Chancellor", kind: "M", diff: 17, pct: null, ab: {  } },
+    ],
+    defense: [
+      { pos: "DE1", slot: "LINE", name: "Declan White", kind: "M", diff: 21, ab: {  } },
+      { pos: "DE2", slot: "LINE", name: "Kingsley Turk", kind: "M", diff: 14, ab: {  } },
+      { pos: "NT1", slot: "LINE", name: "Julek Wroclaw", kind: "M", diff: 21, ab: { sackB: 1 }, elite: true },
+      { pos: "NT2", slot: "LINE", name: "Feodor Timshel", kind: "M", diff: 12, ab: {  } },
+      { pos: "ILB1", slot: "LB", name: "Mukesh Singh", kind: "M", diff: 24, ab: { dsrRun: 9 }, elite: true },
+      { pos: "ILB2", slot: "LB", name: "Arthur Trowel", kind: "M", diff: 15, ab: {  } },
+      { pos: "OLB1", slot: "LB", name: "Corey Tyler", kind: "M", diff: 12, ab: {  } },
+      { pos: "OLB2", slot: "LB", name: "Woody Wells", kind: "M", diff: 11, ab: {  } },
+      { pos: "CB1", slot: "DB", name: "Corey Trevathan", kind: "M", diff: 19, ab: {  } },
+      { pos: "CB2", slot: "DB", name: "Kyle Lattimer", kind: "M", diff: 15, ab: {  } },
+      { pos: "CB3", slot: "DB", name: "DeMarcus Jamb", kind: "M", diff: 12, ab: {  } },
+      { pos: "CB4", slot: "DB", name: "Andre Clady", kind: "M", diff: 10, ab: {  } },
+      { pos: "SS1", slot: "DB", name: "Marcellus Reid", kind: "M", diff: 17, ab: {  } },
+      { pos: "FS1", slot: "DB", name: "Edwin Kotch", kind: "M", diff: 17, ab: {  } },
+    ],
+  },
+  rome: {
+    id: "rome", city: "Rome", name: "The Roman Legion", conf: "THE HAVES · Prime",
+    color: "#8E1B1B", color2: "#D9D9D9", dark: "#2A0808", glyph: "🏛️", logo: "/logos/ROME.jpg", logoImg: false,
+    identity: "1985 NY Giants · OVR 88",
+    tendency: { run: 0.55, deep: 0.25 },
+    offense: [
+      { pos: "QB1", slot: "QB", name: "Nero", kind: "M", diff: 23, pct: [85, 62, 48], ab: {  } },
+      { pos: "QB2", slot: "QB", name: "M.A. Commodus", kind: "M", diff: 14, pct: [82, 56, 42], ab: {  } },
+      { pos: "RB1", slot: "SKL", name: "Festus-Santino Axius", kind: "M", diff: 18, pct: [52, 42, 20], ab: {  } },
+      { pos: "WR1", slot: "SKL", name: "Sergius Pallus", kind: "M", diff: 21, pct: [88, 77, 66], ab: {  } },
+      { pos: "WR2", slot: "SKL", name: "Vivaldo Conti", kind: "M", diff: 16, pct: [80, 72, 55], ab: {  } },
+      { pos: "WR3", slot: "SKL", name: "Roberto Stangellini", kind: "M", diff: 13, pct: [78, 66, 48], ab: {  } },
+      { pos: "TE1", slot: "SKL", name: "Balbinus Clovius", kind: "M", diff: 17, pct: [66, 72, 74], ab: {  } },
+      { pos: "TE2", slot: "SKL", name: "Martina Valentino", kind: "M", diff: 13, pct: [62, 66, 68], ab: {  } },
+      { pos: "FB1", slot: "BLK", name: "Nerva Sotoportego", kind: "M", diff: 10, pct: null, ab: {  } },
+      { pos: "LT", slot: "BLK", name: "Alvaro Caruso", kind: "M", diff: 18, pct: null, ab: {  } },
+      { pos: "LG", slot: "BLK", name: "Mauro Deluca", kind: "M", diff: 15, pct: null, ab: {  } },
+      { pos: "C", slot: "BLK", name: "Primo Ventura", kind: "M", diff: 18, pct: null, ab: { osrPass: 7 }, elite: true },
+      { pos: "RG", slot: "BLK", name: "Telemaco Palumbo", kind: "M", diff: 14, pct: null, ab: {  } },
+      { pos: "RT", slot: "BLK", name: "Ovidio D'Agostino", kind: "M", diff: 16, pct: null, ab: {  } },
+    ],
+    defense: [
+      { pos: "DE1", slot: "LINE", name: "Maximiliano Sforza", kind: "M", diff: 24, ab: { sackB: 8 }, elite: true },
+      { pos: "NT1", slot: "LINE", name: "Mario Stromboli", kind: "M", diff: 16, ab: {  } },
+      { pos: "NT2", slot: "LINE", name: "Alfonso Napolitano", kind: "M", diff: 12, ab: {  } },
+      { pos: "ILB1", slot: "LB", name: "Lawson Taylorous", kind: "M", diff: 23, ab: { dsrRun: 8 }, elite: true },
+      { pos: "ILB2", slot: "LB", name: "Ottavio Izzo", kind: "M", diff: 19, ab: { dsrRun: 7 }, elite: true },
+      { pos: "OLB1", slot: "LB", name: "Carlo Bianco", kind: "M", diff: 16, ab: { dsrRun: 7 }, elite: true },
+      { pos: "OLB2", slot: "LB", name: "Donny Ambrose", kind: "M", diff: 10, ab: {  } },
+      { pos: "CB1", slot: "DB", name: "Trajan Apuzzo", kind: "M", diff: 18, ab: {  } },
+      { pos: "CB2", slot: "DB", name: "Leandro Belifiore", kind: "M", diff: 15, ab: {  } },
+      { pos: "CB3", slot: "DB", name: "Italo Lanza", kind: "M", diff: 12, ab: {  } },
+      { pos: "CB4", slot: "DB", name: "Piero Zattale", kind: "M", diff: 10, ab: {  } },
+      { pos: "SS1", slot: "DB", name: "Ugo Longo", kind: "M", diff: 17, ab: {  } },
+      { pos: "FS1", slot: "DB", name: "Sisto Fiore", kind: "M", diff: 16, ab: {  } },
+    ],
+  },
+  un: {
+    id: "un", city: "United Nations", name: "Global Alliance", conf: "THE HAVES · Prime",
+    color: "#3B7DD8", color2: "#D9D9D9", dark: "#0E2545", glyph: "🌐", logo: "/logos/UN.jpg", logoImg: false,
+    identity: "2015 Patriots · OVR 90",
+    tendency: { run: 0.5, deep: 0.28 },
+    offense: [
+      { pos: "QB1", slot: "QB", name: "Bola Nkemediche", kind: "M", diff: 28, pct: [86, 63, 50], ab: { deadEye: 9 }, elite: true },
+      { pos: "QB2", slot: "QB", name: "Atiqtalik Yazzie", kind: "M", diff: 15, pct: [83, 58, 44], ab: {  } },
+      { pos: "RB1", slot: "SKL", name: "Miguel Rosales", kind: "M", diff: 19, pct: [52, 42, 20], ab: {  } },
+      { pos: "WR1", slot: "SKL", name: "Fausto Amaral", kind: "M", diff: 26, pct: [88, 77, 66], ab: { osrPass: 9 }, elite: true },
+      { pos: "WR2", slot: "SKL", name: "Pavel Tarng", kind: "M", diff: 17, pct: [80, 72, 55], ab: {  } },
+      { pos: "WR3", slot: "SKL", name: "Maxwell Reedus", kind: "M", diff: 13, pct: [78, 66, 48], ab: {  } },
+      { pos: "TE1", slot: "SKL", name: "Wing-Fu Chin", kind: "M", diff: 21, pct: [66, 72, 74], ab: { osrPass: 8 }, elite: true },
+      { pos: "TE2", slot: "SKL", name: "Tommy Nakamura", kind: "M", diff: 17, pct: [62, 66, 68], ab: { osrPass: 7 }, elite: true },
+      { pos: "FB1", slot: "BLK", name: "Gautam Dutt", kind: "M", diff: 10, pct: null, ab: {  } },
+      { pos: "LT", slot: "BLK", name: "Oshimane Okereke", kind: "M", diff: 19, pct: null, ab: {  } },
+      { pos: "LG", slot: "BLK", name: "Muntu Bantha", kind: "M", diff: 16, pct: null, ab: {  } },
+      { pos: "C", slot: "BLK", name: "Israel La'akea", kind: "M", diff: 14, pct: null, ab: {  } },
+      { pos: "RG", slot: "BLK", name: "Solosolo Māhoe", kind: "M", diff: 14, pct: null, ab: {  } },
+      { pos: "RT", slot: "BLK", name: "Abdul Esfahani", kind: "M", diff: 17, pct: null, ab: {  } },
+    ],
+    defense: [
+      { pos: "DE1", slot: "LINE", name: "Medard Meir", kind: "M", diff: 25, ab: { sackB: 1 }, elite: true },
+      { pos: "DE2", slot: "LINE", name: "Olaf Swennson", kind: "M", diff: 14, ab: {  } },
+      { pos: "NT1", slot: "LINE", name: "Gorm Eriksson", kind: "M", diff: 17, ab: {  } },
+      { pos: "NT2", slot: "LINE", name: "Monkbhat Huuchid", kind: "M", diff: 12, ab: {  } },
+      { pos: "ILB1", slot: "LB", name: "Anatoli Confetti", kind: "M", diff: 20, ab: {  } },
+      { pos: "ILB2", slot: "LB", name: "Fritz Lindemann", kind: "M", diff: 15, ab: {  } },
+      { pos: "OLB1", slot: "LB", name: "Torvald Miku", kind: "M", diff: 12, ab: {  } },
+      { pos: "OLB2", slot: "LB", name: "Baldar Grels", kind: "M", diff: 11, ab: {  } },
+      { pos: "CB1", slot: "DB", name: "Zoltan Biev", kind: "M", diff: 19, ab: {  } },
+      { pos: "CB2", slot: "DB", name: "Greko Smoot", kind: "M", diff: 15, ab: {  } },
+      { pos: "CB3", slot: "DB", name: "Timo Nygren", kind: "M", diff: 12, ab: {  } },
+      { pos: "CB4", slot: "DB", name: "Samuel Bibi", kind: "M", diff: 10, ab: {  } },
+      { pos: "SS1", slot: "DB", name: "Ygor Klim", kind: "M", diff: 17, ab: {  } },
+      { pos: "FS1", slot: "DB", name: "Gretel Gul", kind: "F", diff: 17, ab: {  } },
+    ],
+  },
+  dc: {
+    id: "dc", city: "Washington DC", name: "Old Glory", conf: "THE HAVES · Nova",
+    color: "#1F3A93", color2: "#D9D9D9", dark: "#0A1330", glyph: "⭐", logo: "/logos/DC.jpg", logoImg: false,
+    identity: "2008 Cardinals · OVR 80",
+    tendency: { run: 0.5, deep: 0.28 },
+    offense: [
+      { pos: "QB1", slot: "QB", name: "Teddy Roosevelt", kind: "M", diff: 21, pct: [81, 54, 40], ab: { deadEye: 9 }, elite: true },
+      { pos: "QB2", slot: "QB", name: "Tasquantum Lightfoot", kind: "M", diff: 11, pct: [78, 48, 33], ab: {  } },
+      { pos: "RB1", slot: "SKL", name: "Purcell Gonzalez", kind: "M", diff: 14, pct: [52, 42, 20], ab: {  } },
+      { pos: "WR1", slot: "SKL", name: "Woodrow Wilson", kind: "M", diff: 16, pct: [88, 77, 66], ab: {  } },
+      { pos: "WR2", slot: "SKL", name: "Cleetus McCoy", kind: "M", diff: 12, pct: [80, 72, 55], ab: {  } },
+      { pos: "WR3", slot: "SKL", name: "Allan Crom", kind: "M", diff: 9, pct: [78, 66, 48], ab: {  } },
+      { pos: "TE1", slot: "SKL", name: "Abe Lincoln", kind: "M", diff: 12, pct: [66, 72, 74], ab: {  } },
+      { pos: "TE2", slot: "SKL", name: "Tecumseh Thorpe", kind: "M", diff: 9, pct: [62, 66, 68], ab: {  } },
+      { pos: "FB1", slot: "BLK", name: "Orland Tarver", kind: "M", diff: 7, pct: null, ab: {  } },
+      { pos: "LT", slot: "BLK", name: "Ricky Solder", kind: "M", diff: 14, pct: null, ab: {  } },
+      { pos: "LG", slot: "BLK", name: "Alex Walsh", kind: "M", diff: 11, pct: null, ab: {  } },
+      { pos: "C", slot: "BLK", name: "Chuck Maplethorpe", kind: "M", diff: 14, pct: null, ab: { osrPass: 6 }, elite: true },
+      { pos: "RG", slot: "BLK", name: "Tyler Pierce", kind: "M", diff: 10, pct: null, ab: {  } },
+      { pos: "RT", slot: "BLK", name: "Zachary Harrison", kind: "M", diff: 12, pct: null, ab: {  } },
+    ],
+    defense: [
+      { pos: "DE1", slot: "LINE", name: "Santiago Soto", kind: "M", diff: 15, ab: {  } },
+      { pos: "DE2", slot: "LINE", name: "Lamarr Washington", kind: "M", diff: 10, ab: {  } },
+      { pos: "NT1", slot: "LINE", name: "Bill Taft", kind: "M", diff: 16, ab: { sackB: 1 }, elite: true },
+      { pos: "NT2", slot: "LINE", name: "Weston Boothe", kind: "M", diff: 9, ab: {  } },
+      { pos: "ILB1", slot: "LB", name: "King Rucker", kind: "M", diff: 14, ab: {  } },
+      { pos: "ILB2", slot: "LB", name: "Cassius Del Mar", kind: "M", diff: 11, ab: {  } },
+      { pos: "OLB1", slot: "LB", name: "Marty Burris", kind: "M", diff: 9, ab: {  } },
+      { pos: "OLB2", slot: "LB", name: "Syndey Burns", kind: "M", diff: 7, ab: {  } },
+      { pos: "CB1", slot: "DB", name: "Weeping Crow", kind: "M", diff: 14, ab: {  } },
+      { pos: "CB2", slot: "DB", name: "Mister Loeffler", kind: "M", diff: 11, ab: {  } },
+      { pos: "CB3", slot: "DB", name: "Harley Hart", kind: "M", diff: 8, ab: {  } },
+      { pos: "CB4", slot: "DB", name: "Wendell Cunningham", kind: "M", diff: 7, ab: {  } },
+      { pos: "SS1", slot: "DB", name: "Geronimo Goyathlay", kind: "M", diff: 16, ab: { intB: 7 }, elite: true },
+      { pos: "FS1", slot: "DB", name: "Casper Blackwood", kind: "M", diff: 12, ab: {  } },
+    ],
+  },
+  tokyo: {
+    id: "tokyo", city: "Tokyo", name: "TASC Masters", conf: "THE HAVES · Nova",
+    color: "#D92B7A", color2: "#D9D9D9", dark: "#3A0A20", glyph: "⛩️", logo: "/logos/TOKYO.jpg", logoImg: false,
+    identity: "2008 Steelers · OVR 84",
+    tendency: { run: 0.45, deep: 0.3 },
+    offense: [
+      { pos: "QB1", slot: "QB", name: "Inejiro Tokugawa", kind: "M", diff: 20, pct: [83, 58, 44], ab: {  } },
+      { pos: "QB2", slot: "QB", name: "Susumu Nobunaga", kind: "M", diff: 12, pct: [80, 52, 37], ab: {  } },
+      { pos: "RB1", slot: "SKL", name: "Hideki Otani", kind: "M", diff: 16, pct: [52, 42, 20], ab: {  } },
+      { pos: "WR1", slot: "SKL", name: "Daisuke Koizumi", kind: "M", diff: 22, pct: [88, 77, 66], ab: { osrPass: 9 }, elite: true },
+      { pos: "WR2", slot: "SKL", name: "Gento Watanabe", kind: "M", diff: 14, pct: [80, 72, 55], ab: {  } },
+      { pos: "WR3", slot: "SKL", name: "Satoshi Ginoza", kind: "M", diff: 11, pct: [78, 66, 48], ab: {  } },
+      { pos: "TE1", slot: "SKL", name: "Masato Noda", kind: "M", diff: 14, pct: [66, 72, 74], ab: {  } },
+      { pos: "TE2", slot: "SKL", name: "Hiro Tojo", kind: "M", diff: 11, pct: [62, 66, 68], ab: {  } },
+      { pos: "FB1", slot: "BLK", name: "Endo Hachimura", kind: "M", diff: 8, pct: null, ab: {  } },
+      { pos: "LT", slot: "BLK", name: "Cedric Croston", kind: "M", diff: 16, pct: null, ab: {  } },
+      { pos: "LG", slot: "BLK", name: "Marcus Ghoulston", kind: "M", diff: 13, pct: null, ab: {  } },
+      { pos: "C", slot: "BLK", name: "Eero Koski", kind: "M", diff: 12, pct: null, ab: {  } },
+      { pos: "RG", slot: "BLK", name: "Masayoshi Okamoto", kind: "M", diff: 12, pct: null, ab: {  } },
+      { pos: "RT", slot: "BLK", name: "Tyrod Seltzer-Coe", kind: "M", diff: 14, pct: null, ab: {  } },
+    ],
+    defense: [
+      { pos: "DE1", slot: "LINE", name: "Jiro Midori", kind: "M", diff: 17, ab: {  } },
+      { pos: "DE2", slot: "LINE", name: "Hanzo Takahashi", kind: "M", diff: 16, ab: { sackB: 1 }, elite: true },
+      { pos: "NT1", slot: "LINE", name: "Kenji Raiden", kind: "M", diff: 18, ab: { sackB: 1 }, elite: true },
+      { pos: "NT2", slot: "LINE", name: "Masafumi Hana", kind: "M", diff: 14, ab: { sackB: 1 }, elite: true },
+      { pos: "ILB1", slot: "LB", name: "Ryuzo Nishioka", kind: "M", diff: 20, ab: { dsrRun: 8 }, elite: true },
+      { pos: "ILB2", slot: "LB", name: "Toru Fukudome", kind: "M", diff: 13, ab: {  } },
+      { pos: "OLB1", slot: "LB", name: "Yofuo Aki", kind: "M", diff: 10, ab: {  } },
+      { pos: "OLB2", slot: "LB", name: "Shinji Yamada", kind: "M", diff: 9, ab: {  } },
+      { pos: "CB1", slot: "DB", name: "Natsume Ando", kind: "F", diff: 16, ab: {  } },
+      { pos: "CB2", slot: "DB", name: "Eric Tolzien", kind: "M", diff: 13, ab: {  } },
+      { pos: "CB3", slot: "DB", name: "Sato Hanabusa", kind: "M", diff: 10, ab: {  } },
+      { pos: "CB4", slot: "DB", name: "Funa Iwamoto", kind: "M", diff: 8, ab: {  } },
+      { pos: "SS1", slot: "DB", name: "Ieyasu Ishii", kind: "M", diff: 14, ab: {  } },
+      { pos: "FS1", slot: "DB", name: "Sanjiro Fujimoto", kind: "M", diff: 14, ab: {  } },
+    ],
+  },
+  inca: {
+    id: "inca", city: "Inca", name: "Obsidian Pumas", conf: "THE HAVES · Nova",
+    color: "#3C2A4D", color2: "#D9D9D9", dark: "#150E1C", glyph: "🐆", logo: "/logos/INCA.jpg", logoImg: false,
+    identity: "Flacco Ravens · OVR 86",
+    tendency: { run: 0.55, deep: 0.25 },
+    offense: [
+      { pos: "QB1", slot: "QB", name: "Atoc Nyunyuma", kind: "M", diff: 21, pct: [84, 60, 46], ab: {  } },
+      { pos: "QB2", slot: "QB", name: "Stanis Kowalski", kind: "M", diff: 13, pct: [81, 54, 40], ab: {  } },
+      { pos: "RB1", slot: "SKL", name: "Smoke Monkey", kind: "M", diff: 21, pct: [52, 42, 20], ab: { osrRun: 8 }, elite: true },
+      { pos: "WR1", slot: "SKL", name: "Gordon Ilyapa", kind: "M", diff: 19, pct: [88, 77, 66], ab: {  } },
+      { pos: "WR2", slot: "SKL", name: "Myra Supay", kind: "F", diff: 15, pct: [80, 72, 55], ab: {  } },
+      { pos: "WR3", slot: "SKL", name: "Abel Paricia", kind: "M", diff: 12, pct: [78, 66, 48], ab: {  } },
+      { pos: "TE1", slot: "SKL", name: "Nina Quilla", kind: "M", diff: 15, pct: [66, 72, 74], ab: {  } },
+      { pos: "TE2", slot: "SKL", name: "Jorge Axomamma", kind: "M", diff: 12, pct: [62, 66, 68], ab: {  } },
+      { pos: "FB1", slot: "BLK", name: "Marcos Gonzalez", kind: "M", diff: 9, pct: null, ab: {  } },
+      { pos: "LT", slot: "BLK", name: "Domingo Santana", kind: "M", diff: 17, pct: null, ab: {  } },
+      { pos: "LG", slot: "BLK", name: "Marcelo Copacati", kind: "M", diff: 14, pct: null, ab: {  } },
+      { pos: "C", slot: "BLK", name: "Herbert Huanca", kind: "M", diff: 13, pct: null, ab: {  } },
+      { pos: "RG", slot: "BLK", name: "Norberto Slim", kind: "M", diff: 13, pct: null, ab: {  } },
+      { pos: "RT", slot: "BLK", name: "Honore Cuca", kind: "M", diff: 15, pct: null, ab: {  } },
+    ],
+    defense: [
+      { pos: "DE1", slot: "LINE", name: "DeAngelo Bell", kind: "M", diff: 22, ab: { sackB: 8 }, elite: true },
+      { pos: "NT1", slot: "LINE", name: "Sergio Mantequilla", kind: "M", diff: 15, ab: {  } },
+      { pos: "NT2", slot: "LINE", name: "Luyes Luyes", kind: "M", diff: 11, ab: {  } },
+      { pos: "ILB1", slot: "LB", name: "Ozcoc Tupac", kind: "M", diff: 21, ab: { dsrRun: 8 }, elite: true },
+      { pos: "ILB2", slot: "LB", name: "Cayo-Topa Marquez", kind: "M", diff: 13, ab: {  } },
+      { pos: "OLB1", slot: "LB", name: "Yasiel Colòn", kind: "M", diff: 11, ab: {  } },
+      { pos: "OLB2", slot: "LB", name: "Huachuri Del Mar", kind: "M", diff: 9, ab: {  } },
+      { pos: "CB1", slot: "DB", name: "Maria Dos Santos", kind: "M", diff: 21, ab: { intB: 8 }, elite: true },
+      { pos: "CB2", slot: "DB", name: "Zope Nusta", kind: "M", diff: 13, ab: {  } },
+      { pos: "CB3", slot: "DB", name: "Karl Kline", kind: "M", diff: 10, ab: {  } },
+      { pos: "CB4", slot: "DB", name: "Quilaco Auqui", kind: "M", diff: 9, ab: {  } },
+      { pos: "SS1", slot: "DB", name: "Chunchos Coya", kind: "M", diff: 15, ab: {  } },
+      { pos: "FS1", slot: "DB", name: "Quizo Yupanqui", kind: "M", diff: 15, ab: {  } },
+    ],
+  },
+  sf: {
+    id: "sf", city: "San Francisco", name: "Mitsune-Gumi Ronin", conf: "THE HAVES · Alpha",
+    color: "#B34700", color2: "#D9D9D9", dark: "#331400", glyph: "🏯", logo: "/logos/SF.jpg", logoImg: false,
+    identity: "80's 49ers · OVR 86",
+    tendency: { run: 0.4, deep: 0.33 },
+    offense: [
+      { pos: "QB1", slot: "QB", name: "Rocky Cosby", kind: "M", diff: 25, pct: [84, 60, 46], ab: { deadEye: 9 }, elite: true },
+      { pos: "QB2", slot: "QB", name: "Masato Funaki", kind: "M", diff: 13, pct: [81, 54, 40], ab: {  } },
+      { pos: "RB1", slot: "SKL", name: "Frank Montana", kind: "M", diff: 17, pct: [52, 42, 20], ab: {  } },
+      { pos: "WR1", slot: "SKL", name: "S.Randy Rice", kind: "M", diff: 23, pct: [88, 77, 66], ab: { osrPass: 8 }, elite: true },
+      { pos: "WR2", slot: "SKL", name: "Owen Bolden", kind: "M", diff: 15, pct: [80, 72, 55], ab: {  } },
+      { pos: "WR3", slot: "SKL", name: "Brock Norwood", kind: "M", diff: 12, pct: [78, 66, 48], ab: {  } },
+      { pos: "TE1", slot: "SKL", name: "Ronin Nixon", kind: "M", diff: 19, pct: [66, 72, 74], ab: { osrPass: 7 }, elite: true },
+      { pos: "TE2", slot: "SKL", name: "Virgil Swank", kind: "M", diff: 12, pct: [62, 66, 68], ab: {  } },
+      { pos: "FB1", slot: "BLK", name: "Earl Monroe", kind: "M", diff: 9, pct: null, ab: {  } },
+      { pos: "LT", slot: "BLK", name: "John Cross", kind: "M", diff: 17, pct: null, ab: {  } },
+      { pos: "LG", slot: "BLK", name: "Randy Ayers", kind: "M", diff: 14, pct: null, ab: {  } },
+      { pos: "C", slot: "BLK", name: "Bubba Cooper", kind: "M", diff: 13, pct: null, ab: {  } },
+      { pos: "RG", slot: "BLK", name: "Kerwin Lum", kind: "M", diff: 13, pct: null, ab: {  } },
+      { pos: "RT", slot: "BLK", name: "Guy Lott", kind: "M", diff: 15, pct: null, ab: {  } },
+    ],
+    defense: [
+      { pos: "DE1", slot: "LINE", name: "Mick Christmas", kind: "M", diff: 22, ab: { sackB: 1 }, elite: true },
+      { pos: "DE2", slot: "LINE", name: "Jerry Mix", kind: "M", diff: 13, ab: {  } },
+      { pos: "NT1", slot: "LINE", name: "Ezekiel Huston", kind: "M", diff: 15, ab: {  } },
+      { pos: "NT2", slot: "LINE", name: "Worrell Smith", kind: "M", diff: 11, ab: {  } },
+      { pos: "ILB1", slot: "LB", name: "Lyndale Hamm", kind: "M", diff: 17, ab: {  } },
+      { pos: "ILB2", slot: "LB", name: "Wilbur Thompson", kind: "M", diff: 13, ab: {  } },
+      { pos: "OLB1", slot: "LB", name: "Vincent Spain", kind: "M", diff: 11, ab: {  } },
+      { pos: "OLB2", slot: "LB", name: "Karl Swanson", kind: "M", diff: 9, ab: {  } },
+      { pos: "CB1", slot: "DB", name: "Benson Chow", kind: "M", diff: 17, ab: {  } },
+      { pos: "CB2", slot: "DB", name: "Mansoor Timany", kind: "M", diff: 13, ab: {  } },
+      { pos: "CB3", slot: "DB", name: "Stanley Lal", kind: "M", diff: 10, ab: {  } },
+      { pos: "SS1", slot: "DB", name: "Conrad Atwater", kind: "M", diff: 19, ab: { intB: 7 }, elite: true },
+      { pos: "FS1", slot: "DB", name: "Clarence Fujimoto", kind: "M", diff: 15, ab: {  } },
+    ],
+  },
+  cairo: {
+    id: "cairo", city: "Cairo", name: "Twice-Risen Pharaohs", conf: "THE HAVES · Alpha",
+    color: "#C9A227", color2: "#D9D9D9", dark: "#3A2F0A", glyph: "☥", logo: "/logos/CAIRO.jpg", logoImg: false,
+    identity: "2002 Buccaneers · OVR 90",
+    tendency: { run: 0.7, deep: 0.17 },
+    offense: [
+      { pos: "QB1", slot: "QB", name: "Rameses Al-Masri", kind: "M", diff: 24, pct: [86, 63, 50], ab: {  } },
+      { pos: "QB2", slot: "QB", name: "Hassan Latakia", kind: "M", diff: 15, pct: [83, 58, 44], ab: {  } },
+      { pos: "FB1", slot: "SKL", name: "Anubis Re", kind: "M", diff: 23, pct: [52, 42, 20], ab: { canonball: 1 }, elite: true },
+      { pos: "WR1", slot: "SKL", name: "Ali", kind: "M", diff: 22, pct: [88, 77, 66], ab: {  } },
+      { pos: "WR2", slot: "SKL", name: "Isis Abrax", kind: "M", diff: 17, pct: [80, 72, 55], ab: {  } },
+      { pos: "WR3", slot: "SKL", name: "Seth Musa", kind: "M", diff: 13, pct: [78, 66, 48], ab: {  } },
+      { pos: "TE1", slot: "SKL", name: "Ammon Bast", kind: "M", diff: 17, pct: [66, 72, 74], ab: {  } },
+      { pos: "TE2", slot: "SKL", name: "Babu Oba", kind: "M", diff: 13, pct: [62, 66, 68], ab: {  } },
+      { pos: "RB1", slot: "SKL", name: "Mustafa Ebo", kind: "M", diff: 16, pct: [58, 46, 24], ab: { osr11: 6 } },
+      { pos: "LT", slot: "BLK", name: "Abolfazil Atum", kind: "M", diff: 19, pct: null, ab: {  } },
+      { pos: "LG", slot: "BLK", name: "Henry Lo", kind: "M", diff: 16, pct: null, ab: {  } },
+      { pos: "C", slot: "BLK", name: "Nigel Carberry", kind: "M", diff: 14, pct: null, ab: {  } },
+      { pos: "RG", slot: "BLK", name: "Udo Mir", kind: "M", diff: 14, pct: null, ab: {  } },
+      { pos: "RT", slot: "BLK", name: "Teimuraz Gagam", kind: "M", diff: 17, pct: null, ab: {  } },
+    ],
+    defense: [
+      { pos: "DE1", slot: "LINE", name: "Hannibal Babafemi", kind: "M", diff: 25, ab: { sackB: 8 }, elite: true },
+      { pos: "DE2", slot: "LINE", name: "Simeon Kloot", kind: "M", diff: 14, ab: {  } },
+      { pos: "NT1", slot: "LINE", name: "Ibrahim Imhotep", kind: "M", diff: 21, ab: { sackB: 1 }, elite: true },
+      { pos: "NT2", slot: "LINE", name: "Shailash Ibn-Mohammed", kind: "M", diff: 12, ab: {  } },
+      { pos: "ILB1", slot: "LB", name: "Emir Ibn-Farsi", kind: "M", diff: 20, ab: {  } },
+      { pos: "ILB2", slot: "LB", name: "Troy Dye", kind: "M", diff: 15, ab: {  } },
+      { pos: "OLB1", slot: "LB", name: "Easton St. Laurent", kind: "M", diff: 12, ab: {  } },
+      { pos: "OLB2", slot: "LB", name: "Parvez Khan", kind: "M", diff: 11, ab: {  } },
+      { pos: "CB1", slot: "DB", name: "Rakeem DeJardin", kind: "M", diff: 19, ab: {  } },
+      { pos: "CB2", slot: "DB", name: "Romond Macron", kind: "M", diff: 15, ab: {  } },
+      { pos: "CB3", slot: "DB", name: "Sean McTavish", kind: "M", diff: 12, ab: {  } },
+      { pos: "SS1", slot: "DB", name: "Karl Hapsburg", kind: "M", diff: 17, ab: {  } },
+      { pos: "FS1", slot: "DB", name: "Eliphaz Nasser", kind: "M", diff: 17, ab: {  } },
+    ],
+  },
+  sydney: {
+    id: "sydney", city: "Sydney", name: "Copper Locusts", conf: "THE HAVES · Alpha",
+    color: "#B87333", color2: "#D9D9D9", dark: "#331A0A", glyph: "🦗", logo: "/logos/SYDNEY.jpg", logoImg: false,
+    identity: "Russell Seahawks · OVR 83",
+    tendency: { run: 0.5, deep: 0.28 },
+    offense: [
+      { pos: "QB1", slot: "QB", name: "Stanley Livingston", kind: "M", diff: 19, pct: [82, 57, 43], ab: {  } },
+      { pos: "QB2", slot: "QB", name: "Neville Namatjira", kind: "M", diff: 16, pct: [79, 51, 36], ab: { osrPass: 7 }, elite: true },
+      { pos: "RB1", slot: "SKL", name: "Early Boolgoo", kind: "M", diff: 19, pct: [52, 42, 20], ab: { osrRun: 7 }, elite: true },
+      { pos: "WR1", slot: "SKL", name: "Bruce Largent", kind: "M", diff: 17, pct: [88, 77, 66], ab: {  } },
+      { pos: "WR2", slot: "SKL", name: "Charlie Castor", kind: "M", diff: 13, pct: [80, 72, 55], ab: {  } },
+      { pos: "WR3", slot: "SKL", name: "Hieronymous Baldwin", kind: "M", diff: 14, pct: [78, 66, 48], ab: { osrPass: 6 }, elite: true },
+      { pos: "TE1", slot: "SKL", name: "Byron Warner", kind: "M", diff: 14, pct: [66, 72, 74], ab: {  } },
+      { pos: "TE2", slot: "SKL", name: "Neddy Doss", kind: "M", diff: 10, pct: [62, 66, 68], ab: {  } },
+      { pos: "FB1", slot: "BLK", name: "Samson Djaru", kind: "M", diff: 8, pct: null, ab: {  } },
+      { pos: "LT", slot: "BLK", name: "Keith Nash", kind: "M", diff: 15, pct: null, ab: {  } },
+      { pos: "LG", slot: "BLK", name: "Ashleigh Jones", kind: "M", diff: 13, pct: null, ab: {  } },
+      { pos: "C", slot: "BLK", name: "Gouda Ithu", kind: "M", diff: 11, pct: null, ab: {  } },
+      { pos: "RG", slot: "BLK", name: "Glenn Powers", kind: "M", diff: 11, pct: null, ab: {  } },
+      { pos: "RT", slot: "BLK", name: "Billy Munson", kind: "M", diff: 13, pct: null, ab: {  } },
+    ],
+    defense: [
+      { pos: "DE1", slot: "LINE", name: "Jack-Jack Jadira", kind: "M", diff: 20, ab: { sackB: 8 }, elite: true },
+      { pos: "DE2", slot: "LINE", name: "Lewis Mitchum", kind: "M", diff: 11, ab: {  } },
+      { pos: "NT1", slot: "LINE", name: "Tom Howard", kind: "M", diff: 13, ab: {  } },
+      { pos: "NT2", slot: "LINE", name: "Otis McMath", kind: "M", diff: 14, ab: { sackB: 1 }, elite: true },
+      { pos: "ILB1", slot: "LB", name: "Cedric Ghoulsby", kind: "M", diff: 16, ab: {  } },
+      { pos: "ILB2", slot: "LB", name: "Elijah Selters", kind: "M", diff: 12, ab: {  } },
+      { pos: "OLB1", slot: "LB", name: "Bruno Ott", kind: "M", diff: 10, ab: {  } },
+      { pos: "OLB2", slot: "LB", name: "LaMichael Yanda", kind: "M", diff: 8, ab: {  } },
+      { pos: "CB1", slot: "DB", name: "Leveon Swell", kind: "M", diff: 15, ab: {  } },
+      { pos: "CB2", slot: "DB", name: "Roger Fitzgerald", kind: "M", diff: 12, ab: {  } },
+      { pos: "CB3", slot: "DB", name: "Wallis Kelly", kind: "M", diff: 10, ab: {  } },
+      { pos: "CB4", slot: "DB", name: "Preston Ngarkat", kind: "M", diff: 8, ab: {  } },
+      { pos: "SS1", slot: "DB", name: "Sekope Timani", kind: "M", diff: 14, ab: {  } },
+      { pos: "FS1", slot: "DB", name: "Rory Phipps", kind: "M", diff: 13, ab: {  } },
+    ],
+  },
+  paris: {
+    id: "paris", city: "Paris", name: "Reign of Terror", conf: "THE HAVES · Alpha",
+    color: "#4B1E6B", color2: "#D9D9D9", dark: "#160A20", glyph: "⚜️", logo: "/logos/PARIS.jpg", logoImg: false,
+    identity: "Peyton Colts · OVR 80",
+    tendency: { run: 0.25, deep: 0.41 },
+    offense: [
+      { pos: "QB1", slot: "QB", name: "Napolean Bonaparte", kind: "M", diff: 21, pct: [81, 54, 40], ab: { deadEye: 9 }, elite: true },
+      { pos: "QB2", slot: "QB", name: "Joachim Murat", kind: "M", diff: 11, pct: [78, 48, 33], ab: {  } },
+      { pos: "RB1", slot: "SKL", name: "Charlemagne Arceneaux-Wang", kind: "M", diff: 18, pct: [52, 42, 20], ab: { osrRun: 7 }, elite: true },
+      { pos: "WR1", slot: "SKL", name: "Legedu Tsotsi", kind: "M", diff: 16, pct: [88, 77, 66], ab: {  } },
+      { pos: "WR2", slot: "SKL", name: "Guillame Tussaud", kind: "M", diff: 12, pct: [80, 72, 55], ab: {  } },
+      { pos: "WR3", slot: "SKL", name: "Toulouse Martel", kind: "M", diff: 9, pct: [78, 66, 48], ab: {  } },
+      { pos: "TE1", slot: "SKL", name: "Pierre Cong-Diep", kind: "M", diff: 12, pct: [66, 72, 74], ab: {  } },
+      { pos: "TE2", slot: "SKL", name: "Armand St. Michel", kind: "M", diff: 9, pct: [62, 66, 68], ab: {  } },
+      { pos: "FB1", slot: "BLK", name: "Lydell Fontain", kind: "M", diff: 7, pct: null, ab: {  } },
+      { pos: "LT", slot: "BLK", name: "Jacques C'est-Bonn", kind: "M", diff: 14, pct: null, ab: {  } },
+      { pos: "LG", slot: "BLK", name: "Raphael Toulin", kind: "M", diff: 11, pct: null, ab: {  } },
+      { pos: "C", slot: "BLK", name: "Hugo Loire", kind: "M", diff: 10, pct: null, ab: {  } },
+      { pos: "RG", slot: "BLK", name: "Sacha Perault", kind: "M", diff: 10, pct: null, ab: {  } },
+      { pos: "RT", slot: "BLK", name: "Enzo Bisset", kind: "M", diff: 12, pct: null, ab: {  } },
+    ],
+    defense: [
+      { pos: "DE1", slot: "LINE", name: "Étienne de Vignolles", kind: "M", diff: 15, ab: {  } },
+      { pos: "DE2", slot: "LINE", name: "Mboye Sartre", kind: "M", diff: 10, ab: {  } },
+      { pos: "NT1", slot: "LINE", name: "Yves Dauphin", kind: "M", diff: 16, ab: { sackB: 1 }, elite: true },
+      { pos: "NT2", slot: "LINE", name: "Louis Bédard", kind: "M", diff: 9, ab: {  } },
+      { pos: "ILB1", slot: "LB", name: "Rene Cote-L’Enfant", kind: "M", diff: 14, ab: {  } },
+      { pos: "ILB2", slot: "LB", name: "Sherderius Caver", kind: "M", diff: 11, ab: {  } },
+      { pos: "OLB1", slot: "LB", name: "Renaud Le Boef", kind: "M", diff: 9, ab: {  } },
+      { pos: "OLB2", slot: "LB", name: "Chukwe Nkoro", kind: "M", diff: 7, ab: {  } },
+      { pos: "CB1", slot: "DB", name: "Hervey Côté", kind: "M", diff: 14, ab: {  } },
+      { pos: "CB2", slot: "DB", name: "Ja'Gred DeCloux", kind: "M", diff: 11, ab: {  } },
+      { pos: "CB3", slot: "DB", name: "Monty St. Croix", kind: "M", diff: 8, ab: {  } },
+      { pos: "SS1", slot: "DB", name: "Jeanne D'Arc", kind: "F", diff: 12, ab: {  } },
+      { pos: "SS2", slot: "DB", name: "Levesque DuBois", kind: "M", diff: 9, ab: {  } },
+      { pos: "FS1", slot: "DB", name: "Fred Chagnon", kind: "M", diff: 12, ab: {  } },
+    ],
+  },
+  munich: {
+    id: "munich", city: "Munich", name: "Teutonic Machine", conf: "THE HAVE NOTS · Hoi Polloi",
+    color: "#4A4A4A", color2: "#D9D9D9", dark: "#151515", glyph: "⚙️", logo: "/logos/MUNICH.jpg", logoImg: false,
+    identity: "Stafford Lions · OVR 79",
+    tendency: { run: 0.45, deep: 0.3 },
+    offense: [
+      { pos: "QB1", slot: "QB", name: "Rudolph Vogelsong", kind: "M", diff: 17, pct: [80, 53, 38], ab: {  } },
+      { pos: "QB2", slot: "QB", name: "Til Durndl", kind: "M", diff: 11, pct: [77, 47, 32], ab: {  } },
+      { pos: "RB1", slot: "SKL", name: "Shuji Kimura", kind: "M", diff: 18, pct: [52, 42, 20], ab: { osrPass: 9 }, elite: true },
+      { pos: "WR1", slot: "SKL", name: "Sterling Kessler", kind: "M", diff: 16, pct: [88, 77, 66], ab: {  } },
+      { pos: "WR2", slot: "SKL", name: "Fritz Daimler", kind: "M", diff: 12, pct: [80, 72, 55], ab: {  } },
+      { pos: "WR3", slot: "SKL", name: "Detlef Lange", kind: "M", diff: 9, pct: [78, 66, 48], ab: {  } },
+      { pos: "TE1", slot: "SKL", name: "Lindsay Tomlin", kind: "M", diff: 12, pct: [66, 72, 74], ab: {  } },
+      { pos: "TE2", slot: "SKL", name: "Ludwig Kuhn", kind: "M", diff: 9, pct: [62, 66, 68], ab: {  } },
+      { pos: "FB1", slot: "BLK", name: "Kurleigh Glass", kind: "M", diff: 7, pct: null, ab: {  } },
+      { pos: "LT", slot: "BLK", name: "Gunnar Kaiser", kind: "M", diff: 14, pct: null, ab: {  } },
+      { pos: "LG", slot: "BLK", name: "Hartmut Berger", kind: "M", diff: 11, pct: null, ab: {  } },
+      { pos: "C", slot: "BLK", name: "Isaac Shurmur", kind: "M", diff: 14, pct: null, ab: { osrPass: 6 }, elite: true },
+      { pos: "RG", slot: "BLK", name: "Gustav Schmitz", kind: "M", diff: 14, pct: null, ab: { osrPass: 6 }, elite: true },
+      { pos: "RT", slot: "BLK", name: "Jörn Fuchs", kind: "M", diff: 16, pct: null, ab: { osrPass: 7 }, elite: true },
+    ],
+    defense: [
+      { pos: "DE1", slot: "LINE", name: "Cloyce Dietrich", kind: "M", diff: 15, ab: {  } },
+      { pos: "DE2", slot: "LINE", name: "Eberhard Richter", kind: "M", diff: 10, ab: {  } },
+      { pos: "NT1", slot: "LINE", name: "Reinhardt Tannenbaum", kind: "M", diff: 12, ab: {  } },
+      { pos: "NT2", slot: "LINE", name: "Krispus Munt", kind: "M", diff: 9, ab: {  } },
+      { pos: "ILB1", slot: "LB", name: "Albrecht Krüger", kind: "M", diff: 14, ab: {  } },
+      { pos: "ILB2", slot: "LB", name: "Engel Stein", kind: "M", diff: 11, ab: {  } },
+      { pos: "OLB1", slot: "LB", name: "Arnold Pfeiffer", kind: "M", diff: 9, ab: {  } },
+      { pos: "OLB2", slot: "LB", name: "Otto Sommer", kind: "M", diff: 7, ab: {  } },
+      { pos: "CB1", slot: "DB", name: "Peters Huber", kind: "M", diff: 18, ab: { intB: 7 }, elite: true },
+      { pos: "CB2", slot: "DB", name: "Lorenz Winkler", kind: "M", diff: 11, ab: {  } },
+      { pos: "CB3", slot: "DB", name: "Trudy Ott", kind: "M", diff: 8, ab: {  } },
+      { pos: "CB4", slot: "DB", name: "Simon Brandt", kind: "M", diff: 7, ab: {  } },
+      { pos: "SS1", slot: "DB", name: "Felix Von Koln", kind: "M", diff: 12, ab: {  } },
+      { pos: "FS1", slot: "DB", name: "Florian Krausse", kind: "M", diff: 12, ab: {  } },
+    ],
+  },
+  saigon: {
+    id: "saigon", city: "Saigon", name: "Amalgamated Clanship", conf: "THE HAVE NOTS · Hoi Polloi",
+    color: "#C0392B", color2: "#D9D9D9", dark: "#360F0A", glyph: "🐉", logo: "/logos/SAIGON.jpg", logoImg: false,
+    identity: "Philip Rivers Chargers · OVR 82",
+    tendency: { run: 0.45, deep: 0.3 },
+    offense: [
+      { pos: "QB1", slot: "QB", name: "Jimmy Lo", kind: "M", diff: 23, pct: [82, 56, 42], ab: { deadEye: 9 }, elite: true },
+      { pos: "QB2", slot: "QB", name: "Pham Nguyen", kind: "M", diff: 12, pct: [79, 50, 35], ab: {  } },
+      { pos: "RB1", slot: "SKL", name: "Minh-Quan Vu", kind: "M", diff: 15, pct: [52, 42, 20], ab: {  } },
+      { pos: "WR1", slot: "SKL", name: "Xao Vu Xa", kind: "M", diff: 17, pct: [88, 77, 66], ab: {  } },
+      { pos: "WR2", slot: "SKL", name: "Van Vien Nguyen", kind: "M", diff: 13, pct: [80, 72, 55], ab: {  } },
+      { pos: "WR3", slot: "SKL", name: "Harold Reynolds", kind: "M", diff: 10, pct: [78, 66, 48], ab: {  } },
+      { pos: "TE1", slot: "SKL", name: "Dang-Quang Phan", kind: "M", diff: 18, pct: [66, 72, 74], ab: { osrPass: 7 }, elite: true },
+      { pos: "TE2", slot: "SKL", name: "Thinh Duong", kind: "M", diff: 10, pct: [62, 66, 68], ab: {  } },
+      { pos: "FB1", slot: "BLK", name: "Chi Dan Nguyen", kind: "M", diff: 8, pct: null, ab: {  } },
+      { pos: "LT", slot: "BLK", name: "Gus Branch", kind: "M", diff: 15, pct: null, ab: {  } },
+      { pos: "LG", slot: "BLK", name: "Clarence Diehl", kind: "M", diff: 13, pct: null, ab: {  } },
+      { pos: "C", slot: "BLK", name: "Ryan Boothe", kind: "M", diff: 11, pct: null, ab: {  } },
+      { pos: "RG", slot: "BLK", name: "Brandon Mills", kind: "M", diff: 11, pct: null, ab: {  } },
+      { pos: "RT", slot: "BLK", name: "Kevin Baker", kind: "M", diff: 13, pct: null, ab: {  } },
+    ],
+    defense: [
+      { pos: "DE1", slot: "LINE", name: "Marshall Railsback", kind: "M", diff: 16, ab: {  } },
+      { pos: "DE2", slot: "LINE", name: "Johnny Van", kind: "M", diff: 11, ab: {  } },
+      { pos: "NT1", slot: "LINE", name: "Van-Lang Vo", kind: "M", diff: 17, ab: { sackB: 1 }, elite: true },
+      { pos: "NT2", slot: "LINE", name: "Paul Tuttle", kind: "M", diff: 10, ab: {  } },
+      { pos: "ILB1", slot: "LB", name: "Quoc Bui", kind: "M", diff: 16, ab: {  } },
+      { pos: "ILB2", slot: "LB", name: "Minh Phuc Nguyen", kind: "M", diff: 12, ab: {  } },
+      { pos: "OLB1", slot: "LB", name: "Noah Mitchell", kind: "M", diff: 10, ab: {  } },
+      { pos: "OLB2", slot: "LB", name: "Aroldis Guzman", kind: "M", diff: 8, ab: {  } },
+      { pos: "CB1", slot: "DB", name: "Luong Dang", kind: "M", diff: 15, ab: {  } },
+      { pos: "CB2", slot: "DB", name: "Duc Giang Nguyen", kind: "M", diff: 12, ab: {  } },
+      { pos: "CB3", slot: "DB", name: "Leonard Cox", kind: "M", diff: 10, ab: {  } },
+      { pos: "CB4", slot: "DB", name: "Floyd Gathers", kind: "M", diff: 8, ab: {  } },
+      { pos: "SS1", slot: "DB", name: "Pin Dinh", kind: "M", diff: 14, ab: {  } },
+      { pos: "FS1", slot: "DB", name: "Nhat-Vu Ngo", kind: "M", diff: 13, ab: {  } },
+    ],
+  },
+  bangkok: {
+    id: "bangkok", city: "Bangkok", name: "Royal Mass Hysteria", conf: "THE HAVE NOTS · Hoi Polloi",
+    color: "#7A1FA2", color2: "#D9D9D9", dark: "#220A2E", glyph: "🐘", logo: "/logos/BANGKOK.jpg", logoImg: false,
+    identity: "Culpepper Vikings · OVR 80",
+    tendency: { run: 0.35, deep: 0.36 },
+    offense: [
+      { pos: "QB1", slot: "QB", name: "Limsong", kind: "M", diff: 21, pct: [81, 54, 40], ab: { deadEye: 9 }, elite: true },
+      { pos: "QB2", slot: "QB", name: "Isinthon Jitjang", kind: "M", diff: 11, pct: [78, 48, 33], ab: {  } },
+      { pos: "RB1", slot: "SKL", name: "Tong Suprija", kind: "M", diff: 14, pct: [52, 42, 20], ab: {  } },
+      { pos: "WR1", slot: "SKL", name: "Elliot Eagan", kind: "M", diff: 20, pct: [88, 77, 66], ab: { osrPass: 8 }, elite: true },
+      { pos: "WR2", slot: "SKL", name: "Sarawong Bidaya", kind: "M", diff: 12, pct: [80, 72, 55], ab: {  } },
+      { pos: "WR3", slot: "SKL", name: "Noklek Pramoj", kind: "M", diff: 9, pct: [78, 66, 48], ab: {  } },
+      { pos: "TE1", slot: "SKL", name: "Poon Serawongchai", kind: "M", diff: 12, pct: [66, 72, 74], ab: {  } },
+      { pos: "TE2", slot: "SKL", name: "Mok Khadpo", kind: "M", diff: 9, pct: [62, 66, 68], ab: {  } },
+      { pos: "FB1", slot: "BLK", name: "Nopjira Ongkara", kind: "M", diff: 7, pct: null, ab: {  } },
+      { pos: "LT", slot: "BLK", name: "Ngam Jaidee", kind: "M", diff: 14, pct: null, ab: {  } },
+      { pos: "LG", slot: "BLK", name: "Braxton Crofts", kind: "M", diff: 11, pct: null, ab: {  } },
+      { pos: "C", slot: "BLK", name: "Suda Kessawai", kind: "M", diff: 10, pct: null, ab: {  } },
+      { pos: "RG", slot: "BLK", name: "Kyle Pronger", kind: "M", diff: 10, pct: null, ab: {  } },
+      { pos: "RT", slot: "BLK", name: "Sujin Plaphol", kind: "M", diff: 12, pct: null, ab: {  } },
+    ],
+    defense: [
+      { pos: "DE1", slot: "LINE", name: "Pu Hoontrakul", kind: "M", diff: 19, ab: { sackB: 1 }, elite: true },
+      { pos: "DE2", slot: "LINE", name: "Sumatra Lamsam", kind: "M", diff: 14, ab: { sackB: 1 }, elite: true },
+      { pos: "NT1", slot: "LINE", name: "Pibil Disatha", kind: "M", diff: 12, ab: {  } },
+      { pos: "NT2", slot: "LINE", name: "Loomis Brent", kind: "M", diff: 9, ab: {  } },
+      { pos: "ILB1", slot: "LB", name: "Thomas Barr", kind: "M", diff: 14, ab: {  } },
+      { pos: "ILB2", slot: "LB", name: "Hiran Duchanee", kind: "M", diff: 11, ab: {  } },
+      { pos: "OLB1", slot: "LB", name: "Matt Van Elm", kind: "M", diff: 9, ab: {  } },
+      { pos: "OLB2", slot: "LB", name: "Grigorio Zacateca", kind: "M", diff: 7, ab: {  } },
+      { pos: "CB1", slot: "DB", name: "Zack Mueller", kind: "M", diff: 14, ab: {  } },
+      { pos: "CB2", slot: "DB", name: "Ira Clasp", kind: "M", diff: 11, ab: {  } },
+      { pos: "CB3", slot: "DB", name: "Mo Dinh", kind: "M", diff: 8, ab: {  } },
+      { pos: "CB4", slot: "DB", name: "Kusa Somboon", kind: "M", diff: 7, ab: {  } },
+      { pos: "SS1", slot: "DB", name: "Thamrong Cheosakul", kind: "M", diff: 12, ab: {  } },
+      { pos: "FS1", slot: "DB", name: "Bryce Collier", kind: "M", diff: 12, ab: {  } },
+    ],
+  },
+  tashkent: {
+    id: "tashkent", city: "Tashkent", name: "Miasmatic Plague", conf: "THE HAVE NOTS · Hoi Polloi",
+    color: "#5B7F2B", color2: "#D9D9D9", dark: "#1A250C", glyph: "☣️", logo: "/logos/TASHKENT.jpg", logoImg: false,
+    identity: "70's Dolphins · OVR 91",
+    tendency: { run: 0.65, deep: 0.19 },
+    offense: [
+      { pos: "QB1", slot: "QB", name: "Mansur Morris", kind: "M", diff: 29, pct: [87, 64, 51], ab: { osrRun: 8 }, elite: true },
+      { pos: "QB2", slot: "QB", name: "Farbod Warfield", kind: "M", diff: 16, pct: [83, 59, 45], ab: {  } },
+      { pos: "RB1", slot: "SKL", name: "Bostwick Bykov", kind: "M", diff: 24, pct: [52, 42, 20], ab: { osrRun: 9 }, elite: true },
+      { pos: "WR1", slot: "SKL", name: "Marcel Crusan", kind: "M", diff: 23, pct: [88, 77, 66], ab: {  } },
+      { pos: "WR2", slot: "SKL", name: "Rustam Sadykov", kind: "M", diff: 18, pct: [80, 72, 55], ab: {  } },
+      { pos: "WR3", slot: "SKL", name: "Kiril Mengiz", kind: "M", diff: 14, pct: [78, 66, 48], ab: {  } },
+      { pos: "TE1", slot: "SKL", name: "Muazzam", kind: "M", diff: 18, pct: [66, 72, 74], ab: {  } },
+      { pos: "TE2", slot: "SKL", name: "Mahmud Drozdov", kind: "M", diff: 14, pct: [62, 66, 68], ab: {  } },
+      { pos: "FB1", slot: "BLK", name: "Ibroxhim Csonka", kind: "M", diff: 14, pct: null, ab: { osrPass: 6 }, elite: true },
+      { pos: "LT", slot: "BLK", name: "Lyndon Swann", kind: "M", diff: 20, pct: null, ab: {  } },
+      { pos: "LG", slot: "BLK", name: "Costas Papadopolous", kind: "M", diff: 16, pct: null, ab: {  } },
+      { pos: "C", slot: "BLK", name: "Gorky Gusev", kind: "M", diff: 19, pct: null, ab: { osrPass: 7 }, elite: true },
+      { pos: "RG", slot: "BLK", name: "Karl Straussman", kind: "M", diff: 15, pct: null, ab: {  } },
+      { pos: "RT", slot: "BLK", name: "Reginald Kamenev", kind: "M", diff: 18, pct: null, ab: {  } },
+    ],
+    defense: [
+      { pos: "DE1", slot: "LINE", name: "Chingiz Akayev", kind: "M", diff: 22, ab: {  } },
+      { pos: "DE2", slot: "LINE", name: "Nurbek Beg", kind: "M", diff: 15, ab: {  } },
+      { pos: "NT1", slot: "LINE", name: "Antonin Alexeev", kind: "M", diff: 18, ab: {  } },
+      { pos: "NT2", slot: "LINE", name: "Hubert Winkler", kind: "M", diff: 13, ab: {  } },
+      { pos: "ILB1", slot: "LB", name: "Bolot Mamytov", kind: "M", diff: 20, ab: {  } },
+      { pos: "ILB2", slot: "LB", name: "Devin Kunstler", kind: "M", diff: 16, ab: {  } },
+      { pos: "OLB1", slot: "LB", name: "Michael Wimbush", kind: "M", diff: 13, ab: {  } },
+      { pos: "OLB2", slot: "LB", name: "Eddie Fant", kind: "M", diff: 11, ab: {  } },
+      { pos: "CB1", slot: "DB", name: "Preston Hamms", kind: "M", diff: 20, ab: {  } },
+      { pos: "CB2", slot: "DB", name: "Suleimon Plisk", kind: "M", diff: 16, ab: {  } },
+      { pos: "CB3", slot: "DB", name: "Timurbek Kasymov", kind: "M", diff: 12, ab: {  } },
+      { pos: "CB4", slot: "DB", name: "Gopal Atta", kind: "M", diff: 10, ab: {  } },
+      { pos: "SS1", slot: "DB", name: "Sultan Orozov", kind: "M", diff: 22, ab: { intB: 8 }, elite: true },
+      { pos: "FS1", slot: "DB", name: "Yajub Alimov", kind: "M", diff: 18, ab: {  } },
+    ],
+  },
+  mumbai: {
+    id: "mumbai", city: "Mumbai", name: "Federation of Scientists", conf: "THE HAVE NOTS · Plebian",
+    color: "#0E7490", color2: "#D9D9D9", dark: "#04222B", glyph: "⚛️", logo: "/logos/MUMBAI.jpg", logoImg: false,
+    identity: "Brett Favre Packers · OVR 83",
+    tendency: { run: 0.35, deep: 0.36 },
+    offense: [
+      { pos: "QB1", slot: "QB", name: "Srinivasa Bose", kind: "M", diff: 23, pct: [82, 57, 43], ab: { deadEye: 9 }, elite: true },
+      { pos: "QB2", slot: "QB", name: "Satnam Virk", kind: "M", diff: 12, pct: [79, 51, 36], ab: {  } },
+      { pos: "RB1", slot: "SKL", name: "Ashok Ghandi", kind: "M", diff: 19, pct: [52, 42, 20], ab: { osrRun: 7 }, elite: true },
+      { pos: "WR1", slot: "SKL", name: "Gilgit Ramayya", kind: "M", diff: 17, pct: [88, 77, 66], ab: {  } },
+      { pos: "WR2", slot: "SKL", name: "Ishant Kahn", kind: "M", diff: 13, pct: [80, 72, 55], ab: {  } },
+      { pos: "WR3", slot: "SKL", name: "Varsha Dum", kind: "M", diff: 10, pct: [78, 66, 48], ab: {  } },
+      { pos: "FB1", slot: "BLK", name: "Reza Khan", kind: "M", diff: 8, pct: null, ab: {  } },
+      { pos: "LT", slot: "BLK", name: "Utkarsh Iqbal", kind: "M", diff: 15, pct: null, ab: {  } },
+      { pos: "LG", slot: "BLK", name: "Sunjit Das", kind: "M", diff: 13, pct: null, ab: {  } },
+      { pos: "C", slot: "BLK", name: "Harmit Bhatt", kind: "M", diff: 11, pct: null, ab: {  } },
+      { pos: "RG", slot: "BLK", name: "Upender Aurobindo", kind: "M", diff: 11, pct: null, ab: {  } },
+      { pos: "RT", slot: "BLK", name: "Terrell Mitchum", kind: "M", diff: 13, pct: null, ab: {  } },
+    ],
+    defense: [
+      { pos: "DE1", slot: "LINE", name: "Harjinder O", kind: "M", diff: 16, ab: {  } },
+      { pos: "DE2", slot: "LINE", name: "Naresh Arshdeep", kind: "M", diff: 11, ab: {  } },
+      { pos: "NT1", slot: "LINE", name: "Gajraj Dev", kind: "M", diff: 13, ab: {  } },
+      { pos: "NT2", slot: "LINE", name: "Suraj Joydeep", kind: "M", diff: 10, ab: {  } },
+      { pos: "ILB1", slot: "LB", name: "Anoop Dharma", kind: "M", diff: 16, ab: {  } },
+      { pos: "ILB2", slot: "LB", name: "Indirpreet Ghosh", kind: "M", diff: 12, ab: {  } },
+      { pos: "OLB1", slot: "LB", name: "Shad Yadav", kind: "M", diff: 10, ab: {  } },
+      { pos: "OLB2", slot: "LB", name: "Manvinder Joshi", kind: "M", diff: 8, ab: {  } },
+      { pos: "CB1", slot: "DB", name: "Anil Bosle", kind: "M", diff: 15, ab: {  } },
+      { pos: "CB2", slot: "DB", name: "Babu Kohli", kind: "M", diff: 16, ab: { intB: 7 }, elite: true },
+      { pos: "CB3", slot: "DB", name: "Rohit Patel", kind: "M", diff: 10, ab: {  } },
+      { pos: "SS1", slot: "DB", name: "Puinit Agarwal", kind: "M", diff: 14, ab: {  } },
+      { pos: "FS1", slot: "DB", name: "Rajvir Arora", kind: "M", diff: 13, ab: {  } },
+    ],
+  },
+  chicago: {
+    id: "chicago", city: "Chicago", name: "Organized Labor", conf: "THE HAVE NOTS · Plebian",
+    color: "#8A4B08", color2: "#D9D9D9", dark: "#291602", glyph: "⚒️", logo: "/logos/CHICAGO.jpg", logoImg: false,
+    identity: "1985 Bears · OVR 87",
+    tendency: { run: 0.6, deep: 0.22 },
+    offense: [
+      { pos: "QB1", slot: "QB", name: "Quintavious Lawler", kind: "M", diff: 22, pct: [85, 61, 47], ab: {  } },
+      { pos: "QB2", slot: "QB", name: "Brandon McQuarters", kind: "M", diff: 14, pct: [81, 55, 41], ab: {  } },
+      { pos: "RB1", slot: "SKL", name: "Rodney Page", kind: "M", diff: 22, pct: [52, 42, 20], ab: { osrRun: 8 }, elite: true },
+      { pos: "WR1", slot: "SKL", name: "Dick McMahon", kind: "M", diff: 20, pct: [88, 77, 66], ab: {  } },
+      { pos: "WR2", slot: "SKL", name: "Mike Snead", kind: "M", diff: 15, pct: [80, 72, 55], ab: {  } },
+      { pos: "WR3", slot: "SKL", name: "Carlos Peña", kind: "M", diff: 12, pct: [78, 66, 48], ab: {  } },
+      { pos: "TE1", slot: "SKL", name: "Chuck Bucks", kind: "M", diff: 16, pct: [66, 72, 74], ab: {  } },
+      { pos: "TE2", slot: "SKL", name: "Robert Losman", kind: "M", diff: 12, pct: [62, 66, 68], ab: {  } },
+      { pos: "FB1", slot: "BLK", name: "Brick O'Leary", kind: "M", diff: 9, pct: null, ab: {  } },
+      { pos: "LT", slot: "BLK", name: "Isaac Times", kind: "M", diff: 18, pct: null, ab: {  } },
+      { pos: "LG", slot: "BLK", name: "Saul Oshea", kind: "M", diff: 15, pct: null, ab: {  } },
+      { pos: "C", slot: "BLK", name: "Stavros Ypremian", kind: "M", diff: 13, pct: null, ab: {  } },
+      { pos: "RG", slot: "BLK", name: "Trevor Lyle", kind: "M", diff: 13, pct: null, ab: {  } },
+      { pos: "RT", slot: "BLK", name: "Philip Doggett", kind: "M", diff: 15, pct: null, ab: {  } },
+    ],
+    defense: [
+      { pos: "DE1", slot: "LINE", name: "Everett Gold", kind: "M", diff: 23, ab: { sackB: 8 }, elite: true },
+      { pos: "DE2", slot: "LINE", name: "Rory Orr", kind: "M", diff: 17, ab: { sackB: 1 }, elite: true },
+      { pos: "NT1", slot: "LINE", name: "Emerson Tynes", kind: "M", diff: 19, ab: { sackB: 1 }, elite: true },
+      { pos: "NT2", slot: "LINE", name: "Ricardo Tyson", kind: "M", diff: 11, ab: {  } },
+      { pos: "ILB1", slot: "LB", name: "Reginald Howzer", kind: "M", diff: 18, ab: {  } },
+      { pos: "ILB2", slot: "LB", name: "Olan Loomis", kind: "M", diff: 14, ab: {  } },
+      { pos: "OLB1", slot: "LB", name: "Keith Stump", kind: "M", diff: 15, ab: { dsrRun: 6 }, elite: true },
+      { pos: "OLB2", slot: "LB", name: "Jim Cork", kind: "M", diff: 10, ab: {  } },
+      { pos: "CB1", slot: "DB", name: "Orville Hilliard", kind: "M", diff: 18, ab: {  } },
+      { pos: "CB2", slot: "DB", name: "Jason Greene", kind: "M", diff: 14, ab: {  } },
+      { pos: "CB3", slot: "DB", name: "Dexter Spellman", kind: "M", diff: 11, ab: {  } },
+      { pos: "CB4", slot: "DB", name: "John St. Claire", kind: "M", diff: 9, ab: {  } },
+      { pos: "SS1", slot: "DB", name: "Wallis Overbay", kind: "M", diff: 16, ab: {  } },
+      { pos: "FS1", slot: "DB", name: "Antoine Steele", kind: "M", diff: 15, ab: {  } },
+    ],
+  },
+  mexico: {
+    id: "mexico", city: "Mexico City", name: "V2 Immortals", conf: "THE HAVE NOTS · Plebian",
+    color: "#0F7B4A", color2: "#D9D9D9", dark: "#052316", glyph: "💀", logo: "/logos/MEXICO.jpg", logoImg: false,
+    identity: "Kurt Warner Rams · OVR 89",
+    tendency: { run: 0.4, deep: 0.33 },
+    offense: [
+      { pos: "QB1", slot: "QB", name: "Sancho Zapata", kind: "M", diff: 23, pct: [86, 63, 49], ab: {  } },
+      { pos: "QB2", slot: "QB", name: "Hidalgo Villa", kind: "M", diff: 18, pct: [82, 57, 43], ab: { osrPass: 7 }, elite: true },
+      { pos: "RB1", slot: "SKL", name: "Pancho Sepulveda", kind: "M", diff: 22, pct: [52, 42, 20], ab: { osrPass: 9 }, elite: true },
+      { pos: "WR1", slot: "SKL", name: "Leonel De La Cruz", kind: "M", diff: 21, pct: [88, 77, 66], ab: {  } },
+      { pos: "WR2", slot: "SKL", name: "Ramon Arcega", kind: "M", diff: 16, pct: [80, 72, 55], ab: {  } },
+      { pos: "WR3", slot: "SKL", name: "Tito Mora", kind: "M", diff: 13, pct: [78, 66, 48], ab: {  } },
+      { pos: "TE1", slot: "SKL", name: "Cortez Villapiano", kind: "M", diff: 17, pct: [66, 72, 74], ab: {  } },
+      { pos: "TE2", slot: "SKL", name: "Antonio Cooper", kind: "M", diff: 13, pct: [62, 66, 68], ab: {  } },
+      { pos: "FB1", slot: "BLK", name: "Diego Montoya", kind: "M", diff: 10, pct: null, ab: {  } },
+      { pos: "LT", slot: "BLK", name: "Quinterrius Durie", kind: "M", diff: 22, pct: null, ab: { osrPass: 7 }, elite: true },
+      { pos: "LG", slot: "BLK", name: "Esteban Luper", kind: "M", diff: 15, pct: null, ab: {  } },
+      { pos: "C", slot: "BLK", name: "Gonzalo Lopez", kind: "M", diff: 14, pct: null, ab: {  } },
+      { pos: "RG", slot: "BLK", name: "Tobit Levenson", kind: "M", diff: 14, pct: null, ab: {  } },
+      { pos: "RT", slot: "BLK", name: "Cruz Aguila", kind: "M", diff: 16, pct: null, ab: {  } },
+    ],
+    defense: [
+      { pos: "DE1", slot: "LINE", name: "Vicente Paz", kind: "M", diff: 20, ab: {  } },
+      { pos: "DE2", slot: "LINE", name: "Octavio Guerra", kind: "M", diff: 14, ab: {  } },
+      { pos: "NT1", slot: "LINE", name: "El Oso", kind: "M", diff: 20, ab: { bearhug: 1 }, elite: true },
+      { pos: "NT2", slot: "LINE", name: "Carlos Trujillo", kind: "M", diff: 12, ab: {  } },
+      { pos: "ILB1", slot: "LB", name: "Jorge Trigueros", kind: "M", diff: 19, ab: {  } },
+      { pos: "ILB2", slot: "LB", name: "Ricardo Gallo", kind: "M", diff: 15, ab: {  } },
+      { pos: "OLB1", slot: "LB", name: "Andres Fajardo", kind: "M", diff: 12, ab: {  } },
+      { pos: "OLB2", slot: "LB", name: "Lance Epps", kind: "M", diff: 10, ab: {  } },
+      { pos: "CB1", slot: "DB", name: "Luz Fuentes", kind: "F", diff: 22, ab: { intB: 9 }, elite: true },
+      { pos: "CB2", slot: "DB", name: "Fabian Fantuz", kind: "M", diff: 15, ab: {  } },
+      { pos: "CB3", slot: "DB", name: "Cody Fera", kind: "M", diff: 12, ab: {  } },
+      { pos: "CB4", slot: "DB", name: "Antonio Maldito", kind: "M", diff: 10, ab: {  } },
+      { pos: "SS1", slot: "DB", name: "Cid Quixote", kind: "M", diff: 17, ab: {  } },
+      { pos: "FS1", slot: "DB", name: "Enrique Fox", kind: "M", diff: 16, ab: {  } },
+    ],
+  },
+  ny: {
+    id: "ny", city: "New York", name: "Illuminati", conf: "THE HAVE NOTS · Prole",
+    color: "#101010", color2: "#D9D9D9", dark: "#000000", glyph: "👁️", logo: "/logos/NY.jpg", logoImg: false,
+    identity: "Romo Cowboys · OVR 80",
+    tendency: { run: 0.35, deep: 0.36 },
+    offense: [
+      { pos: "QB1", slot: "QB", name: "Tall Fellow", kind: "M", diff: 21, pct: [81, 54, 40], ab: { deadEye: 9 }, elite: true },
+      { pos: "QB2", slot: "QB", name: "Mr. Cardholder", kind: "M", diff: 11, pct: [78, 48, 33], ab: {  } },
+      { pos: "RB1", slot: "SKL", name: "The Larch", kind: "M", diff: 18, pct: [52, 42, 20], ab: { osrRun: 7 }, elite: true },
+      { pos: "WR1", slot: "SKL", name: "Mr. Rose", kind: "M", diff: 20, pct: [88, 77, 66], ab: { quick: 1 }, elite: true },
+      { pos: "WR2", slot: "SKL", name: "Mr. Peony", kind: "M", diff: 12, pct: [80, 72, 55], ab: {  } },
+      { pos: "WR3", slot: "SKL", name: "Mr. Daffodil", kind: "M", diff: 9, pct: [78, 66, 48], ab: {  } },
+      { pos: "TE1", slot: "SKL", name: "John Doe", kind: "M", diff: 12, pct: [66, 72, 74], ab: {  } },
+      { pos: "TE2", slot: "SKL", name: "Mr. Nametag", kind: "M", diff: 9, pct: [62, 66, 68], ab: {  } },
+      { pos: "FB1", slot: "BLK", name: "Cerberus", kind: "M", diff: 11, pct: null, ab: { osrRun: 4 }, elite: true },
+      { pos: "LT", slot: "BLK", name: "Mr. Amythest", kind: "M", diff: 14, pct: null, ab: {  } },
+      { pos: "LG", slot: "BLK", name: "Mr. Opal", kind: "M", diff: 11, pct: null, ab: {  } },
+      { pos: "C", slot: "BLK", name: "Mr. Lapis", kind: "M", diff: 10, pct: null, ab: {  } },
+      { pos: "RG", slot: "BLK", name: "Mr. Quartz", kind: "M", diff: 10, pct: null, ab: {  } },
+      { pos: "RT", slot: "BLK", name: "Mr. Granite", kind: "M", diff: 12, pct: null, ab: {  } },
+    ],
+    defense: [
+      { pos: "DE1", slot: "LINE", name: "Mr. Kraken", kind: "M", diff: 15, ab: {  } },
+      { pos: "DE2", slot: "LINE", name: "St. George", kind: "M", diff: 10, ab: {  } },
+      { pos: "NT1", slot: "LINE", name: "Mr. Zeus", kind: "M", diff: 16, ab: { sackB: 1 }, elite: true },
+      { pos: "NT2", slot: "LINE", name: "Mr. Haphestos", kind: "M", diff: 9, ab: {  } },
+      { pos: "ILB1", slot: "LB", name: "Mr. Medusa", kind: "M", diff: 14, ab: {  } },
+      { pos: "ILB2", slot: "LB", name: "Mr. Cygnus", kind: "M", diff: 11, ab: {  } },
+      { pos: "OLB1", slot: "LB", name: "Mr. Saturn", kind: "M", diff: 9, ab: {  } },
+      { pos: "CB1", slot: "DB", name: "Ms. Minerva", kind: "F", diff: 14, ab: {  } },
+      { pos: "CB2", slot: "DB", name: "Ms. Hera", kind: "F", diff: 11, ab: {  } },
+      { pos: "CB3", slot: "DB", name: "Ms. Persephone", kind: "F", diff: 8, ab: {  } },
+      { pos: "CB4", slot: "DB", name: "Ms. Athena", kind: "F", diff: 7, ab: {  } },
+      { pos: "SS1", slot: "DB", name: "Mr. Minotaur", kind: "M", diff: 12, ab: {  } },
+      { pos: "FS1", slot: "DB", name: "Mr. Susano'o", kind: "M", diff: 12, ab: {  } },
+    ],
+  },
+  ottowa: {
+    id: "ottowa", city: "Ottawa", name: "Iron Maples", conf: "THE HAVE NOTS · Prole",
+    color: "#A61C1C", color2: "#D9D9D9", dark: "#300808", glyph: "🍁", logo: "/logos/OTTOWA.jpg", logoImg: false,
+    identity: "Lamar Ravens · OVR 88",
+    tendency: { run: 0.45, deep: 0.3 },
+    offense: [
+      { pos: "QB1", slot: "QB", name: "Linus Fouts", kind: "M", diff: 23, pct: [85, 62, 48], ab: {  } },
+      { pos: "QB2", slot: "QB", name: "Cornelius Patch", kind: "M", diff: 14, pct: [82, 56, 42], ab: {  } },
+      { pos: "RB1", slot: "SKL", name: "Louis De La Croix", kind: "M", diff: 18, pct: [52, 42, 20], ab: {  } },
+      { pos: "WR1", slot: "SKL", name: "R.J. McMichael", kind: "M", diff: 21, pct: [88, 77, 66], ab: {  } },
+      { pos: "WR2", slot: "SKL", name: "Brayden Hill", kind: "M", diff: 16, pct: [80, 72, 55], ab: {  } },
+      { pos: "WR3", slot: "SKL", name: "Cameron Lye", kind: "M", diff: 13, pct: [78, 66, 48], ab: {  } },
+      { pos: "TE1", slot: "SKL", name: "Marcus Stave", kind: "M", diff: 17, pct: [66, 72, 74], ab: {  } },
+      { pos: "FB1", slot: "BLK", name: "Omar Mung", kind: "M", diff: 14, pct: null, ab: { osrRun: 4 }, elite: true },
+      { pos: "LT", slot: "BLK", name: "Eleanor Motch", kind: "M", diff: 22, pct: null, ab: { osrPass: 8 }, elite: true },
+      { pos: "LG", slot: "BLK", name: "Remy LeFleur", kind: "M", diff: 19, pct: null, ab: { osrRun: 4 }, elite: true },
+      { pos: "C", slot: "BLK", name: "Boodro Brown", kind: "M", diff: 14, pct: null, ab: {  } },
+      { pos: "RG", slot: "BLK", name: "Wes Webb", kind: "M", diff: 14, pct: null, ab: {  } },
+      { pos: "RT", slot: "BLK", name: "Marvin Harper", kind: "M", diff: 16, pct: null, ab: {  } },
+    ],
+    defense: [
+      { pos: "DE1", slot: "LINE", name: "Kenny Edmonds", kind: "M", diff: 20, ab: {  } },
+      { pos: "DE2", slot: "LINE", name: "Gary White", kind: "M", diff: 14, ab: {  } },
+      { pos: "NT1", slot: "LINE", name: "Dennis Beauchamp", kind: "M", diff: 16, ab: {  } },
+      { pos: "NT2", slot: "LINE", name: "Frank Chateau", kind: "M", diff: 12, ab: {  } },
+      { pos: "ILB1", slot: "LB", name: "Hal Horton", kind: "M", diff: 19, ab: {  } },
+      { pos: "ILB2", slot: "LB", name: "Ralph Burson", kind: "M", diff: 15, ab: {  } },
+      { pos: "OLB1", slot: "LB", name: "Walter McLaren", kind: "M", diff: 12, ab: {  } },
+      { pos: "OLB2", slot: "LB", name: "P.T. Thrush", kind: "M", diff: 10, ab: {  } },
+      { pos: "CB1", slot: "DB", name: "Lucien LaFlamme", kind: "M", diff: 22, ab: { intB: 9 }, elite: true },
+      { pos: "CB2", slot: "DB", name: "Olivier Theroux", kind: "M", diff: 15, ab: {  } },
+      { pos: "CB3", slot: "DB", name: "Carles DuPlessy", kind: "M", diff: 12, ab: {  } },
+      { pos: "CB4", slot: "DB", name: "Herman Duquesne", kind: "M", diff: 10, ab: {  } },
+      { pos: "SS1", slot: "DB", name: "Clovis Gagnon", kind: "M", diff: 17, ab: {  } },
+      { pos: "FS1", slot: "DB", name: "Logan Cote", kind: "M", diff: 16, ab: {  } },
+    ],
+  },
+  moscow: {
+    id: "moscow", city: "Moscow", name: "Atomic Energy Federation", conf: "THE HAVE NOTS · Prole",
+    color: "#B8860B", color2: "#D9D9D9", dark: "#111111", glyph: "☢️", logo: "/logos/MOSCOW.jpg", logoImg: false,
+    identity: "Cam Panthers · OVR 75",
+    tendency: { run: 0.5, deep: 0.28 },
+    offense: [
+      { pos: "QB1", slot: "QB", name: "Feodor Stalin", kind: "M", diff: 14, pct: [78, 49, 34], ab: {  } },
+      { pos: "QB2", slot: "QB", name: "Ekaterina Romanov", kind: "F", diff: 13, pct: [75, 44, 28], ab: { thread: 1 }, elite: true },
+      { pos: "RB1", slot: "SKL", name: "Oleg Zolotov", kind: "M", diff: 11, pct: [52, 42, 20], ab: {  } },
+      { pos: "WR1", slot: "SKL", name: "Anatoli Orlov", kind: "M", diff: 13, pct: [88, 77, 66], ab: {  } },
+      { pos: "WR2", slot: "SKL", name: "Pyotor Biandov", kind: "M", diff: 10, pct: [80, 72, 55], ab: {  } },
+      { pos: "WR3", slot: "SKL", name: "Arseni Sokolov", kind: "M", diff: 8, pct: [78, 66, 48], ab: {  } },
+      { pos: "TE1", slot: "SKL", name: "Lev Ivanov", kind: "M", diff: 14, pct: [66, 72, 74], ab: { blockGo: 1 }, elite: true },
+      { pos: "TE2", slot: "SKL", name: "Spiridon Chernov", kind: "M", diff: 8, pct: [62, 66, 68], ab: {  } },
+      { pos: "FB1", slot: "BLK", name: "Nikita Sorokin", kind: "M", diff: 6, pct: null, ab: {  } },
+      { pos: "LT", slot: "BLK", name: "Vadim Nikolaev", kind: "M", diff: 15, pct: null, ab: { osrPass: 8 }, elite: true },
+      { pos: "LG", slot: "BLK", name: "Jamari Glenn", kind: "M", diff: 9, pct: null, ab: {  } },
+      { pos: "C", slot: "BLK", name: "Timofei Plotnikov", kind: "M", diff: 8, pct: null, ab: {  } },
+      { pos: "RG", slot: "BLK", name: "Vaslav Plotnikov", kind: "M", diff: 8, pct: null, ab: {  } },
+      { pos: "RT", slot: "BLK", name: "Ruslan Morozov", kind: "M", diff: 10, pct: null, ab: {  } },
+    ],
+    defense: [
+      { pos: "DE1", slot: "LINE", name: "Sasha Gorky", kind: "M", diff: 12, ab: {  } },
+      { pos: "DE2", slot: "LINE", name: "Kiril Drozdov", kind: "M", diff: 8, ab: {  } },
+      { pos: "NT1", slot: "LINE", name: "Ivan 'The Terror'", kind: "M", diff: 10, ab: {  } },
+      { pos: "NT2", slot: "LINE", name: "Mikhail Nym", kind: "M", diff: 7, ab: {  } },
+      { pos: "ILB1", slot: "LB", name: "Semyon Prostakov", kind: "M", diff: 15, ab: { dsrRun: 4 }, elite: true },
+      { pos: "ILB2", slot: "LB", name: "Fyodor Lagunov", kind: "M", diff: 9, ab: {  } },
+      { pos: "OLB1", slot: "LB", name: "Eitan Popov", kind: "M", diff: 7, ab: {  } },
+      { pos: "OLB2", slot: "LB", name: "Artur Sobolev", kind: "M", diff: 6, ab: {  } },
+      { pos: "CB1", slot: "DB", name: "Leonid Rasputin", kind: "M", diff: 11, ab: {  } },
+      { pos: "CB2", slot: "DB", name: "Kazimir Golubev", kind: "M", diff: 9, ab: {  } },
+      { pos: "CB3", slot: "DB", name: "Foka Kozlov", kind: "M", diff: 7, ab: {  } },
+      { pos: "SS1", slot: "DB", name: "Vasily Molotov", kind: "M", diff: 14, ab: { dsrPass: 4 }, elite: true },
+      { pos: "FS1", slot: "DB", name: "Nikolai Medvedev", kind: "M", diff: 10, ab: {  } },
+    ],
+  },
 };
 
 const CHITS = [
@@ -231,28 +981,7 @@ const METER_WHEEL = [10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 90]
 const YARD_WHEEL = [25, 30, 30, 35, 35, 40, 40, 45, 10, 105];
 
 /* ---- The 20 franchises still in the tunnel (names/logos from CB_Assets; stars = green rows) ---- */
-const COMING_SOON = [
-  { city: "LA", name: "Firm of Pheir, Payne & Suffering", color: "#C9A227", glyph: "⚖️", logo: "/logos/LA.jpg", logoImg: false, conf: "HAVES · Prime", stars: ["Blackburn Fitzpatrick", "Julek Wroclaw", "E.G. Shapiro", "Keyshawn Mingo", "Mukesh Singh"] },
-  { city: "Rome", name: "The Roman Legion", color: "#8E1B1B", glyph: "🏛️", logo: "/logos/ROME.jpg", logoImg: false, conf: "HAVES · Prime", stars: ["Maximiliano Sforza", "Lawson Taylorous", "Ottavio Izzo", "Carlo Bianco", "Primo Ventura"] },
-  { city: "The UN", name: "Global Alliance", color: "#3B7DD8", glyph: "🌐", logo: "/logos/UN.jpg", logoImg: false, conf: "HAVES · Prime", stars: ["Bola Nkemediche", "Wing-Fu Chin", "Tommy Nakamura", "Medard Meir", "Fausto Amaral"] },
-  { city: "DC", name: "Old Glory", color: "#1F3A93", glyph: "⭐", logo: "/logos/DC.jpg", logoImg: false, conf: "HAVES · Nova", stars: ["Teddy Roosevelt", "Bill Taft", "Geronimo Goyathlay", "Chuck Maplethorpe"] },
-  { city: "Tokyo", name: "TASC Masters", color: "#D92B7A", glyph: "⛩️", logo: "/logos/TOKYO.jpg", logoImg: false, conf: "HAVES · Nova", stars: ["Kenji Raiden", "Masafumi Hana", "Hanzo Takahashi", "Daisuke Koizumi", "Ryuzo Nishioka"] },
-  { city: "Incan Empire", name: "Obsidian Pumas", color: "#3C2A4D", glyph: "🐆", logo: "/logos/INCA.jpg", logoImg: false, conf: "HAVES · Nova", stars: ["DeAngelo Bell", "Ozcoc Tupac", "Smoke Monkey", "Maria Dos Santos"] },
-  { city: "San Fu-Kuo", name: "Mitsune-Gumi Ronin", color: "#B34700", glyph: "🏯", logo: "/logos/SF.jpg", logoImg: false, conf: "HAVES · Alpha", stars: ["Rocky Cosby", "Ronin Nixon", "Mick Christmas", "S.Randy Rice", "Conrad Atwater"] },
-  { city: "Cairo", name: "Twice-Risen Pharaohs", color: "#C9A227", glyph: "☥", logo: "/logos/CAIRO.jpg", logoImg: false, conf: "HAVES · Alpha", stars: ["Ibrahim Imhotep", "Hannibal Babafemi", "Anubis Re"] },
-  { city: "Sydney", name: "Copper Locusts", color: "#B87333", glyph: "🦗", logo: "/logos/SYDNEY.jpg", logoImg: false, conf: "HAVES · Alpha", stars: ["Neville Namatjira", "Otis McMath", "Jack-Jack Jadira", "Hieronymous Baldwin", "Early Boolgoo"] },
-  { city: "Paris", name: "Reign of Terror", color: "#4B1E6B", glyph: "⚜️", logo: "/logos/PARIS.jpg", logoImg: false, conf: "HAVES · Alpha", stars: ["Napolean Bonaparte", "Yves Dauphin", "Charlemagne Arceneaux-Wang"] },
-  { city: "Munich", name: "Teutonic Machine", color: "#4A4A4A", glyph: "⚙️", logo: "/logos/MUNICH.jpg", logoImg: false, conf: "HAVE NOTS · Hoi Polloi", stars: ["Shuji Kimura", "Peters Huber", "Isaac Shurmur", "Gustav Schmitz", "Jörn Fuchs"] },
-  { city: "Saigon", name: "Amalgamated Clanship", color: "#C0392B", glyph: "🐉", logo: "/logos/SAIGON.jpg", logoImg: false, conf: "HAVE NOTS · Hoi Polloi", stars: ["Jimmy Lo", "Van-Lang Vo", "Dang-Quang Phan"] },
-  { city: "Bangkok", name: "Royal Mass Hysteria", color: "#7A1FA2", glyph: "🐘", logo: "/logos/BANGKOK.jpg", logoImg: false, conf: "HAVE NOTS · Hoi Polloi", stars: ["Limsong", "Pu Hoontrakul", "Sumatra Lamsam", "Elliot Eagan"] },
-  { city: "Tashkent", name: "Miasmatic Plague", color: "#5B7F2B", glyph: "☣️", logo: "/logos/TASHKENT.jpg", logoImg: false, conf: "HAVE NOTS · Hoi Polloi", stars: ["Mansur Morris", "Bostwick Bykov", "Ibroxhim Csonka", "Sultan Orozov", "Gorky Gusev"] },
-  { city: "Mumbai", name: "Federation of Scientists", color: "#0E7490", glyph: "⚛️", logo: "/logos/MUMBAI.jpg", logoImg: false, conf: "HAVE NOTS · Plebian", stars: ["Srinivasa Bose", "Karishma Kumar-L'Fluer", "Ashok Ghandi", "Babu Kohli"] },
-  { city: "Chicagoland", name: "Organized Labor", color: "#8A4B08", glyph: "⚒️", logo: "/logos/CHICAGO.jpg", logoImg: false, conf: "HAVE NOTS · Plebian", stars: ["Emerson Tynes", "Everett Gold", "Rory Orr", "Keith Stump", "Rodney Page"] },
-  { city: "Mexico City", name: "V2 Immortals", color: "#0F7B4A", glyph: "💀", logo: "/logos/MEXICO.jpg", logoImg: false, conf: "HAVE NOTS · Plebian", stars: ["El Oso", "Hidalgo Villa", "Pancho Sepulveda", "Quinterrius Durie", "Luz Fuentes"] },
-  { city: "NY", name: "Illuminati", color: "#101010", glyph: "👁️", logo: "/logos/NY.jpg", logoImg: false, conf: "HAVE NOTS · Prole", stars: ["Tall Fellow", "Mr. Zeus", "Mr. Rose", "The Larch", "Cerberus"] },
-  { city: "Ottawa", name: "Iron Maples", color: "#A61C1C", glyph: "🍁", logo: "/logos/OTTOWA.jpg", logoImg: false, conf: "HAVE NOTS · Prole", stars: ["Omar Mung", "Eleanor Motch", "Remy LeFleur", "Lucien LaFlamme"] },
-  { city: "Moscow", name: "Atomic Energy Federation", color: "#B8860B", glyph: "☢️", logo: "/logos/MOSCOW.jpg", logoImg: false, conf: "HAVE NOTS · Prole", stars: ["Ekaterina Romanov", "Lev Ivanov", "Semyon Prostakov", "Vasily Molotov", "Vadim Nikolaev"] },
-];
+const COMING_SOON = []; // all teams activated
 
 function contest(oB, dB) { let o, dv, ro, rd; do { ro = d100(); rd = d100(); o = ro + oB; dv = rd + dB; } while (o === dv); return { win: o > dv, o, d: dv, ro, rd }; }
 function takeaway(dB, oB) { const dr = d100() + dB, or = d100() + oB; return { taken: dr - or >= TAKEAWAY_MARGIN, dr, or }; }
@@ -534,7 +1263,9 @@ export default function App() {
       ot: false, otPoss: 0, playerRuns: 1, playerPasses: 1,
       driveReason: null, driveOpts: null,
       log: [{ t: "sys", m: `COIN FLIP — ${T(first).city} receives. The machine is already studying your habits.` }],
-      stats: { plays: 0, tds: 0, tos: 0 },
+      stats: { plays: 0, tds: 0, tos: 0,
+        passAtt: 0, passComp: 0, passYds: 0, passTD: 0, incompletions: 0,
+        wrYds: 0, yac: 0, rbYds: 0, sacksTaken: 0, intThrown: 0 },
     });
     setSel({}); setExpandedSlot(null);
     setScreen("game");
@@ -569,6 +1300,8 @@ export default function App() {
     let add = blk.diff + qb.diff + (sk === qb ? 0 : sk.diff);
     if (play.type === "run") add += (sk.ab.osrRun || 0) + (blk.ab.osrRun || 0);
     else add += (qb.ab.osrPass || 0) + (blk.ab.osrPass || 0) + (sk.ab.osrPass || 0);
+    // NEW · Block And Go — TE credited +10 osrPass when deployed in the blocker slot
+    if (blk.ab.blockGo) add += 10;
     if (hasChit(g.possession, "keg") && blk.slot === "BLK" && !blk.pos.startsWith("FB")) { add += 10; markUsed(g.possession, "keg"); }
     if (hasChit(g.possession, "can") && (qb.pos === "QB1" || sk.pos === "QB1")) { add += 10; markUsed(g.possession, "can"); }
     if (hasChit(g.possession, "dozer") && play.type === "run" && sk.pos.startsWith("FB")) { add += 20; markUsed(g.possession, "dozer"); }
@@ -579,6 +1312,12 @@ export default function App() {
     trio.forEach((c) => { add += play.type === "run" ? (c.ab.dsrRun || 0) : (c.ab.dsrPass || 0); });
     offTrio.forEach((c) => { add -= c.ab.dsrPen || 0; });
     if (play.type === "pass") add -= offTrio[1].ab.deadEye || 0;
+    // NEW · Thread The Needle — 1st-half passer halves DB (CB/SS/FS) contribution
+    if (play.type === "pass" && offTrio[1].ab.thread && g.qtr <= 2 && !g.ot) {
+      trio.forEach((c) => { if (c.slot === "DB") add -= Math.floor(c.diff / 2); });
+    }
+    // NEW · Bearhug — El Oso in the wall shaves the run
+    if (play.type === "run") trio.forEach((c) => { if (c.ab.bearhug) add -= 4; });
     if (hasChit(g.other, "trough")) { add += 10; markUsed(g.other, "trough"); }
     return Math.min(STACK_CAP, add);
   }
@@ -677,8 +1416,9 @@ export default function App() {
     const primaryDef = play.type === "run" ? s.defTrio[0] : s.defTrio[2];
     if (s.pod === 1) {
       const tk = takeaway(primaryDef.diff + (primaryDef.ab.intB || 0), qb.diff);
-      if (tk.taken) { g.stats.tos++; log(`POD 1 — INTERCEPTED by ${primaryDef.name}! ${qb.name} would like a word with his arm.`, "bad"); g.sctx = null; endDrive("int"); return; }
+      if (tk.taken) { g.stats.tos++; if (isPlayerOff) g.stats.intThrown++, g.stats.passAtt++; log(`POD 1 — INTERCEPTED by ${primaryDef.name}! ${qb.name} would like a word with his arm.`, "bad"); g.sctx = null; endDrive("int"); return; }
       log(`The ball hangs… and DROPS. ${primaryDef.name} will see that one at 3 a.m. Incomplete.`, "play");
+      if (isPlayerOff) g.stats.incompletions++, g.stats.passAtt++;
       g.sctx = null; advanceDown(0); return;
     }
     if (s.pod === 6) {
@@ -712,24 +1452,29 @@ export default function App() {
         let gain = [0, 0, shortGain(), shortGain(), longGain(), shortGain(), shortGain(), longGain(), longGain()][rod];
         const note = ["", "", "short gain", "BROKEN TACKLE", "LONG GAIN", "STIFF-ARM", "short gain", "LONG GAIN", "HURDLE"][rod];
         if (sk.ab.quick && (rod === 2 || rod === 6)) { const ex = shortGain(); gain += ex; log(`QUICK! Bonus burst +${ex}m.`, "good"); }
+        if (isPlayerOff && sk.pos && sk.pos.startsWith("RB")) g.stats.rbYds += gain;
         log(`${sk.name} behind ${blk.name} — ${note}, +${gain}m!`, "good");
-        startChase(sk, gain);
+        startChase(sk, gain, "run");
       } else {
         const pod = s.pod, compl = s.compl, cr = s.cr;
-        if (cr > compl) { log(`${qb.name} → ${sk.name} (${["10m", "20m", "20+m"][play.depth]}): ${cr} vs ${compl}% — INCOMPLETE. The ball had other plans.`, "play"); advanceDown(0); return; }
+        if (cr > compl) { if (isPlayerOff) g.stats.incompletions++, g.stats.passAtt++; log(`${qb.name} → ${sk.name} (${["10m", "20m", "20+m"][play.depth]}): ${cr} vs ${compl}% — INCOMPLETE. The ball had other plans.`, "play"); advanceDown(0); return; }
         let gain = play.depth === 0 ? shortGain() : play.depth === 1 ? longGain() : longGain() + 10;
         const bonus = pod === 5 ? " STIFF-ARM!" : pod === 7 ? " SPECTACULAR CATCH!" : pod === 8 ? " HURDLE!" : "";
         log(`${qb.name} → ${sk.name}: ${cr} vs ${compl}% — CAUGHT, +${gain}m!${bonus}`, "good");
         if (hasChit(g.possession, "jets") && sk.pos === "WR1") { gain += 10; markUsed(g.possession, "jets"); log("JETS! +10 bonus meters. He left a vapor trail.", "good"); }
-        startChase(sk, gain);
+        if (isPlayerOff) {
+          g.stats.passAtt++; g.stats.passComp++; g.stats.passYds += gain;
+          if (sk.pos && sk.pos.startsWith("WR")) g.stats.wrYds += gain;
+        }
+        startChase(sk, gain, "pass");
       }
     } else {
       const dd = s.dd;
-      if (dd === 1) { const loss = play.type === "pass" ? d(10) + (primaryDef.ab.sackB ? 2 : 0) : 5; log(play.type === "pass" ? `SACK! ${defTrio[0].name} arrives with paperwork. -${loss}m.` : `Swallowed in the backfield. -5m.`, "bad2"); advanceDown(-loss); return; }
+      if (dd === 1) { const loss = play.type === "pass" ? d(10) + (primaryDef.ab.sackB ? 2 : 0) : 5; if (isPlayerOff && play.type === "pass") g.stats.sacksTaken++, g.stats.passAtt++; log(play.type === "pass" ? `SACK! ${defTrio[0].name} arrives with paperwork. -${loss}m.` : `Swallowed in the backfield. -5m.`, "bad2"); advanceDown(-loss); return; }
       if (dd === 2 || dd === 6) { log(`STUFFED at the line. The wall files this under 'correspondence.'`, "bad2"); advanceDown(0); return; }
       if (dd === 3) {
         const tk = takeaway(s.dB + (primaryDef.ab.intB || 0), s.oB - OFF_EDGE);
-        if (tk.taken) { g.stats.tos++; log(`TAKEAWAY! ${primaryDef.name} ${play.type === "pass" ? "INTERCEPTS" : "FORCES THE FUMBLE"} (${tk.dr} vs ${tk.or})! The Dragonfly saw it coming.`, "bad"); endDrive("int"); return; }
+        if (tk.taken) { g.stats.tos++; if (isPlayerOff && play.type === "pass") g.stats.intThrown++, g.stats.passAtt++; log(`TAKEAWAY! ${primaryDef.name} ${play.type === "pass" ? "INTERCEPTS" : "FORCES THE FUMBLE"} (${tk.dr} vs ${tk.or})! The Dragonfly saw it coming.`, "bad"); endDrive("int"); return; }
         log(`Takeaway chance — batted down (${tk.dr} vs ${tk.or}). Merely a stop.`, "bad2"); advanceDown(0); return;
       }
       if (dd === 4) {
@@ -746,8 +1491,8 @@ export default function App() {
   }
 
   /* ---------- chase ---------- */
-  function startChase(carrier, gain) {
-    g.chase = { carrier, gain, steps: 0 };
+  function startChase(carrier, gain, kind) {
+    g.chase = { carrier, gain, steps: 0, kind: kind || null, baseGain: gain };
     if (g.spot + gain >= FIELD) { finishChase(true); return; }
     if (isPlayerOff) { g.phase = "chase"; return; }
     let alive = true;
@@ -761,7 +1506,10 @@ export default function App() {
   function chaseStep() {
     const ch = g.chase; ch.steps++;
     const defd = defT.defense[Math.floor(Math.random() * defT.defense.length)];
-    const c = contest(ch.carrier.diff + (ch.carrier.ab.osr11 || 0) + OFF_EDGE / 2, defd.diff + PURSUIT * ch.steps);
+    // NEW · CANONBALL — carrier bowls over the wall, every pursuer is -8 in the 1:1
+    const canon = ch.carrier.ab.canonball ? 8 : 0;
+    const c = contest(ch.carrier.diff + (ch.carrier.ab.osr11 || 0) + OFF_EDGE / 2, defd.diff + PURSUIT * ch.steps - canon);
+    if (canon && ch.steps === 1) log(`CANONBALL! ${ch.carrier.name} lowers the shoulder — the whole pursuit gives way.`, "good");
     if (!c.win) {
       if (ch.steps === 1 && d(6) === 3) {
         const tk = takeaway(defd.diff + (defd.ab.intB || 0), ch.carrier.diff);
@@ -774,12 +1522,17 @@ export default function App() {
     if (rod === 1) { log(`${ch.carrier.name} dragged down mid-juke. +${ch.gain}m total.`, "play"); finishChase(false); return false; }
     const extra = [0, 0, shortGain(), shortGain() + 2, longGain(), shortGain(), shortGain(), longGain(), longGain()][rod];
     ch.gain += extra;
+    if (isPlayerOff && extra > 0) {
+      if (ch.kind === "pass") { g.stats.yac += extra; g.stats.passYds += extra; if (ch.carrier.pos && ch.carrier.pos.startsWith("WR")) g.stats.wrYds += extra; }
+      else if (ch.kind === "run" && ch.carrier.pos && ch.carrier.pos.startsWith("RB")) g.stats.rbYds += extra;
+    }
     log(`${ch.carrier.name} BREAKS FREE (+${extra}m)!${FIELD - g.spot - ch.gain > 0 ? ` ${FIELD - g.spot - ch.gain}m to glory…` : ""}`, "good");
     if (g.spot + ch.gain >= FIELD) { finishChase(true); return null; }
     return true;
   }
   function finishChase(td) {
     if (!g.chase) return;
+    if (td && isPlayerOff && g.chase.kind === "pass") g.stats.passTD++;
     g.spot = Math.min(FIELD, Math.max(1, g.spot + g.chase.gain));
     g.chase = null;
     if (td || g.spot >= FIELD) { scoreTD(); return; }
@@ -1206,6 +1959,9 @@ function StatsPanel({ g, pT, aT, playerTeam, aiTeam, drivesPerQtr }) {
   const callTotal = Math.max(1, runs + passes);
   const runPct = Math.round((runs / callTotal) * 100);
   const toGo = Math.max(0, TO_GAIN - (g.spot - g.line));
+  const st = g.stats;
+  const tdRate = st.passAtt ? Math.round((st.passTD / st.passAtt) * 100) : 0;
+  const incRate = st.passAtt ? Math.round((st.incompletions / st.passAtt) * 100) : 0;
   const row = (label, val, color) => (
     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", padding: "5px 0", borderBottom: "1px solid #ffffff10" }}>
       <span style={{ fontFamily: "Courier New, monospace", fontSize: 12, color: "#8FA08F", letterSpacing: 1 }}>{label}</span>
@@ -1253,6 +2009,21 @@ function StatsPanel({ g, pT, aT, playerTeam, aiTeam, drivesPerQtr }) {
         <div style={{ flex: 1, background: "linear-gradient(90deg,#2E5A8E,#1E3E63)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "Impact, sans-serif", fontSize: 10, color: "#F6F3E6" }}>{100 - runPct >= 18 ? `PASS ${100 - runPct}%` : ""}</div>
       </div>
       <div style={{ fontFamily: "Courier New, monospace", fontSize: 9, color: "#5E7263", marginTop: 4 }}>{runs + passes} offensive calls tracked · the Machine reads this.</div>
+
+      {/* individual stat lines */}
+      <div style={{ fontFamily: "Courier New, monospace", fontSize: 10, color: "#FFD86B", letterSpacing: 1, marginTop: 10, marginBottom: 2 }}>INDIVIDUAL STATS</div>
+      {row("WR YARDS", `${st.wrYds}m`, "#7FC7F0")}
+      {row("WR YAC", `${st.yac}m`, "#7FC7F0")}
+      {row("RB YARDS", `${st.rbYds}m`, "#9BD53C")}
+      {row("SACKS TAKEN", st.sacksTaken, st.sacksTaken > 0 ? "#FF8A70" : "#F2EFE2")}
+      {row("INTs THROWN", st.intThrown, st.intThrown > 0 ? "#FF8A70" : "#F2EFE2")}
+      {row("PASS TD / INC", `${st.passTD} / ${st.incompletions}`)}
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", padding: "5px 0" }}>
+        <span style={{ fontFamily: "Courier New, monospace", fontSize: 12, color: "#8FA08F", letterSpacing: 1 }}>TD / INC RATE</span>
+        <span style={{ fontFamily: "Impact, sans-serif", fontSize: 15, color: "#FFD86B" }}>
+          {tdRate}% <span style={{ color: "#5E7263", fontSize: 11 }}>td</span> · {incRate}% <span style={{ color: "#5E7263", fontSize: 11 }}>inc</span>
+        </span>
+      </div>
     </div>
   );
 }

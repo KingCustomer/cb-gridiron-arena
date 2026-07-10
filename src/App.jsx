@@ -41,15 +41,115 @@ const FLAVOR = {
   "Center 434": "Snaps the ball. Snaps expectations.",
   "Sreedevi Ganga": "The river takes what the river wants.",
   "Timothy Bentley": "Reads quarterbacks like overdue library books.",
+  "Elliot Eagan": "Makes the catch, then audits the coverage.",
+  "Limsong": "Sings cadence. Opponents wish he'd lip-sync.",
+  "Pu Hoontrakul": "A pass rush with vowels and consequences.",
+  "Sumatra Lamsam": "DE2 only because bureaucracy fears poetry.",
+  "Anubis Re": "Judges your soul, then lowers his shoulder.",
+  "Hannibal Babafemi": "Crossed the line, then moved it backward.",
+  "Ibrahim Imhotep": "Ancient architecture, modern pocket collapse.",
+  "Emerson Tynes": "Occupies two gaps and one philosophical crisis.",
+  "Everett Gold": "Has a motor, a mortgage, and no chill.",
+  "Keith Stump": "Short range, long memory.",
+  "Rodney Page": "Turns the corner like he wrote it.",
+  "Rory Orr": "Pass rush by name, recurring symptom by nature.",
+  "Ingmar Stork": "Delivers bad news in the secondary.",
+  "S.Freddy Frawley": "Pulls so fast the defense files a missing-person report.",
+  "S.Jarold Klim": "Finds the ball with the weary certainty of a landlord.",
+  "S.Solomon Moss": "Makes catches that feel legally inadmissible.",
+  "S.Vladimir Markov": "When he pass-blocks, time becomes a managed service.",
+  "DeAngelo Bell": "Arrives before the pass. Raises rent when he gets there.",
+  "Maria Dos Santos": "Covers receivers so closely they start sharing memories.",
+  "Ozcoc Tupac": "Plays linebacker like the empire still has receipts.",
+  "Smoke Monkey": "You saw him? That was his decoy.",
+  "Ralph Poole": "Left tackle. Right answer.",
+  "Robert T. Bruce": "Snaps with honor. Blocks with historical resentment.",
+  "S.Gerson Rice": "Every route has footnotes. All of them say 'open.'",
+  "Stanley Quim": "A guard in the classical sense: immovable, irritated, underpaid.",
+  "Sunil Lazenby": "Blocks like a gentleman. Hits like the apology got lost.",
+  "Blackburn Fitzpatrick": "Throws lasers, apologizes to none of the furniture.",
+  "E.G. Shapiro": "QB2 on paper. Plaintiff in every comeback.",
+  "Julek Wroclaw": "A nose tackle with pierogi gravity.",
+  "Keyshawn Mingo": "Always open, especially when covered.",
+  "Mukesh Singh": "Reads the run, the pass, and your weak excuses.",
+  "El Oso": "Spanish for bear. Football for problem.",
+  "Hidalgo Villa": "QB2, revolution pending.",
+  "Luz Fuentes": "Sees the ball first. Lets the receiver know eventually.",
+  "Pancho Sepulveda": "Runs like someone stole his cape.",
+  "Quinterrius Durie": "Protects the blind side and several family secrets.",
+  "Guard 756": "Not a name. More of a warning label.",
+  "R.Raul Martinez- Wang": "Hyphenated name. Unhyphenated violence.",
+  "Ekaterina Romanov": "Threads needles like the monarchy depends on it.",
+  "Lev Ivanov": "Blocks, releases, and makes linebackers reconsider night school.",
+  "Semyon Prostakov": "Never blitzes. Still appears in your backfield.",
+  "Vadim Nikolaev": "Blocks like winter has a deadline.",
+  "Vasily Molotov": "Coverage so sticky it comes with a warning label.",
+  "Ashok Ghandi": "Runs through contact, peacefully in theory.",
+  "Babu Kohli": "CB2 with CB1 self-esteem.",
+  "Srinivasa Bose": "Does the math mid-play. Still rounds up to touchdown.",
+  "Gustav Schmitz": "Right guard. Wrong person to annoy.",
+  "Isaac Shurmur": "Snaps quietly, ruins loudly.",
+  "Jörn Fuchs": "The umlaut does half the blocking.",
+  "Peters Huber": "Island corner. No ferry service.",
+  "Shuji Kimura": "Runs through creases accountants would miss.",
+  "Cerberus": "Three heads. One blocking assignment. Somehow a committee.",
+  "Mr. Rose": "Smells sweet until the safety wakes up sideways.",
+  "Mr. Zeus": "Brings thunder, lightning, and a very specific HR complaint.",
+  "Tall Fellow": "Scouting report: tall. Counterpoint: extremely tall.",
+  "The Larch": "A tree with a depth chart.",
+  "Eleanor Motch": "Protects the edge and several nearby neighborhoods.",
+  "Lucien LaFlamme": "Burns routes down so receivers can start over.",
+  "Omar Mung": "Fullback body. Running back feet. Insurance adjuster smile.",
+  "Remy LeFleur": "Pancakes politely. Canada notices.",
+  "Charlemagne Arceneaux-Wang": "Conquered twelve meters and one human resources department.",
+  "Napolean Bonaparte": "Short king. Long drives. Bad history with winter games.",
+  "Yves Dauphin": "Royal nose tackle. Peasant work ethic.",
+  "Carlo Bianco": "Blitzes with the elegance of a thrown piano.",
+  "Lawson Taylorous": "Runs the defense like it owes him rent.",
+  "Maximiliano Sforza": "A Renaissance man, assuming the Renaissance had roughing calls.",
+  "Ottavio Izzo": "The second linebacker, because apparently one problem wasn't enough.",
+  "Primo Ventura": "Centers the ball and, briefly, society.",
+  "Dang-Quang Phan": "A tight end with airport-security hands.",
+  "Jimmy Lo": "Keeps it low. Except the interception totals, sadly.",
+  "Van-Lang Vo": "Nose tackle. Cultural landmark. Very poor detour.",
+  "Conrad Atwater": "Safety by position. Public hazard by practice.",
+  "Mick Christmas": "Comes once a year. The sack count says otherwise.",
+  "Rocky Cosby": "The offense is calm because he has made panic illegal.",
+  "Ronin Nixon": "A tight end wandering alone through your zone coverage.",
+  "S.Randy Rice": "The S stands for 'somehow,' as in somehow open again.",
+  "Early Boolgoo": "Arrives early, leaves cleat marks.",
+  "Hieronymous Baldwin": "WR3, patron saint of busted coverage.",
+  "Jack-Jack Jadira": "Double the name. Half the quarterback.",
+  "Neville Namatjira": "Backup quarterback, starting-level optimism.",
+  "Otis McMath": "Calculates pursuit angles with his forehead.",
+  "Bostwick Bykov": "Runs downhill like gravity signed a sponsorship deal.",
+  "Gorky Gusev": "Centers the line and lowers the room temperature.",
+  "Ibroxhim Csonka": "Fullback: the last honest job in a dishonest sport.",
+  "Mansur Morris": "Designed to scramble. Emotionally, also yes.",
+  "Sultan Orozov": "Rules the deep middle by decree and mild contempt.",
+  "Daisuke Koizumi": "Open by profession. Dramatic by hobby.",
+  "Hanzo Takahashi": "The pass rush appears, bows, and ruins dinner.",
+  "Kenji Raiden": "Thunder in the middle. Weather delay optional.",
+  "Masafumi Hana": "Blooms late. Lands early.",
+  "Ryuzo Nishioka": "Tackles with the warm bedside manner of a tax audit.",
+  "Bola Nkemediche": "Keeps the pocket clean by making everyone else leave.",
+  "Fausto Amaral": "Catches everything except accountability.",
+  "Medard Meir": "Sets the edge, then questions why there was ever an edge.",
+  "Tommy Nakamura": "TE2, which in this league means 'surprise felony receiver.'",
+  "Wing-Fu Chin": "A tight end with soft hands and litigation energy.",
+  "Bill Taft": "A presidential body type with cabinet-level disruption.",
+  "Chuck Maplethorpe": "The center of gravity and several bad conversations.",
+  "Geronimo Goyathlay": "Comes downhill like history has unfinished business.",
+  "Teddy Roosevelt": "Speaks softly. Carries twelve audibles and a grudge.",
 };
 const FLAVOR_POOL = {
-  QB: ["Throws darts. Occasionally at teammates.", "Reads defenses like a menu."],
-  RB: ["Legs powered by pure spite.", "Contact is a suggestion."],
-  WR: ["One foot down is ALL feet down.", "Catches things. Feelings, mostly."],
-  TE: ["A wall that runs routes.", "Blocks, catches, apologizes for neither."],
-  FB: ["The tip of the spear. Also the spear.", "His hobbies include: forward."],
-  OL: ["The pancake breakfast is self-serve.", "Paid by the bruise."],
-  D: ["Files tackles under 'correspondence.'", "The end zone is a members-only club. He checks IDs.", "Runs a toll booth at the line of scrimmage.", "Interceptions are just aggressive borrowing."],
+  QB: ["Throws darts. Occasionally at teammates.", "Reads defenses like a menu.", "Audibles in cursive.", "The pocket is a state of mind. He is the landlord."],
+  RB: ["Legs powered by pure spite.", "Contact is a suggestion.", "Runs angry. Files the paperwork later.", "The stiff-arm has its own agent."],
+  WR: ["One foot down is ALL feet down.", "Catches things. Feelings, mostly.", "Separation is a lifestyle.", "Drops? Never been introduced."],
+  TE: ["A wall that runs routes.", "Blocks, catches, apologizes for neither.", "Half tackle, half poem.", "Seam routes and steamrolls, in that order."],
+  FB: ["The tip of the spear. Also the spear.", "His hobbies include: forward.", "Job description: doorway remover.", "Leads the way. The way apologizes."],
+  OL: ["The pancake breakfast is self-serve.", "Paid by the bruise.", "Holding is such a strong word.", "Moves people for a living. No boxes required."],
+  D: ["Files tackles under 'correspondence.'", "The end zone is a members-only club. He checks IDs.", "Runs a toll booth at the line of scrimmage.", "Interceptions are just aggressive borrowing.", "Tackling is a love language.", "Personal space enforcement, meters 0 through 110."],
 };
 const famOf = (pos) => pos.startsWith("QB") ? "QB" : pos.startsWith("RB") ? "RB" : pos.startsWith("WR") ? "WR" : pos.startsWith("TE") ? "TE" : pos.startsWith("FB") ? "FB" : ["LT", "LG", "C", "RG", "RT"].includes(pos) ? "OL" : "D";
 const flavorOf = (c) => FLAVOR[c.name] || FLAVOR_POOL[famOf(c.pos)][c.name.length % FLAVOR_POOL[famOf(c.pos)].length];
@@ -65,7 +165,7 @@ const TEAMS = {
   estes: {
     id: "estes", city: "Estes Park", name: "Simulacra", conf: "THE HAVES · Prime",
     color: "#8E7CC3", color2: "#C9C4D4", dark: "#241C38", glyph: "◈", logo: "/logos/ESTES.jpg", logoImg: false,
-    identity: "Clone-perfect precision. Elite twins at QB.",
+    ovr: 92, identity: "Clone-perfect precision. Elite twins at QB.",
     tendency: { run: 0.45, deep: 0.4 },
     offense: [
       { pos: "QB1", slot: "QB", name: "Cassandra Jemineye", kind: "F", diff: 30, pct: [91, 72, 60], ab: { deadEye: 10 }, elite: true },
@@ -105,7 +205,7 @@ const TEAMS = {
   london: {
     id: "london", city: "London", name: "Amplified Gentry", conf: "THE HAVES · Nova",
     color: "#1F3A93", color2: "#E3B23C", dark: "#0E1B3A", glyph: "🎩", logo: "/logos/LONDON.jpg", logoImg: false,
-    identity: "Old money, new arms. Saxby hunts one last title.",
+    ovr: 87, identity: "Old money, new arms. Saxby hunts one last title.",
     tendency: { run: 0.5, deep: 0.5 },
     offense: [
       { pos: "QB1", slot: "QB", name: "Saxby Lawless", kind: "M", diff: 26, pct: [84, 80, 73], ab: { osrPass: 4 }, elite: true },
@@ -142,7 +242,7 @@ const TEAMS = {
   miami: {
     id: "miami", city: "Miami", name: "United Workers Party", conf: "THE HAVE NOTS · Plebian",
     color: "#B3202C", color2: "#E3B23C", dark: "#33090D", glyph: "☭", logo: "/logos/MIAMI.jpg", logoImg: false,
-    identity: "Seize the meters of production.",
+    ovr: 90, identity: "Seize the meters of production.",
     tendency: { run: 0.4, deep: 0.25 },
     offense: [
       { pos: "QB1", slot: "QB", name: "Sample Wong", kind: "M", diff: 33, pct: [80, 52, 28], ab: { deadEye: 6 }, elite: true },
@@ -180,7 +280,7 @@ const TEAMS = {
   assam: {
     id: "assam", city: "Assam", name: "Creeping Death", conf: "THE HAVE NOTS · Prole",
     color: "#FA0807", color2: "#9BB53C", dark: "#2B0404", glyph: "☠", logo: "/logos/ASSAM.jpg", logoImg: false,
-    identity: "The serpent runs. Grimsby wears the 99.",
+    ovr: 92, identity: "The serpent runs. Grimsby wears the 99.",
     tendency: { run: 0.72, deep: 0.15 },
     offense: [
       { pos: "QB1", slot: "QB", name: "Iqbal Kohli", kind: "M", diff: 15, pct: [65, 43, 28], ab: { quick: true } },
@@ -218,7 +318,7 @@ const TEAMS = {
   la: {
     id: "la", city: "Los Angeles", name: "Firm of Pheir, Payne & Suffering", conf: "THE HAVES · Prime",
     color: "#C9A227", color2: "#D9D9D9", dark: "#3A2F0A", glyph: "⚖️", logo: "/logos/LA.jpg", logoImg: false,
-    identity: "Josh Allen Bills · OVR 90",
+    ovr: 90, identity: "Objection sustained. Blitz overruled. They bill by the sack.",
     tendency: { run: 0.45, deep: 0.3 },
     offense: [
       { pos: "QB1", slot: "QB", name: "Blackburn Fitzpatrick", kind: "M", diff: 28, pct: [86, 63, 50], ab: { deadEye: 9 }, elite: true },
@@ -256,7 +356,7 @@ const TEAMS = {
   rome: {
     id: "rome", city: "Rome", name: "The Roman Legion", conf: "THE HAVES · Prime",
     color: "#8E1B1B", color2: "#D9D9D9", dark: "#2A0808", glyph: "🏛️", logo: "/logos/ROME.jpg", logoImg: false,
-    identity: "1985 NY Giants · OVR 88",
+    ovr: 88, identity: "All roads lead to fourth-and-inches.",
     tendency: { run: 0.55, deep: 0.25 },
     offense: [
       { pos: "QB1", slot: "QB", name: "Nero", kind: "M", diff: 23, pct: [85, 62, 48], ab: {  } },
@@ -293,7 +393,7 @@ const TEAMS = {
   un: {
     id: "un", city: "United Nations", name: "Global Alliance", conf: "THE HAVES · Prime",
     color: "#3B7DD8", color2: "#D9D9D9", dark: "#0E2545", glyph: "🌐", logo: "/logos/UN.jpg", logoImg: false,
-    identity: "2015 Patriots · OVR 90",
+    ovr: 90, identity: "27 nations. One playbook. Endless subcommittees.",
     tendency: { run: 0.5, deep: 0.28 },
     offense: [
       { pos: "QB1", slot: "QB", name: "Bola Nkemediche", kind: "M", diff: 28, pct: [86, 63, 50], ab: { deadEye: 9 }, elite: true },
@@ -331,7 +431,7 @@ const TEAMS = {
   dc: {
     id: "dc", city: "Washington DC", name: "Old Glory", conf: "THE HAVES · Nova",
     color: "#1F3A93", color2: "#D9D9D9", dark: "#0A1330", glyph: "⭐", logo: "/logos/DC.jpg", logoImg: false,
-    identity: "2008 Cardinals · OVR 80",
+    ovr: 80, identity: "Filibusters the clock. Vetoes your screen game.",
     tendency: { run: 0.5, deep: 0.28 },
     offense: [
       { pos: "QB1", slot: "QB", name: "Teddy Roosevelt", kind: "M", diff: 21, pct: [81, 54, 40], ab: { deadEye: 9 }, elite: true },
@@ -369,7 +469,7 @@ const TEAMS = {
   tokyo: {
     id: "tokyo", city: "Tokyo", name: "TASC Masters", conf: "THE HAVES · Nova",
     color: "#D92B7A", color2: "#D9D9D9", dark: "#3A0A20", glyph: "⛩️", logo: "/logos/TOKYO.jpg", logoImg: false,
-    identity: "2008 Steelers · OVR 84",
+    ovr: 84, identity: "The playbook is 900 pages. They memorized 901.",
     tendency: { run: 0.45, deep: 0.3 },
     offense: [
       { pos: "QB1", slot: "QB", name: "Inejiro Tokugawa", kind: "M", diff: 20, pct: [83, 58, 44], ab: {  } },
@@ -407,7 +507,7 @@ const TEAMS = {
   inca: {
     id: "inca", city: "Inca", name: "Obsidian Pumas", conf: "THE HAVES · Nova",
     color: "#3C2A4D", color2: "#D9D9D9", dark: "#150E1C", glyph: "🐆", logo: "/logos/INCA.jpg", logoImg: false,
-    identity: "Flacco Ravens · OVR 86",
+    ovr: 86, identity: "Altitude-born. Your lungs tap out in the second quarter.",
     tendency: { run: 0.55, deep: 0.25 },
     offense: [
       { pos: "QB1", slot: "QB", name: "Atoc Nyunyuma", kind: "M", diff: 21, pct: [84, 60, 46], ab: {  } },
@@ -444,7 +544,7 @@ const TEAMS = {
   sf: {
     id: "sf", city: "San Francisco", name: "Mitsune-Gumi Ronin", conf: "THE HAVES · Alpha",
     color: "#B34700", color2: "#D9D9D9", dark: "#331400", glyph: "🏯", logo: "/logos/SF.jpg", logoImg: false,
-    identity: "80's 49ers · OVR 86",
+    ovr: 86, identity: "Masterless. Merciless. Meticulous about gap discipline.",
     tendency: { run: 0.4, deep: 0.33 },
     offense: [
       { pos: "QB1", slot: "QB", name: "Rocky Cosby", kind: "M", diff: 25, pct: [84, 60, 46], ab: { deadEye: 9 }, elite: true },
@@ -481,7 +581,7 @@ const TEAMS = {
   cairo: {
     id: "cairo", city: "Cairo", name: "Twice-Risen Pharaohs", conf: "THE HAVES · Alpha",
     color: "#C9A227", color2: "#D9D9D9", dark: "#3A2F0A", glyph: "☥", logo: "/logos/CAIRO.jpg", logoImg: false,
-    identity: "2002 Buccaneers · OVR 90",
+    ovr: 90, identity: "Died twice. Punted never.",
     tendency: { run: 0.7, deep: 0.17 },
     offense: [
       { pos: "QB1", slot: "QB", name: "Rameses Al-Masri", kind: "M", diff: 24, pct: [86, 63, 50], ab: {  } },
@@ -518,7 +618,7 @@ const TEAMS = {
   sydney: {
     id: "sydney", city: "Sydney", name: "Copper Locusts", conf: "THE HAVES · Alpha",
     color: "#B87333", color2: "#D9D9D9", dark: "#331A0A", glyph: "🦗", logo: "/logos/SYDNEY.jpg", logoImg: false,
-    identity: "Russell Seahawks · OVR 83",
+    ovr: 83, identity: "A plague with a two-minute drill.",
     tendency: { run: 0.5, deep: 0.28 },
     offense: [
       { pos: "QB1", slot: "QB", name: "Stanley Livingston", kind: "M", diff: 19, pct: [82, 57, 43], ab: {  } },
@@ -556,7 +656,7 @@ const TEAMS = {
   paris: {
     id: "paris", city: "Paris", name: "Reign of Terror", conf: "THE HAVES · Alpha",
     color: "#4B1E6B", color2: "#D9D9D9", dark: "#160A20", glyph: "⚜️", logo: "/logos/PARIS.jpg", logoImg: false,
-    identity: "Peyton Colts · OVR 80",
+    ovr: 80, identity: "The committee has voted. It's a blitz.",
     tendency: { run: 0.25, deep: 0.41 },
     offense: [
       { pos: "QB1", slot: "QB", name: "Napolean Bonaparte", kind: "M", diff: 21, pct: [81, 54, 40], ab: { deadEye: 9 }, elite: true },
@@ -594,7 +694,7 @@ const TEAMS = {
   munich: {
     id: "munich", city: "Munich", name: "Teutonic Machine", conf: "THE HAVE NOTS · Hoi Polloi",
     color: "#4A4A4A", color2: "#D9D9D9", dark: "#151515", glyph: "⚙️", logo: "/logos/MUNICH.jpg", logoImg: false,
-    identity: "Stafford Lions · OVR 79",
+    ovr: 79, identity: "Precision-engineered. Some assembly of the secondary required.",
     tendency: { run: 0.45, deep: 0.3 },
     offense: [
       { pos: "QB1", slot: "QB", name: "Rudolph Vogelsong", kind: "M", diff: 17, pct: [80, 53, 38], ab: {  } },
@@ -632,7 +732,7 @@ const TEAMS = {
   saigon: {
     id: "saigon", city: "Saigon", name: "Amalgamated Clanship", conf: "THE HAVE NOTS · Hoi Polloi",
     color: "#C0392B", color2: "#D9D9D9", dark: "#360F0A", glyph: "🐉", logo: "/logos/SAIGON.jpg", logoImg: false,
-    identity: "Philip Rivers Chargers · OVR 82",
+    ovr: 82, identity: "Twelve cousins, one huddle, zero secrets.",
     tendency: { run: 0.45, deep: 0.3 },
     offense: [
       { pos: "QB1", slot: "QB", name: "Jimmy Lo", kind: "M", diff: 23, pct: [82, 56, 42], ab: { deadEye: 9 }, elite: true },
@@ -670,7 +770,7 @@ const TEAMS = {
   bangkok: {
     id: "bangkok", city: "Bangkok", name: "Royal Mass Hysteria", conf: "THE HAVE NOTS · Hoi Polloi",
     color: "#7A1FA2", color2: "#D9D9D9", dark: "#220A2E", glyph: "🐘", logo: "/logos/BANGKOK.jpg", logoImg: false,
-    identity: "Culpepper Vikings · OVR 80",
+    ovr: 80, identity: "The crowd never stops. Neither does the motion shift.",
     tendency: { run: 0.35, deep: 0.36 },
     offense: [
       { pos: "QB1", slot: "QB", name: "Limsong", kind: "M", diff: 21, pct: [81, 54, 40], ab: { deadEye: 9 }, elite: true },
@@ -708,7 +808,7 @@ const TEAMS = {
   tashkent: {
     id: "tashkent", city: "Tashkent", name: "Miasmatic Plague", conf: "THE HAVE NOTS · Hoi Polloi",
     color: "#5B7F2B", color2: "#D9D9D9", dark: "#1A250C", glyph: "☣️", logo: "/logos/TASHKENT.jpg", logoImg: false,
-    identity: "70's Dolphins · OVR 91",
+    ovr: 91, identity: "The ground game is airborne. Cover your mouth.",
     tendency: { run: 0.65, deep: 0.19 },
     offense: [
       { pos: "QB1", slot: "QB", name: "Mansur Morris", kind: "M", diff: 29, pct: [87, 64, 51], ab: { osrRun: 8 }, elite: true },
@@ -746,7 +846,7 @@ const TEAMS = {
   mumbai: {
     id: "mumbai", city: "Mumbai", name: "Federation of Scientists", conf: "THE HAVE NOTS · Plebian",
     color: "#0E7490", color2: "#D9D9D9", dark: "#04222B", glyph: "⚛️", logo: "/logos/MUMBAI.jpg", logoImg: false,
-    identity: "Brett Favre Packers · OVR 83",
+    ovr: 83, identity: "Peer-reviewed play-action. The results replicate.",
     tendency: { run: 0.35, deep: 0.36 },
     offense: [
       { pos: "QB1", slot: "QB", name: "Srinivasa Bose", kind: "M", diff: 23, pct: [82, 57, 43], ab: { deadEye: 9 }, elite: true },
@@ -781,7 +881,7 @@ const TEAMS = {
   chicago: {
     id: "chicago", city: "Chicago", name: "Organized Labor", conf: "THE HAVE NOTS · Plebian",
     color: "#8A4B08", color2: "#D9D9D9", dark: "#291602", glyph: "⚒️", logo: "/logos/CHICAGO.jpg", logoImg: false,
-    identity: "1985 Bears · OVR 87",
+    ovr: 87, identity: "The pass rush is unionized. Overtime rates apply.",
     tendency: { run: 0.6, deep: 0.22 },
     offense: [
       { pos: "QB1", slot: "QB", name: "Quintavious Lawler", kind: "M", diff: 22, pct: [85, 61, 47], ab: {  } },
@@ -819,7 +919,7 @@ const TEAMS = {
   mexico: {
     id: "mexico", city: "Mexico City", name: "V2 Immortals", conf: "THE HAVE NOTS · Plebian",
     color: "#0F7B4A", color2: "#D9D9D9", dark: "#052316", glyph: "💀", logo: "/logos/MEXICO.jpg", logoImg: false,
-    identity: "Kurt Warner Rams · OVR 89",
+    ovr: 89, identity: "They've died before. It didn't take.",
     tendency: { run: 0.4, deep: 0.33 },
     offense: [
       { pos: "QB1", slot: "QB", name: "Sancho Zapata", kind: "M", diff: 23, pct: [86, 63, 49], ab: {  } },
@@ -857,7 +957,7 @@ const TEAMS = {
   ny: {
     id: "ny", city: "New York", name: "Illuminati", conf: "THE HAVE NOTS · Prole",
     color: "#101010", color2: "#D9D9D9", dark: "#000000", glyph: "👁️", logo: "/logos/NY.jpg", logoImg: false,
-    identity: "Romo Cowboys · OVR 80",
+    ovr: 80, identity: "The route tree is a pyramid. Wake up, sheeple.",
     tendency: { run: 0.35, deep: 0.36 },
     offense: [
       { pos: "QB1", slot: "QB", name: "Tall Fellow", kind: "M", diff: 21, pct: [81, 54, 40], ab: { deadEye: 9 }, elite: true },
@@ -894,7 +994,7 @@ const TEAMS = {
   ottowa: {
     id: "ottowa", city: "Ottawa", name: "Iron Maples", conf: "THE HAVE NOTS · Prole",
     color: "#A61C1C", color2: "#D9D9D9", dark: "#300808", glyph: "🍁", logo: "/logos/OTTOWA.jpg", logoImg: false,
-    identity: "Lamar Ravens · OVR 88",
+    ovr: 88, identity: "Polite until the whistle. The whistle is a suggestion.",
     tendency: { run: 0.45, deep: 0.3 },
     offense: [
       { pos: "QB1", slot: "QB", name: "Linus Fouts", kind: "M", diff: 23, pct: [85, 62, 48], ab: {  } },
@@ -931,7 +1031,7 @@ const TEAMS = {
   moscow: {
     id: "moscow", city: "Moscow", name: "Atomic Energy Federation", conf: "THE HAVE NOTS · Prole",
     color: "#B8860B", color2: "#D9D9D9", dark: "#111111", glyph: "☢️", logo: "/logos/MOSCOW.jpg", logoImg: false,
-    identity: "Cam Panthers · OVR 75",
+    ovr: 75, identity: "Half-life of a lead: two drives.",
     tendency: { run: 0.5, deep: 0.28 },
     offense: [
       { pos: "QB1", slot: "QB", name: "Feodor Stalin", kind: "M", diff: 14, pct: [78, 49, 34], ab: {  } },
@@ -1209,6 +1309,26 @@ const TEAM_LOGO_OVERRIDES = {
   Sydney: "data:image/jpeg;base64,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",
   Tashkent: "data:image/jpeg;base64,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",
 };
+function OvrBadge({ ovr }) {
+  if (!ovr) return null;
+  const tier = ovr >= 90
+    ? { ring: "#FFD700", grad: "linear-gradient(150deg,#FFF3B0,#FFD700 45%,#B8860B)", ink: "#3A2703", label: "GOLD" }
+    : ovr >= 80
+    ? { ring: "#E8E8F0", grad: "linear-gradient(150deg,#FFFFFF,#C9CDD6 45%,#8E96A3)", ink: "#23262B", label: "SILVER" }
+    : ovr >= 70
+    ? { ring: "#D89058", grad: "linear-gradient(150deg,#F0C9A8,#C87F3F 45%,#8A4E1E)", ink: "#2E1503", label: "BRONZE" }
+    : { ring: "#7A8578", grad: "linear-gradient(150deg,#9AA598,#6A756A 45%,#454E45)", ink: "#101410", label: "IRON" };
+  return (
+    <span title={`Overall ${ovr} — ${tier.label}`} style={{
+      width: 30, height: 30, borderRadius: "50%", background: tier.grad,
+      border: `2px solid ${tier.ring}`, boxShadow: `0 0 8px ${tier.ring}88, inset 0 1px 2px #FFFFFF88, inset 0 -2px 3px #00000055`,
+      display: "inline-flex", flexDirection: "column", alignItems: "center", justifyContent: "center", lineHeight: 1, flexShrink: 0,
+    }}>
+      <span style={{ fontFamily: "Impact, sans-serif", fontSize: 13, color: tier.ink, textShadow: "0 1px 0 #FFFFFF66" }}>{ovr}</span>
+      <span style={{ fontSize: 5, letterSpacing: 1, color: tier.ink, fontFamily: "Verdana, sans-serif", fontWeight: "bold" }}>OVR</span>
+    </span>
+  );
+}
 function Crest({ t, size = 32 }) {
   const ov = TEAM_LOGO_OVERRIDES[t.id] || TEAM_LOGO_OVERRIDES[t.city];
   if (ov) return <img src={ov} alt={t.city} style={{ width: "100%", height: "100%", objectFit: "contain" }} />;
@@ -1223,6 +1343,16 @@ const CSS = `
 .cb-die { animation: cbTumble .55s cubic-bezier(.2,1.3,.4,1) both; }
 @keyframes cbBeg { 0%,100% { transform: scale(1); box-shadow: 0 0 12px #FFD86B66; } 50% { transform: scale(1.08); box-shadow: 0 0 30px #FFD86BEE; } }
 .cb-tapdie { animation: cbBeg 1.1s infinite; cursor: pointer; }
+@keyframes cbBanner { 0%,100% { opacity: 1; } 50% { opacity: .25; } }
+.cb-banner { animation: cbBanner .5s steps(2) infinite; }
+@keyframes cbShake { 0%,100% { transform: translate(0,0); } 20% { transform: translate(-4px,2px); } 40% { transform: translate(4px,-2px); } 60% { transform: translate(-3px,-2px); } 80% { transform: translate(3px,2px); } }
+.cb-shake { animation: cbShake .38s linear 2; }
+@keyframes cbConfetti { 0% { transform: translateY(0) rotate(0); opacity: 1; } 100% { transform: translateY(112px) rotate(540deg); opacity: .2; } }
+.cb-confetti { animation: cbConfetti 1.15s ease-in forwards; }
+@keyframes cbSparkle { 0% { opacity: 0; transform: scale(.4); } 40% { opacity: 1; transform: scale(1.25); } 100% { opacity: 0; transform: scale(.6) translateY(-8px); } }
+.cb-sparkle { animation: cbSparkle .9s ease-out infinite; }
+@keyframes cbSpiral { from { filter: brightness(1); } 50% { filter: brightness(1.35); } to { filter: brightness(1); } }
+.cb-spiral { animation: cbSpiral .22s linear infinite; }
 @keyframes cbTrailFade { 0% { opacity: .95; } 65% { opacity: .85; } 100% { opacity: 0; } }
 .cb-trail { animation: cbTrailFade 1.8s ease-out forwards; }
 @keyframes cbHop { 0% { transform: translate(-50%,-50%) scale(1); } 35% { transform: translate(-50%,-62%) scale(1.18); } 100% { transform: translate(-50%,-50%) scale(1); } }
@@ -1231,7 +1361,7 @@ const CSS = `
 .cb-btn:active:not(:disabled) { transform: translateY(2px); box-shadow: none !important; }
 @keyframes cbPulse { 0%,100% { box-shadow: 0 0 14px #E3B23C55; } 50% { box-shadow: 0 0 30px #E3B23CBB; } }
 .cb-pulse { animation: cbPulse 1.6s infinite; }
-@media (prefers-reduced-motion: reduce) { .cb-slam, .cb-pulse, .cb-die { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .cb-slam, .cb-pulse, .cb-die, .cb-banner, .cb-shake, .cb-confetti, .cb-sparkle, .cb-spiral { animation: none; } }
 `;
 
 /* ============================ APP ============================ */
@@ -1282,6 +1412,7 @@ export default function App() {
   const hasChit = (team, tag) => g.chits[team].includes(tag);
   const markUsed = (team, tag) => { if (!g.usedChits.find((u) => u.team === team && u.tag === tag)) g.usedChits.push({ team, tag }); };
   const push = () => setG({ ...g });
+  const setAnim = (type, extra = {}) => { g.fieldAnim = { id: Date.now() + Math.random(), type, from: g.spot, to: g.spot, ...extra }; };
 
   /* ---------- slots (slot field on every card) ---------- */
   const offSlots = (t) => ({
@@ -1416,8 +1547,9 @@ export default function App() {
     const primaryDef = play.type === "run" ? s.defTrio[0] : s.defTrio[2];
     if (s.pod === 1) {
       const tk = takeaway(primaryDef.diff + (primaryDef.ab.intB || 0), qb.diff);
-      if (tk.taken) { g.stats.tos++; if (isPlayerOff) g.stats.intThrown++, g.stats.passAtt++; log(`POD 1 — INTERCEPTED by ${primaryDef.name}! ${qb.name} would like a word with his arm.`, "bad"); g.sctx = null; endDrive("int"); return; }
+      if (tk.taken) { g.stats.tos++; if (isPlayerOff) g.stats.intThrown++, g.stats.passAtt++; log(`POD 1 — INTERCEPTED by ${primaryDef.name}! ${qb.name} would like a word with his arm.`, "bad"); setAnim("int", { to: Math.min(FIELD, g.spot + 14) }); g.sctx = null; endDrive("int"); return; }
       log(`The ball hangs… and DROPS. ${primaryDef.name} will see that one at 3 a.m. Incomplete.`, "play");
+      setAnim("incomplete", { to: Math.min(FIELD, g.spot + 14) });
       if (isPlayerOff) g.stats.incompletions++, g.stats.passAtt++;
       g.sctx = null; advanceDown(0); return;
     }
@@ -1445,7 +1577,7 @@ export default function App() {
         const rod = s.rod;
         if (rod === 1) {
           const tk = takeaway(primaryDef.diff + (primaryDef.ab.intB || 0), sk.diff);
-          if (tk.taken) { g.stats.tos++; log(`ROD 1 — FUMBLE! ${defT.city} rips it out (${tk.dr} vs ${tk.or})! The crowd makes a sound like a kettle.`, "bad"); endDrive("fumble"); return; }
+          if (tk.taken) { g.stats.tos++; log(`ROD 1 — FUMBLE! ${defT.city} rips it out (${tk.dr} vs ${tk.or})! The crowd makes a sound like a kettle.`, "bad"); setAnim("fumble"); endDrive("fumble"); return; }
           log(`Fumble scare — ${sk.name} hugs the ball like it owes him money. No gain.`, "play");
           advanceDown(0); return;
         }
@@ -1454,13 +1586,15 @@ export default function App() {
         if (sk.ab.quick && (rod === 2 || rod === 6)) { const ex = shortGain(); gain += ex; log(`QUICK! Bonus burst +${ex}m.`, "good"); }
         if (isPlayerOff && sk.pos && sk.pos.startsWith("RB")) g.stats.rbYds += gain;
         log(`${sk.name} behind ${blk.name} — ${note}, +${gain}m!`, "good");
+        setAnim("run", { from: g.spot, to: Math.min(FIELD, g.spot + gain), margin: s.o - s.d, star: !!sk.elite });
         startChase(sk, gain, "run");
       } else {
         const pod = s.pod, compl = s.compl, cr = s.cr;
-        if (cr > compl) { if (isPlayerOff) g.stats.incompletions++, g.stats.passAtt++; log(`${qb.name} → ${sk.name} (${["10m", "20m", "20+m"][play.depth]}): ${cr} vs ${compl}% — INCOMPLETE. The ball had other plans.`, "play"); advanceDown(0); return; }
+        if (cr > compl) { if (isPlayerOff) g.stats.incompletions++, g.stats.passAtt++; log(`${qb.name} → ${sk.name} (${["10m", "20m", "20+m"][play.depth]}): ${cr} vs ${compl}% — INCOMPLETE. The ball had other plans.`, "play"); setAnim("incomplete", { to: Math.min(FIELD, g.spot + 14) }); advanceDown(0); return; }
         let gain = play.depth === 0 ? shortGain() : play.depth === 1 ? longGain() : longGain() + 10;
         const bonus = pod === 5 ? " STIFF-ARM!" : pod === 7 ? " SPECTACULAR CATCH!" : pod === 8 ? " HURDLE!" : "";
         log(`${qb.name} → ${sk.name}: ${cr} vs ${compl}% — CAUGHT, +${gain}m!${bonus}`, "good");
+        setAnim("pass", { from: g.spot, to: Math.min(FIELD, g.spot + gain), margin: s.o - s.d, star: !!sk.elite, burned: compl > 100 });
         if (hasChit(g.possession, "jets") && sk.pos === "WR1") { gain += 10; markUsed(g.possession, "jets"); log("JETS! +10 bonus meters. He left a vapor trail.", "good"); }
         if (isPlayerOff) {
           g.stats.passAtt++; g.stats.passComp++; g.stats.passYds += gain;
@@ -1470,18 +1604,18 @@ export default function App() {
       }
     } else {
       const dd = s.dd;
-      if (dd === 1) { const loss = play.type === "pass" ? d(10) + (primaryDef.ab.sackB ? 2 : 0) : 5; if (isPlayerOff && play.type === "pass") g.stats.sacksTaken++, g.stats.passAtt++; log(play.type === "pass" ? `SACK! ${defTrio[0].name} arrives with paperwork. -${loss}m.` : `Swallowed in the backfield. -5m.`, "bad2"); advanceDown(-loss); return; }
+      if (dd === 1) { const loss = play.type === "pass" ? d(10) + (primaryDef.ab.sackB ? 2 : 0) : 5; if (isPlayerOff && play.type === "pass") g.stats.sacksTaken++, g.stats.passAtt++; log(play.type === "pass" ? `SACK! ${defTrio[0].name} arrives with paperwork. -${loss}m.` : `Swallowed in the backfield. -5m.`, "bad2"); setAnim("sack", { margin: s.d - s.o }); advanceDown(-loss); return; }
       if (dd === 2 || dd === 6) { log(`STUFFED at the line. The wall files this under 'correspondence.'`, "bad2"); advanceDown(0); return; }
       if (dd === 3) {
         const tk = takeaway(s.dB + (primaryDef.ab.intB || 0), s.oB - OFF_EDGE);
-        if (tk.taken) { g.stats.tos++; if (isPlayerOff && play.type === "pass") g.stats.intThrown++, g.stats.passAtt++; log(`TAKEAWAY! ${primaryDef.name} ${play.type === "pass" ? "INTERCEPTS" : "FORCES THE FUMBLE"} (${tk.dr} vs ${tk.or})! The Dragonfly saw it coming.`, "bad"); endDrive("int"); return; }
+        if (tk.taken) { g.stats.tos++; if (isPlayerOff && play.type === "pass") g.stats.intThrown++, g.stats.passAtt++; log(`TAKEAWAY! ${primaryDef.name} ${play.type === "pass" ? "INTERCEPTS" : "FORCES THE FUMBLE"} (${tk.dr} vs ${tk.or})! The Dragonfly saw it coming.`, "bad"); setAnim(play.type === "pass" ? "int" : "fumble", { to: Math.min(FIELD, g.spot + 10) }); endDrive("int"); return; }
         log(`Takeaway chance — batted down (${tk.dr} vs ${tk.or}). Merely a stop.`, "bad2"); advanceDown(0); return;
       }
       if (dd === 4) {
         if (play.type === "pass") {
           const loc = -d(10);
           const tk = takeaway(s.dB, s.oB - OFF_EDGE);
-          if (tk.taken) { g.stats.tos++; log(`STRIP SACK! ${defT.city} recovers at ${loc}m! Somebody alert the hymnal.`, "bad"); endDrive("fumble", { move: loc }); return; }
+          if (tk.taken) { g.stats.tos++; log(`STRIP SACK! ${defT.city} recovers at ${loc}m! Somebody alert the hymnal.`, "bad"); setAnim("fumble"); endDrive("fumble", { move: loc }); return; }
           log(`STRIP SACK — scramble! Offense falls on it at ${loc}m. Everyone screams appropriately.`, "bad2"); advanceDown(loc); return;
         }
         log(`Stuffed on the run. Nothing there but regret.`, "bad2"); advanceDown(0); return;
@@ -1527,6 +1661,7 @@ export default function App() {
       else if (ch.kind === "run" && ch.carrier.pos && ch.carrier.pos.startsWith("RB")) g.stats.rbYds += extra;
     }
     log(`${ch.carrier.name} BREAKS FREE (+${extra}m)!${FIELD - g.spot - ch.gain > 0 ? ` ${FIELD - g.spot - ch.gain}m to glory…` : ""}`, "good");
+    setAnim("run", { from: Math.max(1, g.spot + ch.gain - extra), to: Math.min(FIELD, g.spot + ch.gain), star: !!(ch.carrier && ch.carrier.elite) });
     if (g.spot + ch.gain >= FIELD) { finishChase(true); return null; }
     return true;
   }
@@ -1549,6 +1684,7 @@ export default function App() {
     if (!g.ot && lastGame()) pts = 10;
     g.score[g.possession] += pts;
     log(`TOUCHDOWN ${offT.city.toUpperCase()}! ${pts} POINTS${pts > 6 ? " — CLUTCH!" : ""} Lavish celebrations are encouraged and, in fact, occurring.`, "score");
+    setAnim("td", { from: Math.max(1, g.spot - 14), to: FIELD - 3, star: true });
     g.phase = "pat"; g.reveal = null;
     if (!isPlayerOff) { const diff = g.score[g.other] - g.score[g.possession]; doPAT(Math.abs(diff) === 2 || Math.random() < 0.12 ? 2 : 1); }
   }
@@ -1584,8 +1720,9 @@ export default function App() {
       const pts = !g.ot && lastGame() && !hasChit(g.possession, "toe") ? 5 : 3;
       g.score[g.possession] += pts;
       log(`FIELD GOAL (${dist}m) is GOOD — ${pts} points${pts === 5 ? ", CLUTCH KICK!" : "."}`, "score");
+      setAnim("kick", { good: true });
       endDrive("fg");
-    } else { g.score[g.other] += 1; log(`The ${dist}m kick sails wide — ROUGE! One free, humiliating point for ${defT.city}.`, "bad"); endDrive("fgmiss"); }
+    } else { g.score[g.other] += 1; log(`The ${dist}m kick sails wide — ROUGE! One free, humiliating point for ${defT.city}.`, "bad"); setAnim("kick", { good: false }); endDrive("fgmiss"); }
   }
   function tryPunt() {
     const s1 = YARD_WHEEL[Math.floor(Math.random() * 10)], s2 = YARD_WHEEL[Math.floor(Math.random() * 10)];
@@ -1703,7 +1840,7 @@ export default function App() {
         </div>
       </div>
 
-      <FieldBar spot={g.spot} line={g.line} possession={g.possession} teams={[playerTeam, aiTeam]} />
+      <RetroField spot={g.spot} line={g.line} possession={g.possession} teams={[playerTeam, aiTeam]} anim={g.fieldAnim} />
 
       <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
         <div style={{ flex: "1 1 560px", minWidth: 340 }}>
@@ -1896,63 +2033,177 @@ export default function App() {
   }
 }
 
-function FieldBar({ spot, line, possession, teams }) {
-  // v3.2 — top-down field of play: team glyphs as pieces, dotted play trail w/ arrows
-  const prevRef = useRef(spot);
-  const [trail, setTrail] = useState(null);
-  useEffect(() => {
-    if (prevRef.current !== spot) {
-      setTrail({ from: prevRef.current, to: spot, id: Date.now() });
-      prevRef.current = spot;
-    }
-  }, [spot]);
-  const pc = (m) => Math.max(0, Math.min(100, (m / FIELD) * 100));
-  const pct = pc(spot), fdPct = pc(line + TO_GAIN);
-  const offT = TEAMS[possession];
-  const defT = TEAMS[teams[0] === possession ? teams[1] : teams[0]];
-  const gain = trail && trail.to > trail.from;
-  const oDots = [spot - 4, spot - 7, spot - 10].filter((m) => m > 2);
-  const xDots = [spot + 8, spot + 12].filter((m) => m < FIELD - 2);
+
+/* ================= RETRO FIELD v2 — original 16-bit-style sprites =================
+   Tecmo-Bowl-inspired, original pixel art tinted by team hex colors. 3v3 on field.
+   Choreography reflects the cards' outcome: distance-scaled runs, QB dropbacks,
+   routes, pursuit, pancakes, dizzy-star sacks, pick-six returns, confetti TDs,
+   superstar sparkle trails, burned-coverage separation, and screen shake. */
+const PIX = {
+  STAND: ["....HHHH......","...HHHHHH.....","...HFFMM......","...HFFMM......","....JJJJ......","..TJJJJJJT....","..AJJJJJJA....","..GJJTTJJG....","....JJJJ......","....PPPP......","....PPPP......","....LLLL......","....LL.LL.....","....LL.LL.....","....KK.KK.....",".............."],
+  RUNA:  ["....HHHH......","...HHHHHH.....","...HFFMM......","...HFFMM......","....JJJJ......","..TJJJJJJT....","...AJJJJA.....","...GJJTTG.....","....JJJJ......","....PPPP......","...PPPPP......","...LL.LLL.....","..LL...LL.....",".LL.....LL....",".KK......KK...",".............."],
+  RUNB:  ["....HHHH......","...HHHHHH.....","...HFFMM......","...HFFMM......","....JJJJ......","..TJJJJJJT....","...AJJJJA.....","...GJJTTG.....","....JJJJ......","....PPPP......","....PPPP......","....LLLL......","....LLLL......","....LLLL......","....KKKK......",".............."],
+  ARMS:  [".G........G...",".A..HHHH..A...",".A.HHHHHH.A...",".A.HFFMM..A...",".TAHFFMM.AT...","..TJJJJJJT....","...JJJJJJ.....","...JJTTJJ.....","....JJJJ......","....PPPP......","....PPPP......","....LLLL......","....LL.LL.....","....LL.LL.....","....KK.KK.....",".............."],
+};
+function PixelSprite({ team, pose = "STAND", facing = 1, face, px = 3, style = {}, flat = false, dur = 0.5 }) {
+  const t = TEAMS[team] || team;
+  const C = { H: t.color, M: "#C9CFC4", F: face || "#C68B59", J: t.color, T: t.color2, A: t.color, G: face || "#C68B59", P: "#E8E4D8", L: "#E8E4D8", K: "#1B1B1B" };
+  const rows = PIX[pose] || PIX.STAND;
   return (
-    <div style={{ margin: "10px 0 16px", width: "100%" }}>
-      <div style={{ position: "relative", height: 104, borderRadius: 12, border: "3px solid #2C5A44", overflow: "hidden",
-        background: "repeating-linear-gradient(90deg,#1A5233 0,#1A5233 9.09%,#14472B 9.09%,#14472B 18.18%)" }}>
-        {/* chalk yard lines + hashes */}
-        <div style={{ position: "absolute", inset: 0, background: "repeating-linear-gradient(90deg, transparent 0, transparent calc(9.09% - 1px), #E9E4D355 calc(9.09% - 1px), #E9E4D355 9.09%)" }} />
-        <div style={{ position: "absolute", left: 0, right: 0, top: 24, height: 2, background: "repeating-linear-gradient(90deg, #E9E4D344 0 3px, transparent 3px 14px)" }} />
-        <div style={{ position: "absolute", left: 0, right: 0, bottom: 24, height: 2, background: "repeating-linear-gradient(90deg, #E9E4D344 0 3px, transparent 3px 14px)" }} />
-        {/* end zones: attacking right (defense色), own goal left */}
-        <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "5%", background: `linear-gradient(90deg, ${offT.color}AA, ${offT.color}33)`, borderRight: "2px solid #E9E4D366" }} />
-        <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: "5%", background: `linear-gradient(270deg, ${defT.color}AA, ${defT.color}33)`, borderLeft: "2px solid #E9E4D366" }} />
-        {/* LOS + first-down chains */}
-        <div style={{ position: "absolute", left: `${pct}%`, top: 0, bottom: 0, width: 2, background: "#5EC3E8AA" }} />
-        <div style={{ position: "absolute", left: `${fdPct}%`, top: 0, bottom: 0, width: 2, background: "#FFD86B", boxShadow: "0 0 8px #FFD86B" }} />
-        {/* play trail: marching dots + arrowhead, fades after each play */}
-        {trail && Math.abs(trail.to - trail.from) > 0 && (
-          <div key={trail.id} className="cb-trail" onAnimationEnd={() => setTrail(null)}
-            style={{ position: "absolute", top: "50%", height: 4, transform: "translateY(-50%)",
-              left: `${pc(Math.min(trail.from, trail.to))}%`, width: `${Math.abs(pc(trail.to) - pc(trail.from))}%`,
-              background: `repeating-linear-gradient(90deg, ${gain ? "#FFD86B" : "#FF8A70"} 0 6px, transparent 6px 13px)` }}>
-            <span style={{ position: "absolute", [gain ? "right" : "left"]: -9, top: -8, fontSize: 13, color: gain ? "#FFD86B" : "#FF8A70", textShadow: "0 1px 2px #000" }}>{gain ? "►" : "◄"}</span>
+    <div style={{ position: "absolute", width: 14 * px, height: 16 * px, transition: `left ${dur}s cubic-bezier(.3,.9,.4,1), top .35s ease`, ...style }}>
+      {flat && <div style={{ position: "absolute", top: -12, left: 4, fontSize: 11, color: "#FFE28A", textShadow: "0 1px 0 #000" }}>✶✶</div>}
+      <svg viewBox="0 0 14 16" width={14 * px} height={16 * px} shapeRendering="crispEdges"
+        style={{ transform: `scaleX(${facing}) ${flat ? "rotate(90deg)" : ""}`, imageRendering: "pixelated", transition: "transform .25s ease" }}>
+        {rows.map((row, y) => [...row].map((ch, x) => ch !== "." ? <rect key={x + "_" + y} x={x} y={y} width="1" height="1" fill={C[ch] || "#000"} /> : null))}
+      </svg>
+    </div>
+  );
+}
+const SKINS = ["#C68B59", "#8D5524", "#E8BEAC"];
+const faceFor = (teamId, i) => teamId === "estes" ? "#C9C4D4" : SKINS[i % 3];
+
+function RetroField({ spot, line, possession, teams, anim }) {
+  const offT = TEAMS[possession];
+  const defId = teams[0] === possession ? teams[1] : teams[0];
+  const defT = TEAMS[defId];
+  const pc = (m) => Math.max(1, Math.min(99, (m / FIELD) * 100));
+  const [frame, setFrame] = useState(0);
+  const [scene, setScene] = useState(null);
+  const animRef = useRef(null);
+  const active = !!scene;
+  useEffect(() => { const iv = setInterval(() => setFrame((f) => f + 1), active ? 110 : 260); return () => clearInterval(iv); }, [active]);
+  useEffect(() => {
+    if (!anim || anim.id === animRef.current) return;
+    animRef.current = anim.id;
+    setScene({ ...anim, step: 0 });
+    const ts = [setTimeout(() => setScene((sc) => sc && { ...sc, step: 1 }), 380),
+                setTimeout(() => setScene((sc) => sc && { ...sc, step: 2 }), 950),
+                setTimeout(() => setScene((sc) => sc && { ...sc, step: 3 }), 1650),
+                setTimeout(() => setScene(null), 2650)];
+    return () => ts.forEach(clearTimeout);
+  }, [anim]);
+
+  const runPose = frame % 2 ? "RUNA" : "RUNB";
+  const losPct = pc(spot), fdPct = pc(line + TO_GAIN);
+  const sc = scene, st = sc ? sc.step : -1;
+  const fromPct = sc ? pc(sc.from ?? spot) : losPct;
+  const toPct = sc ? pc(sc.to ?? spot) : losPct;
+  const dist = Math.abs(toPct - fromPct);
+  const runDur = Math.max(0.45, Math.min(1.25, dist * 0.02 + 0.3));
+  const T = sc ? sc.type : null;
+  const moving = T === "run" || T === "td";
+  const passing = T === "pass" || T === "incomplete" || T === "int";
+  const sacked = T === "sack";
+  const fumb = T === "fumble";
+  const pancake = T === "run" && sc && (sc.margin || 0) >= 25;
+  const burned = sc && sc.burned;
+
+  // --- choreography positions ---
+  const qbBase = Math.max(losPct - 6, 1);
+  const qbPct = passing || sacked ? (st >= 0 ? Math.max(qbBase - 3, 1) : qbBase) : qbBase; // dropback
+  const routePct = passing ? (st === 0 ? Math.min(fromPct + dist * 0.55 + 4, 97) : toPct) : null; // receiver route
+  const carrierPct = moving ? (st === 0 ? fromPct : toPct)
+    : T === "pass" ? (st <= 1 ? routePct : Math.min(toPct + 3, 98))
+    : passing ? routePct
+    : losPct;
+  const carrierPose = moving || (T === "pass" && st >= 2) ? runPose
+    : passing && st === 1 ? "ARMS"
+    : T === "td" ? "ARMS" : sc ? runPose : "STAND";
+  // ball
+  const ballLeft = T === "kick" ? (st === 0 ? losPct : 96)
+    : passing ? (st === 0 ? qbPct + 2 : toPct)
+    : (carrierPct ?? losPct);
+  const ballTop = T === "kick" ? (st === 0 ? 60 : sc.good ? 8 : 0)
+    : passing ? (st === 0 ? 48 : st === 1 ? 12 : T === "incomplete" ? 92 : T === "int" ? 66 : 58)
+    : fumb ? (st === 0 ? 56 : st === 1 ? 16 : 84)
+    : 58;
+  // defenders: pursuit tracks the action
+  const dlPct = sacked && st >= 1 ? qbPct + 1 : Math.min(losPct + 3, 96);
+  const lbPct = moving && st >= 1 ? Math.max(toPct - 6, 3) : Math.min(losPct + 8, 97);
+  const dbBase = Math.min(losPct + 14, 97);
+  const dbPct = T === "int" && st >= 2 ? Math.max(toPct - 14, 2)
+    : passing ? (burned ? Math.min(toPct + 11, 98) : st >= 1 ? toPct + 2 : dbBase)
+    : moving && st >= 1 ? Math.max(toPct - 3, 4) : dbBase;
+  const dbPose = T === "int" && st >= 1 ? (st === 1 ? "ARMS" : runPose)
+    : passing && st >= 1 && !burned ? "ARMS" : moving && st >= 1 ? runPose : "STAND";
+  const shake = (sacked || fumb) && st >= 1;
+
+  const banner = sc && st >= 1 ? ({
+    run: pancake && st >= 1 ? "PANCAKE!" : null,
+    pass: burned && st === 1 ? "BURNED!" : null,
+    incomplete: st >= 2 ? "INCOMPLETE!" : null,
+    sack: "SACK!", int: st >= 2 ? "PICKED OFF!" : null, fumble: "FUMBLE!",
+    td: st >= 2 ? "TOUCHDOWN!" : null,
+    kick: sc.good ? "IT'S GOOD!" : "WIDE LEFT!",
+  })[T] : null;
+
+  return (
+    <div style={{ margin: "8px 0 12px" }}>
+      <div className={shake ? "cb-shake" : ""} style={{ position: "relative", height: 112, borderRadius: 10, border: "3px solid #1B1B1B", overflow: "hidden", imageRendering: "pixelated",
+        background: "repeating-linear-gradient(90deg,#2E8B47 0,#2E8B47 9.09%,#249039 9.09%,#249039 18.18%)" }}>
+        <div style={{ position: "absolute", inset: 0, background: "repeating-linear-gradient(90deg, transparent 0, transparent calc(9.09% - 2px), #F2EFE2AA calc(9.09% - 2px), #F2EFE2AA 9.09%)" }} />
+        <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "5%", background: `repeating-linear-gradient(45deg, ${offT.color} 0 6px, ${offT.dark} 6px 12px)`, borderRight: "3px solid #F2EFE2" }} />
+        <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: "5%", background: `repeating-linear-gradient(45deg, ${defT.color} 0 6px, ${defT.dark} 6px 12px)`, borderLeft: "3px solid #F2EFE2" }} />
+        <div style={{ position: "absolute", left: `${losPct}%`, top: 0, bottom: 0, width: 3, background: "#5EC3E8" }} />
+        <div style={{ position: "absolute", left: `${fdPct}%`, top: 0, bottom: 0, width: 3, background: "#FFD86B", boxShadow: "0 0 8px #FFD86B" }} />
+
+        {/* DEFENSE 3 */}
+        <PixelSprite team={defId} face={faceFor(defId, 0)} facing={-1} dur={0.45}
+          pose={sacked && st >= 1 ? runPose : pancake && st >= 1 ? "STAND" : frame % 4 === 0 ? "RUNB" : "STAND"}
+          flat={(fumb && st >= 2) || (pancake && st >= 1)}
+          style={{ left: `calc(${sacked && st >= 1 ? qbPct + 2 : dlPct}% - 21px)`, top: 34 }} />
+        <PixelSprite team={defId} face={faceFor(defId, 1)} facing={-1} dur={runDur}
+          pose={moving && st >= 1 ? runPose : frame % 3 === 0 ? "RUNB" : "STAND"}
+          style={{ left: `calc(${lbPct}% - 21px)`, top: 8 }} />
+        <PixelSprite team={defId} face={faceFor(defId, 2)} facing={-1} dur={runDur}
+          pose={dbPose} style={{ left: `calc(${dbPct}% - 21px)`, top: 62 }} />
+
+        {/* OFFENSE 3 */}
+        <PixelSprite team={possession} face={faceFor(possession, 0)} facing={1} dur={0.4}
+          pose={sc ? runPose : "STAND"} flat={sacked && st >= 1}
+          style={{ left: `calc(${Math.max(losPct - 2, 2) + (sc && st >= 0 ? 1 : 0)}% - 21px)`, top: 34 }} />
+        <PixelSprite team={possession} face={faceFor(possession, 1)} facing={1} dur={0.4}
+          pose={passing && st === 0 ? "ARMS" : "STAND"} flat={sacked && st >= 2}
+          style={{ left: `calc(${sacked && st >= 2 ? Math.max(qbPct - (sc.margin >= 25 ? 4 : 1), 1) : qbPct}% - 21px)`, top: 40 }} />
+        <PixelSprite team={possession} face={faceFor(possession, 2)} facing={T === "int" && st >= 2 ? -1 : 1} dur={runDur}
+          pose={carrierPose} style={{ left: `calc(${carrierPct ?? losPct}% - 21px)`, top: T === "td" && st >= 2 ? 20 : 56 }} />
+
+        {/* superstar sparkle trail */}
+        {sc && sc.star && st >= 1 && [6, 11, 16].map((off, i) => (
+          <span key={i} className="cb-sparkle" style={{ position: "absolute", left: `calc(${Math.max((carrierPct ?? losPct) - off * 0.9, 1)}% - 4px)`, top: 60 + (i % 2) * 10, color: "#FFD86B", fontSize: 12 + i * 2, animationDelay: `${i * 0.12}s`, textShadow: "0 0 6px #FFD86B" }}>✦</span>
+        ))}
+
+        {/* THE BALL */}
+        <div style={{ position: "absolute", left: `calc(${ballLeft}% - 5px)`, top: ballTop,
+          width: 10, height: 7, borderRadius: "50%", background: "#8B4513", border: "1px solid #4A2508", zIndex: 3,
+          transition: `left ${passing || T === "kick" ? 0.55 : runDur}s ${st === 1 ? "cubic-bezier(.2,.7,.5,1)" : "cubic-bezier(.5,0,.8,.4)"}, top .5s ${st === 1 ? "cubic-bezier(.2,-0.6,.6,1)" : "ease-in"}` }}
+          className={T === "kick" || (passing && st === 1) ? "cb-spiral" : ""}>
+          <div style={{ position: "absolute", left: 2, top: 2, width: 5, height: 1, background: "#F2EFE2" }} />
+        </div>
+
+        {/* TD confetti */}
+        {T === "td" && st >= 2 && Array.from({ length: 12 }).map((_, i) => (
+          <div key={i} className="cb-confetti" style={{ position: "absolute", left: `${70 + (i * 17) % 28}%`, top: -6,
+            width: 5, height: 5, background: i % 3 === 0 ? offT.color : i % 3 === 1 ? offT.color2 : "#FFD86B",
+            animationDelay: `${(i % 6) * 0.13}s` }} />
+        ))}
+
+        {banner && (
+          <div className="cb-banner" style={{ position: "absolute", left: 0, right: 0, top: 34, textAlign: "center", zIndex: 5,
+            fontFamily: "'Courier New', monospace", fontWeight: "bold", fontSize: 26, letterSpacing: 4,
+            color: ["TOUCHDOWN!", "IT'S GOOD!", "PANCAKE!", "BURNED!"].includes(banner) ? "#FFE28A" : "#FF6B4A",
+            textShadow: "2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 0 0 14px #000" }}>
+            {banner}
           </div>
         )}
-        {/* formation dots: teammates (o) behind the ball, defenders (x) beyond */}
-        {oDots.map((m, i) => (
-          <div key={"o" + i} style={{ position: "absolute", left: `${pc(m)}%`, top: i % 2 ? "70%" : "22%", transform: "translate(-50%,-50%)", width: 11, height: 11, borderRadius: "50%", border: `2px solid ${offT.color2}`, opacity: 0.75, transition: "left .6s ease" }} />
-        ))}
-        {xDots.map((m, i) => (
-          <div key={"x" + i} style={{ position: "absolute", left: `${pc(m)}%`, top: i % 2 ? "72%" : "24%", transform: "translate(-50%,-50%)", fontSize: 15, fontWeight: "bold", color: defT.color2, opacity: 0.85, transition: "left .6s ease", textShadow: "0 1px 1px #000" }}>✕</div>
-        ))}
-        {/* THE PIECES: offense glyph carries the ball; defense glyph shadows the LOS */}
-        <div key={"d" + spot} style={{ position: "absolute", left: `${pc(Math.min(spot + 4, FIELD - 3))}%`, top: "50%", transform: "translate(-50%,-50%)", width: 34, height: 34, borderRadius: "50%", background: `linear-gradient(160deg, ${defT.color}, ${defT.dark})`, border: `2px solid ${defT.color2}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, color: "#fff", transition: "left .6s ease", textShadow: "0 1px 1px #000" }}>{defT.glyph}</div>
-        <div key={"p" + spot} className="cb-hop" style={{ position: "absolute", left: `${pct}%`, top: "50%", width: 42, height: 42, borderRadius: "50%", background: `linear-gradient(160deg, ${offT.color}, ${offT.dark})`, border: "3px solid #FFD86B", boxShadow: "0 0 16px #FFD86B88, 0 3px 6px #000A", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22, color: "#fff", zIndex: 2, transition: "left .6s ease", textShadow: "0 1px 1px #000" }}>{offT.glyph}</div>
       </div>
-      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 11, color: "#8FA08F", marginTop: 4, fontFamily: "Courier New, monospace" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 9, color: "#8FA08F", marginTop: 2, fontFamily: "Courier New, monospace" }}>
         <span>◄ OWN GOAL</span><span>{offT.glyph} BALL AT {spot}m · {FIELD - spot} TO PAY DIRT ⟶</span><span>END ZONE ►</span>
       </div>
     </div>
   );
 }
+
 
 function StatsPanel({ g, pT, aT, playerTeam, aiTeam, drivesPerQtr }) {
   const runs = g.playerRuns - 1, passes = g.playerPasses - 1; // seeded at 1
@@ -2061,7 +2312,10 @@ function Select({ playerTeam, setPlayerTeam, aiTeam, setAiTeam, mode, setMode, o
               style={{ width: 240, cursor: "pointer", borderRadius: 14, overflow: "hidden", border: `3px solid ${isP ? "#FFD86B" : isA ? "#D6482F" : t.color2}`, background: `linear-gradient(170deg, ${t.dark}, #0A0F0B)`, transform: isP || isA ? "translateY(-5px)" : "none", transition: "all .2s", boxShadow: isP ? "0 0 22px #FFD86B66" : isA ? "0 0 22px #D6482F66" : "0 6px 14px #0007" }}>
               <div style={{ background: `linear-gradient(90deg, ${t.color}, ${t.dark})`, padding: "10px 12px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <span style={{ fontFamily: "Impact, sans-serif", fontSize: 16, color: "#fff", letterSpacing: 1 }}>{t.city.toUpperCase()}</span>
-                <span style={{ width: 30, height: 30, display: "inline-flex", alignItems: "center", justifyContent: "center" }}><Crest t={t} size={22} /></span>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+                  <OvrBadge ovr={t.ovr} />
+                  <span style={{ width: 30, height: 30, display: "inline-flex", alignItems: "center", justifyContent: "center" }}><Crest t={t} size={22} /></span>
+                </span>
               </div>
               <div style={{ padding: 12 }}>
                 <div style={{ fontFamily: "Impact, sans-serif", fontSize: 18, color: t.color2 }}>{t.name}</div>

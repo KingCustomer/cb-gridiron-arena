@@ -1239,6 +1239,15 @@ function HelpFab() {
   const [tab, setTab] = useState("goal");
   return (
     <>
+      <a href="https://a.co/d/0c1A8XNp" target="_blank" rel="noopener noreferrer" aria-label="Buy the book" style={{
+        position: "fixed", bottom: 24, right: 82, zIndex: 60, textDecoration: "none",
+        display: "flex", alignItems: "center", gap: 7, padding: "9px 14px 9px 11px", borderRadius: 24,
+        background: "linear-gradient(180deg,#FFD86B,#C89019)", border: "2px solid #FFEBAE",
+        boxShadow: "0 4px 0 #7A5608, 0 8px 20px #000A",
+      }} className="cb-bookfab">
+        <span style={{ fontSize: 18, lineHeight: 1 }}>📖</span>
+        <span style={{ fontFamily: "Impact, sans-serif", fontSize: 13, letterSpacing: 1, color: "#3A2703", textShadow: "0 1px 0 #FFEFC0", whiteSpace: "nowrap" }}>BUY THE BOOK!</span>
+      </a>
       <button onClick={() => setOpen(true)} aria-label="How to play" style={{
         position: "fixed", bottom: 18, right: 18, zIndex: 60, width: 52, height: 52, borderRadius: "50%",
         background: "linear-gradient(180deg,#FFD86B,#C89019)", border: "2px solid #FFEBAE",
@@ -1344,6 +1353,9 @@ const CSS = `
 .cb-die { animation: cbTumble .55s cubic-bezier(.2,1.3,.4,1) both; }
 @keyframes cbBeg { 0%,100% { transform: scale(1); box-shadow: 0 0 12px #FFD86B66; } 50% { transform: scale(1.08); box-shadow: 0 0 30px #FFD86BEE; } }
 .cb-tapdie { animation: cbBeg 1.1s infinite; cursor: pointer; }
+.cb-bookfab { transition: transform .15s ease, filter .15s ease; }
+.cb-bookfab:hover { transform: translateY(-2px); filter: brightness(1.1); }
+.cb-bookfab:active { transform: translateY(2px); box-shadow: none !important; }
 @keyframes cbBanner { 0%,100% { opacity: 1; } 50% { opacity: .25; } }
 .cb-banner { animation: cbBanner .5s steps(2) infinite; }
 @keyframes cbShake { 0%,100% { transform: translate(0,0); } 20% { transform: translate(-4px,2px); } 40% { transform: translate(4px,-2px); } 60% { transform: translate(-3px,-2px); } 80% { transform: translate(3px,2px); } }
@@ -2048,101 +2060,101 @@ export default function App() {
    superstar sparkle trails, burned-coverage separation, and screen shake. */
 const PIX = {
   STAND: [
-    ".....####.......",
-    "....#HHHH#......",
-    "...#HHHHhh#.....",
-    "...#HFFMMh#.....",
-    "...#HFFMM#......",
-    "....#JJJJ#......",
-    "...#TJJJjT#.....",
-    "..#AJJJJJjA#....",
-    "..#GJJTTJjG#....",
-    "...#JJJJJj#.....",
-    "....#PPPP#......",
-    "....#PPpp#......",
-    "....#LLLL#......",
-    "...#LL##LL#.....",
-    "...#LL#.#LL#....",
+    ".....######.....",
+    "...##HHHHHH##...",
+    "..#HxxHHHHHHh#..",
+    "..#HxHHHHHHHh#..",
+    "..#HHHFFFFFHh#..",
+    "..#HHFbbFbbFh#..",
+    "..#HHFEeFEeF#...",
+    "..#HHFFFFFFF#...",
+    "...#MMMMMMM#....",
+    "...#jJJJJJj#....",
+    "..#GjJTTTJjG#...",
+    "..#GjJJJJJjG#...",
+    "...#jJJJJJj#....",
+    "....#PPPpp#.....",
+    "....#LLLLL#.....",
     "...#KK#.#KK#....",
     "...####.####....",
     "................",
   ],
   RUNA: [
-    ".....####.......",
-    "....#HHHH#......",
-    "...#HHHHhh#.....",
-    "...#HFFMMh#.....",
-    "...#HFFMM#......",
-    "....#JJJJ#......",
-    "...#TJJJjT#.....",
-    "....#AJJjA#.....",
-    "....#GJTjG#.....",
-    "....#JJJJj#.....",
-    "....#PPPP#......",
-    "...#PPPpp#......",
-    "...#LL#LLL#.....",
-    "..#LL#.#LL#.....",
-    ".#LL#...#LL#....",
+    ".....######.....",
+    "...##HHHHHH##...",
+    "..#HxxHHHHHHh#..",
+    "..#HxHHHHHHHh#..",
+    "..#HHHFFFFFHh#..",
+    "..#HHFbbFbbFh#..",
+    "..#HHFEeFEeF#...",
+    "..#HHFFFFFFF#...",
+    "...#MMMMMMM#....",
+    "....#jJJJJj#....",
+    "...#GjJTTJjG#...",
+    "....#jJJJJj#....",
+    "....#PPPpp#.....",
+    "...#LL##LLL#....",
+    "..#LL#..#LL#....",
     ".#KK#....#KK#...",
     ".####....####...",
     "................",
   ],
   RUNB: [
-    ".....####.......",
-    "....#HHHH#......",
-    "...#HHHHhh#.....",
-    "...#HFFMMh#.....",
-    "...#HFFMM#......",
-    "....#JJJJ#......",
-    "...#TJJJjT#.....",
-    "....#AJJjA#.....",
-    "....#GJTjG#.....",
-    "....#JJJJj#.....",
-    "....#PPPP#......",
-    "....#PPpp#......",
-    "....#LLLL#......",
-    "....#LLLL#......",
+    "................",
+    ".....######.....",
+    "...##HHHHHH##...",
+    "..#HxxHHHHHHh#..",
+    "..#HxHHHHHHHh#..",
+    "..#HHHFFFFFHh#..",
+    "..#HHFbbFbbFh#..",
+    "..#HHFEeFEeF#...",
+    "..#HHFFFFFFF#...",
+    "...#MMMMMMM#....",
+    "....#jJJJJj#....",
+    "...#GjJTTJjG#...",
+    "....#jJJJJj#....",
+    "....#PPPpp#.....",
     "....#LLLL#......",
     "....#KKKK#......",
     "....######......",
     "................",
   ],
   RUNC: [
-    ".....####.......",
-    "....#HHHH#......",
-    "...#HHHHhh#.....",
-    "...#HFFMMh#.....",
-    "...#HFFMM#......",
-    "....#JJJJ#......",
-    "...#TJJJjT#.....",
-    "....#AJJjA#.....",
-    "....#GJTjG#.....",
-    "....#JJJJj#.....",
-    "....#PPPP#......",
-    "...#pPPPP#......",
-    "...#LLL#LL#.....",
-    "...#LL#.#LL#....",
-    "..#LL#...#LL#...",
-    ".#KK#.....#KK#..",
-    ".####.....####..",
+    ".....######.....",
+    "...##HHHHHH##...",
+    "..#HxxHHHHHHh#..",
+    "..#HxHHHHHHHh#..",
+    "..#HHHFFFFFHh#..",
+    "..#HHFbbFbbFh#..",
+    "..#HHFEeFEeF#...",
+    "..#HHFFFFFFF#...",
+    "...#MMMMMMM#....",
+    "....#jJJJJj#....",
+    "...#GjJTTJjG#...",
+    "....#jJJJJj#....",
+    "....#PPPpp#.....",
+    "...#LLL##LL#....",
+    "...#LL#..#LL#...",
+    "..#KK#....#KK#..",
+    "..####....####..",
     "................",
   ],
   ARMS: [
-    ".#G#......#G#...",
-    ".#A#.####.#A#...",
-    ".#A##HHHH##A#...",
-    ".#A#HHHHhh#A#...",
-    ".#TAHFFMMhAT#...",
-    "..#THFFMMT#.....",
-    "...#JJJJJj#.....",
-    "...#JJTTJj#.....",
-    "...#JJJJJj#.....",
-    "....#JJJJ#......",
-    "....#PPPP#......",
-    "....#PPpp#......",
-    "....#LLLL#......",
-    "...#LL##LL#.....",
-    "...#LL#.#LL#....",
+    ".#G#.......#G#..",
+    ".#A#######.#A#..",
+    ".#A#HHHHHH##A#..",
+    ".#A#xHHHHHh#A#..",
+    ".#TAHFFFFFhAT#..",
+    "..#HFbbFbbFh#...",
+    "..#HFEeFEeF#....",
+    "..#HFFFFFFF#....",
+    "...#MMMMMM#.....",
+    "...#jJJJJJj#....",
+    "....#JTTTJ#.....",
+    "....#JJJJJ#.....",
+    "....#jJJJj#.....",
+    "....#PPPpp#.....",
+    "....#LLLLL#.....",
     "...#KK#.#KK#....",
     "...####.####....",
     "................",
@@ -2150,24 +2162,30 @@ const PIX = {
 };
 function PixelSprite({ team, pose = "STAND", facing = 1, face, px = 3, style = {}, flat = false, dur = 0.5 }) {
   const t = TEAMS[team] || team;
-  const shade = (hex, f) => { // simple darken for arcade two-tone shading
+  const shade = (hex, f) => { // darken
     const n = parseInt(hex.slice(1), 16);
     const r = Math.floor(((n >> 16) & 255) * f), g2 = Math.floor(((n >> 8) & 255) * f), b = Math.floor((n & 255) * f);
     return `rgb(${r},${g2},${b})`;
   };
+  const lite = (hex, f) => { // lighten toward white for helmet highlights
+    const n = parseInt(hex.slice(1), 16);
+    const mix = (v) => Math.min(255, Math.floor(v + (255 - v) * f));
+    return `rgb(${mix((n >> 16) & 255)},${mix((n >> 8) & 255)},${mix(n & 255)})`;
+  };
   const skin = face || "#C68B59";
   const C = {
-    "#": "#101010", H: t.color, h: shade(t.color, 0.62), M: "#D8DEE2", F: skin,
-    J: t.color, j: shade(t.color, 0.62), T: t.color2, A: t.color, G: skin,
-    P: "#E8E4D8", p: "#B9B4A2", L: "#E8E4D8", K: "#1B1B1B",
+    "#": "#0A0A0A", H: t.color, h: shade(t.color, 0.5), x: lite(t.color, 0.5), M: "#DCE2E6", F: skin,
+    b: "#0A0A0A", E: "#FFFFFF", e: "#141414",
+    J: t.color, j: shade(t.color, 0.5), T: t.color2, A: t.color, G: skin,
+    P: "#F0ECE0", p: "#A8A292", L: "#F0ECE0", K: "#141414",
   };
   const rows = PIX[pose] || PIX.STAND;
   return (
     <div style={{ position: "absolute", width: 16 * px, height: 18 * px, transition: `left ${dur}s cubic-bezier(.3,.9,.4,1), top .35s ease`, ...style }}>
-      <div style={{ position: "absolute", left: "12%", right: "12%", bottom: px - 1, height: 5, borderRadius: "50%", background: "radial-gradient(ellipse, #00000066, transparent 70%)" }} />
+      <div style={{ position: "absolute", left: "6%", right: "6%", bottom: px - 2, height: 7, borderRadius: "50%", background: "radial-gradient(ellipse, #000000A8, transparent 68%)" }} />
       {flat && <div style={{ position: "absolute", top: -12, left: 6, fontSize: 11, color: "#FFE28A", textShadow: "0 1px 0 #000" }}>✶✶</div>}
       <svg viewBox="0 0 16 18" width={16 * px} height={18 * px} shapeRendering="crispEdges"
-        style={{ transform: `scaleX(${facing}) ${flat ? "rotate(90deg)" : ""}`, imageRendering: "pixelated", transition: "transform .25s ease", position: "relative" }}>
+        style={{ transform: `scaleX(${facing}) ${flat ? "rotate(90deg)" : ""}`, imageRendering: "pixelated", transition: "transform .25s ease", position: "relative", filter: "contrast(1.14) saturate(1.18) drop-shadow(1px 2px 0 #00000055)" }}>
         {rows.map((row, y) => [...row].map((ch, x) => ch !== "." ? <rect key={x + "_" + y} x={x} y={y} width="1" height="1" fill={C[ch] || "#000"} /> : null))}
       </svg>
     </div>
@@ -2260,14 +2278,21 @@ function RetroField({ spot, line, possession, teams, anim }) {
         {/* arcade crowd band */}
         <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: 16, background: "repeating-linear-gradient(90deg,#3A2E52 0 3px,#52341E 3px 6px,#24425A 6px 9px,#5A2430 9px 12px,#2E4A28 12px 15px)", borderBottom: "3px solid #101010", filter: "saturate(.8)" }} />
         <div style={{ position: "absolute", left: 0, right: 0, top: 4, height: 3, background: "repeating-linear-gradient(90deg,#E8D8A0 0 2px, transparent 2px 7px)", opacity: .5 }} />
-        {/* checkered arcade turf */}
+        {/* high-contrast checkered turf */}
         <div style={{ position: "absolute", left: 0, right: 0, top: 16, bottom: 0,
-          background: "repeating-linear-gradient(90deg,#2E8B47 0,#2E8B47 4.545%,#249039 4.545%,#249039 9.09%), repeating-linear-gradient(0deg, transparent 0 14px, #00000012 14px 28px)" }} />
-        <div style={{ position: "absolute", left: 0, right: 0, top: 16, bottom: 0, background: "repeating-linear-gradient(90deg, transparent 0, transparent calc(9.09% - 2px), #F2EFE2AA calc(9.09% - 2px), #F2EFE2AA 9.09%)" }} />
-        <div style={{ position: "absolute", left: 0, top: 16, bottom: 0, width: "5%", background: `repeating-linear-gradient(45deg, ${offT.color} 0 6px, ${offT.dark} 6px 12px)`, borderRight: "3px solid #F2EFE2" }} />
-        <div style={{ position: "absolute", right: 0, top: 16, bottom: 0, width: "5%", background: `repeating-linear-gradient(45deg, ${defT.color} 0 6px, ${defT.dark} 6px 12px)`, borderLeft: "3px solid #F2EFE2" }} />
-        <div style={{ position: "absolute", left: `${losPct}%`, top: 16, bottom: 0, width: 3, background: "#5EC3E8" }} />
-        <div style={{ position: "absolute", left: `${fdPct}%`, top: 16, bottom: 0, width: 3, background: "#FFD86B", boxShadow: "0 0 8px #FFD86B" }} />
+          background: "repeating-linear-gradient(90deg,#2FA653 0,#2FA653 4.545%,#1E7C3B 4.545%,#1E7C3B 9.09%)" }} />
+        <div style={{ position: "absolute", left: 0, right: 0, top: 16, bottom: 0,
+          background: "repeating-linear-gradient(0deg, transparent 0 12px, #00000022 12px 24px)" }} />
+        {/* bold chalk lines + 5m ticks */}
+        <div style={{ position: "absolute", left: 0, right: 0, top: 16, bottom: 0, background: "repeating-linear-gradient(90deg, transparent 0, transparent calc(9.09% - 2px), #FFFFFF calc(9.09% - 2px), #FFFFFF 9.09%)", opacity: .92 }} />
+        <div style={{ position: "absolute", left: 0, right: 0, top: "52%", height: 3, background: "repeating-linear-gradient(90deg, #FFFFFF88 0 4px, transparent 4px calc(4.545% + 0px))" }} />
+        {/* sideline framing */}
+        <div style={{ position: "absolute", left: 0, right: 0, top: 16, height: 3, background: "#FFFFFF", opacity: .9 }} />
+        <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: 3, background: "#FFFFFF", opacity: .9 }} />
+        <div style={{ position: "absolute", left: 0, top: 16, bottom: 0, width: "5%", background: `repeating-linear-gradient(45deg, ${offT.color} 0 6px, ${offT.dark} 6px 12px)`, borderRight: "3px solid #FFFFFF", boxShadow: "inset -4px 0 8px #00000066" }} />
+        <div style={{ position: "absolute", right: 0, top: 16, bottom: 0, width: "5%", background: `repeating-linear-gradient(45deg, ${defT.color} 0 6px, ${defT.dark} 6px 12px)`, borderLeft: "3px solid #FFFFFF", boxShadow: "inset 4px 0 8px #00000066" }} />
+        <div style={{ position: "absolute", left: `${losPct}%`, top: 16, bottom: 0, width: 3, background: "#5EC3E8", boxShadow: "0 0 0 1px #00000066, 0 0 8px #5EC3E877" }} />
+        <div style={{ position: "absolute", left: `${fdPct}%`, top: 16, bottom: 0, width: 3, background: "#FFD86B", boxShadow: "0 0 0 1px #00000066, 0 0 10px #FFD86B" }} />
 
         {/* DEFENSE 3 */}
         <PixelSprite team={defId} face={faceFor(defId, 0)} facing={-1} dur={0.45}

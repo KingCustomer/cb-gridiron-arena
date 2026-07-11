@@ -27,7 +27,7 @@ const FLAVOR = {
   "Cassandra Jemineye": "Sees the whole field. Also sees your browser history.",
   "Helga Jemineye": "The other twin. Somehow ALSO the better one.",
   "Saxby Lawless": "One more ring. Then he'll stop. He will not stop.",
-  "Sample Wong": "Statistically, a miracle. Contractually, employee #00001.",
+  "Sample Wong": "Employee #00001. The Lake calls it; the sky delivers it. (Project Wiselake sends its regards.)",
   "R.Lenin IV": "Redistributes the ball. Occasionally to the other team.",
   "Hardeep Tanaka": "Refused the field goal. Became a hymn.",
   "WR 919": "His name is a number. His routes are poetry.",
@@ -245,7 +245,7 @@ const TEAMS = {
     ovr: 90, identity: "Seize the meters of production.",
     tendency: { run: 0.4, deep: 0.25 },
     offense: [
-      { pos: "QB1", slot: "QB", name: "Sample Wong", kind: "M", diff: 33, pct: [80, 52, 28], ab: { deadEye: 6 }, elite: true },
+      { pos: "QB1", slot: "QB", name: "Sample Wong", kind: "M", diff: 33, pct: [44, 66, 82], ab: { skyDrop: true }, elite: true },
       { pos: "QB2", slot: "QB", name: "R.Lenin IV", kind: "BOT", diff: 17, pct: [70, 35, 22], ab: { quick: true } },
       { pos: "RB1", slot: "SKL", name: "R.Vittorio Bevelacqua", kind: "BOT", diff: 13, pct: [11, 20, 45], ab: { osr11: 5 } },
       { pos: "WR1", slot: "SKL", name: "WR 919", kind: "BOT", diff: 10, pct: [22, 54, 70], ab: { osrPass: 7 } },
@@ -1203,6 +1203,7 @@ const HELP_SECTIONS = [
     ["p", "Touchdowns are 6 points — but 8 on the last drive of the first half and a mighty 10 on the last drive of the game. Field goals are 3 (5 in the clutch). Miss a kick and the enemy gets a free ROUGE point, and they will not be gracious about it."],
   ]},
   { id: "cards", label: "Your 3 Cards", body: [
+    ["p", "UNIQUE PLAYERS exist: Miami's Sample Wong does not throw — Project Wiselake, the brain in the lake, DROPS the ball out of the sky. His passes cannot be intercepted on the outcome die, defenders can't read the trajectory, and his deep ball (82%) is the finest in the league. His short game is, charitably, experimental."],
     ["p", "The corner badge tells you WHO is under the helmet: ♂ male, ♀ female, ⚙ Robot, ◈ Simulacrum. Men, women, robots, and simulacra are ALL eligible — it is the law of the league."],
     ["b", "Every snap, both sides secretly commit exactly three cards."],
     ["p", "ON OFFENSE: a Blocker (any lineman or fullback) + a Quarterback + a Skill player (QB, RB, WR, or TE — your ball carrier or target). Then call your play: RUN, or PASS at 10m / 20m / 20+ depth."],
@@ -1440,7 +1441,8 @@ export default function App() {
   }
   function defBonus(trio, play, offTrio) {
     let add = trio.reduce((s, c) => s + c.diff, 0);
-    trio.forEach((c) => { add += play.type === "run" ? (c.ab.dsrRun || 0) : (c.ab.dsrPass || 0); });
+    const orbital = play.type === "pass" && offTrio[1].ab.skyDrop; // WISELAKE UPLINK: you cannot read a ball that comes from space
+    trio.forEach((c) => { add += play.type === "run" ? (c.ab.dsrRun || 0) : (orbital ? 0 : (c.ab.dsrPass || 0)); });
     offTrio.forEach((c) => { add -= c.ab.dsrPen || 0; });
     if (play.type === "pass") add -= offTrio[1].ab.deadEye || 0;
     // NEW · Thread The Needle — 1st-half passer halves DB (CB/SS/FS) contribution
@@ -1545,6 +1547,11 @@ export default function App() {
     const s = g.sctx;
     const { offTrio, play } = s; const qb = offTrio[1], sk = offTrio[2];
     const primaryDef = play.type === "run" ? s.defTrio[0] : s.defTrio[2];
+    if (s.pod === 1 && qb.ab.skyDrop) {
+      log(`POD 1 — but this ball came from ORBIT. It simply thuds down out of the sky, unpickable, five meters from anyone. The Lake recalibrates. Incomplete.`, "play");
+      setAnim("incomplete", { to: Math.min(FIELD, g.spot + 14), sky: true });
+      g.sctx = null; advanceDown(0); return;
+    }
     if (s.pod === 1) {
       const tk = takeaway(primaryDef.diff + (primaryDef.ab.intB || 0), qb.diff);
       if (tk.taken) { g.stats.tos++; if (isPlayerOff) g.stats.intThrown++, g.stats.passAtt++; log(`POD 1 — INTERCEPTED by ${primaryDef.name}! ${qb.name} would like a word with his arm.`, "bad"); setAnim("int", { to: Math.min(FIELD, g.spot + 14) }); g.sctx = null; endDrive("int"); return; }
@@ -1594,7 +1601,7 @@ export default function App() {
         let gain = play.depth === 0 ? shortGain() : play.depth === 1 ? longGain() : longGain() + 10;
         const bonus = pod === 5 ? " STIFF-ARM!" : pod === 7 ? " SPECTACULAR CATCH!" : pod === 8 ? " HURDLE!" : "";
         log(`${qb.name} → ${sk.name}: ${cr} vs ${compl}% — CAUGHT, +${gain}m!${bonus}`, "good");
-        setAnim("pass", { from: g.spot, to: Math.min(FIELD, g.spot + gain), margin: s.o - s.d, star: !!sk.elite, burned: compl > 100 });
+        setAnim("pass", { from: g.spot, to: Math.min(FIELD, g.spot + gain), margin: s.o - s.d, star: !!sk.elite, burned: compl > 100, sky: !!qb.ab.skyDrop });
         if (hasChit(g.possession, "jets") && sk.pos === "WR1") { gain += 10; markUsed(g.possession, "jets"); log("JETS! +10 bonus meters. He left a vapor trail.", "good"); }
         if (isPlayerOff) {
           g.stats.passAtt++; g.stats.passComp++; g.stats.passYds += gain;
@@ -2040,20 +2047,127 @@ export default function App() {
    routes, pursuit, pancakes, dizzy-star sacks, pick-six returns, confetti TDs,
    superstar sparkle trails, burned-coverage separation, and screen shake. */
 const PIX = {
-  STAND: ["....HHHH......","...HHHHHH.....","...HFFMM......","...HFFMM......","....JJJJ......","..TJJJJJJT....","..AJJJJJJA....","..GJJTTJJG....","....JJJJ......","....PPPP......","....PPPP......","....LLLL......","....LL.LL.....","....LL.LL.....","....KK.KK.....",".............."],
-  RUNA:  ["....HHHH......","...HHHHHH.....","...HFFMM......","...HFFMM......","....JJJJ......","..TJJJJJJT....","...AJJJJA.....","...GJJTTG.....","....JJJJ......","....PPPP......","...PPPPP......","...LL.LLL.....","..LL...LL.....",".LL.....LL....",".KK......KK...",".............."],
-  RUNB:  ["....HHHH......","...HHHHHH.....","...HFFMM......","...HFFMM......","....JJJJ......","..TJJJJJJT....","...AJJJJA.....","...GJJTTG.....","....JJJJ......","....PPPP......","....PPPP......","....LLLL......","....LLLL......","....LLLL......","....KKKK......",".............."],
-  ARMS:  [".G........G...",".A..HHHH..A...",".A.HHHHHH.A...",".A.HFFMM..A...",".TAHFFMM.AT...","..TJJJJJJT....","...JJJJJJ.....","...JJTTJJ.....","....JJJJ......","....PPPP......","....PPPP......","....LLLL......","....LL.LL.....","....LL.LL.....","....KK.KK.....",".............."],
+  STAND: [
+    ".....####.......",
+    "....#HHHH#......",
+    "...#HHHHhh#.....",
+    "...#HFFMMh#.....",
+    "...#HFFMM#......",
+    "....#JJJJ#......",
+    "...#TJJJjT#.....",
+    "..#AJJJJJjA#....",
+    "..#GJJTTJjG#....",
+    "...#JJJJJj#.....",
+    "....#PPPP#......",
+    "....#PPpp#......",
+    "....#LLLL#......",
+    "...#LL##LL#.....",
+    "...#LL#.#LL#....",
+    "...#KK#.#KK#....",
+    "...####.####....",
+    "................",
+  ],
+  RUNA: [
+    ".....####.......",
+    "....#HHHH#......",
+    "...#HHHHhh#.....",
+    "...#HFFMMh#.....",
+    "...#HFFMM#......",
+    "....#JJJJ#......",
+    "...#TJJJjT#.....",
+    "....#AJJjA#.....",
+    "....#GJTjG#.....",
+    "....#JJJJj#.....",
+    "....#PPPP#......",
+    "...#PPPpp#......",
+    "...#LL#LLL#.....",
+    "..#LL#.#LL#.....",
+    ".#LL#...#LL#....",
+    ".#KK#....#KK#...",
+    ".####....####...",
+    "................",
+  ],
+  RUNB: [
+    ".....####.......",
+    "....#HHHH#......",
+    "...#HHHHhh#.....",
+    "...#HFFMMh#.....",
+    "...#HFFMM#......",
+    "....#JJJJ#......",
+    "...#TJJJjT#.....",
+    "....#AJJjA#.....",
+    "....#GJTjG#.....",
+    "....#JJJJj#.....",
+    "....#PPPP#......",
+    "....#PPpp#......",
+    "....#LLLL#......",
+    "....#LLLL#......",
+    "....#LLLL#......",
+    "....#KKKK#......",
+    "....######......",
+    "................",
+  ],
+  RUNC: [
+    ".....####.......",
+    "....#HHHH#......",
+    "...#HHHHhh#.....",
+    "...#HFFMMh#.....",
+    "...#HFFMM#......",
+    "....#JJJJ#......",
+    "...#TJJJjT#.....",
+    "....#AJJjA#.....",
+    "....#GJTjG#.....",
+    "....#JJJJj#.....",
+    "....#PPPP#......",
+    "...#pPPPP#......",
+    "...#LLL#LL#.....",
+    "...#LL#.#LL#....",
+    "..#LL#...#LL#...",
+    ".#KK#.....#KK#..",
+    ".####.....####..",
+    "................",
+  ],
+  ARMS: [
+    ".#G#......#G#...",
+    ".#A#.####.#A#...",
+    ".#A##HHHH##A#...",
+    ".#A#HHHHhh#A#...",
+    ".#TAHFFMMhAT#...",
+    "..#THFFMMT#.....",
+    "...#JJJJJj#.....",
+    "...#JJTTJj#.....",
+    "...#JJJJJj#.....",
+    "....#JJJJ#......",
+    "....#PPPP#......",
+    "....#PPpp#......",
+    "....#LLLL#......",
+    "...#LL##LL#.....",
+    "...#LL#.#LL#....",
+    "...#KK#.#KK#....",
+    "...####.####....",
+    "................",
+  ],
 };
 function PixelSprite({ team, pose = "STAND", facing = 1, face, px = 3, style = {}, flat = false, dur = 0.5 }) {
   const t = TEAMS[team] || team;
-  const C = { H: t.color, M: "#C9CFC4", F: face || "#C68B59", J: t.color, T: t.color2, A: t.color, G: face || "#C68B59", P: "#E8E4D8", L: "#E8E4D8", K: "#1B1B1B" };
+  const shade = (hex, f) => { // simple darken for arcade two-tone shading
+    const n = parseInt(hex.slice(1), 16);
+    const r = Math.floor(((n >> 16) & 255) * f), g2 = Math.floor(((n >> 8) & 255) * f), b = Math.floor((n & 255) * f);
+    return `rgb(${r},${g2},${b})`;
+  };
+  const skin = face || "#C68B59";
+  const C = {
+    "#": "#101010", H: t.color, h: shade(t.color, 0.62), M: "#D8DEE2", F: skin,
+    J: t.color, j: shade(t.color, 0.62), T: t.color2, A: t.color, G: skin,
+    P: "#E8E4D8", p: "#B9B4A2", L: "#E8E4D8", K: "#1B1B1B",
+  };
   const rows = PIX[pose] || PIX.STAND;
   return (
-    <div style={{ position: "absolute", width: 14 * px, height: 16 * px, transition: `left ${dur}s cubic-bezier(.3,.9,.4,1), top .35s ease`, ...style }}>
-      {flat && <div style={{ position: "absolute", top: -12, left: 4, fontSize: 11, color: "#FFE28A", textShadow: "0 1px 0 #000" }}>✶✶</div>}
-      <svg viewBox="0 0 14 16" width={14 * px} height={16 * px} shapeRendering="crispEdges"
-        style={{ transform: `scaleX(${facing}) ${flat ? "rotate(90deg)" : ""}`, imageRendering: "pixelated", transition: "transform .25s ease" }}>
+    <div style={{ position: "absolute", width: 16 * px, height: 18 * px, transition: `left ${dur}s cubic-bezier(.3,.9,.4,1), top .35s ease`, ...style }}>
+      <div style={{ position: "absolute", left: "12%", right: "12%", bottom: px - 1, height: 5, borderRadius: "50%", background: "radial-gradient(ellipse, #00000066, transparent 70%)" }} />
+      {flat && <div style={{ position: "absolute", top: -12, left: 6, fontSize: 11, color: "#FFE28A", textShadow: "0 1px 0 #000" }}>✶✶</div>}
+      <svg viewBox="0 0 16 18" width={16 * px} height={18 * px} shapeRendering="crispEdges"
+        style={{ transform: `scaleX(${facing}) ${flat ? "rotate(90deg)" : ""}`, imageRendering: "pixelated", transition: "transform .25s ease", position: "relative" }}>
         {rows.map((row, y) => [...row].map((ch, x) => ch !== "." ? <rect key={x + "_" + y} x={x} y={y} width="1" height="1" fill={C[ch] || "#000"} /> : null))}
       </svg>
     </div>
@@ -2071,7 +2185,7 @@ function RetroField({ spot, line, possession, teams, anim }) {
   const [scene, setScene] = useState(null);
   const animRef = useRef(null);
   const active = !!scene;
-  useEffect(() => { const iv = setInterval(() => setFrame((f) => f + 1), active ? 110 : 260); return () => clearInterval(iv); }, [active]);
+  useEffect(() => { const iv = setInterval(() => setFrame((f) => f + 1), active ? 95 : 240); return () => clearInterval(iv); }, [active]);
   useEffect(() => {
     if (!anim || anim.id === animRef.current) return;
     animRef.current = anim.id;
@@ -2083,7 +2197,7 @@ function RetroField({ spot, line, possession, teams, anim }) {
     return () => ts.forEach(clearTimeout);
   }, [anim]);
 
-  const runPose = frame % 2 ? "RUNA" : "RUNB";
+  const runPose = ["RUNA", "RUNB", "RUNC"][frame % 3];
   const losPct = pc(spot), fdPct = pc(line + TO_GAIN);
   const sc = scene, st = sc ? sc.step : -1;
   const fromPct = sc ? pc(sc.from ?? spot) : losPct;
@@ -2110,13 +2224,16 @@ function RetroField({ spot, line, possession, teams, anim }) {
     : passing && st === 1 ? "ARMS"
     : T === "td" ? "ARMS" : sc ? runPose : "STAND";
   // ball
+  const sky = sc && sc.sky;
   const ballLeft = T === "kick" ? (st === 0 ? losPct : 96)
+    : sky && passing ? toPct
     : passing ? (st === 0 ? qbPct + 2 : toPct)
     : (carrierPct ?? losPct);
   const ballTop = T === "kick" ? (st === 0 ? 60 : sc.good ? 8 : 0)
-    : passing ? (st === 0 ? 48 : st === 1 ? 12 : T === "incomplete" ? 92 : T === "int" ? 66 : 58)
-    : fumb ? (st === 0 ? 56 : st === 1 ? 16 : 84)
-    : 58;
+    : sky && passing ? (st === 0 ? -16 : st === 1 ? 34 : T === "incomplete" ? 100 : 66)
+    : passing ? (st === 0 ? 56 : st === 1 ? 24 : T === "incomplete" ? 100 : T === "int" ? 74 : 66)
+    : fumb ? (st === 0 ? 64 : st === 1 ? 26 : 94)
+    : 66;
   // defenders: pursuit tracks the action
   const dlPct = sacked && st >= 1 ? qbPct + 1 : Math.min(losPct + 3, 96);
   const lbPct = moving && st >= 1 ? Math.max(toPct - 6, 3) : Math.min(losPct + 8, 97);
@@ -2130,7 +2247,7 @@ function RetroField({ spot, line, possession, teams, anim }) {
 
   const banner = sc && st >= 1 ? ({
     run: pancake && st >= 1 ? "PANCAKE!" : null,
-    pass: burned && st === 1 ? "BURNED!" : null,
+    pass: sc.sky && st === 1 ? "FROM THE SKY!" : burned && st === 1 ? "BURNED!" : null,
     incomplete: st >= 2 ? "INCOMPLETE!" : null,
     sack: "SACK!", int: st >= 2 ? "PICKED OFF!" : null, fumble: "FUMBLE!",
     td: st >= 2 ? "TOUCHDOWN!" : null,
@@ -2139,34 +2256,39 @@ function RetroField({ spot, line, possession, teams, anim }) {
 
   return (
     <div style={{ margin: "8px 0 12px" }}>
-      <div className={shake ? "cb-shake" : ""} style={{ position: "relative", height: 112, borderRadius: 10, border: "3px solid #1B1B1B", overflow: "hidden", imageRendering: "pixelated",
-        background: "repeating-linear-gradient(90deg,#2E8B47 0,#2E8B47 9.09%,#249039 9.09%,#249039 18.18%)" }}>
-        <div style={{ position: "absolute", inset: 0, background: "repeating-linear-gradient(90deg, transparent 0, transparent calc(9.09% - 2px), #F2EFE2AA calc(9.09% - 2px), #F2EFE2AA 9.09%)" }} />
-        <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "5%", background: `repeating-linear-gradient(45deg, ${offT.color} 0 6px, ${offT.dark} 6px 12px)`, borderRight: "3px solid #F2EFE2" }} />
-        <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: "5%", background: `repeating-linear-gradient(45deg, ${defT.color} 0 6px, ${defT.dark} 6px 12px)`, borderLeft: "3px solid #F2EFE2" }} />
-        <div style={{ position: "absolute", left: `${losPct}%`, top: 0, bottom: 0, width: 3, background: "#5EC3E8" }} />
-        <div style={{ position: "absolute", left: `${fdPct}%`, top: 0, bottom: 0, width: 3, background: "#FFD86B", boxShadow: "0 0 8px #FFD86B" }} />
+      <div className={shake ? "cb-shake" : ""} style={{ position: "relative", height: 130, borderRadius: 10, border: "3px solid #1B1B1B", overflow: "hidden", imageRendering: "pixelated", background: "#249039" }}>
+        {/* arcade crowd band */}
+        <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: 16, background: "repeating-linear-gradient(90deg,#3A2E52 0 3px,#52341E 3px 6px,#24425A 6px 9px,#5A2430 9px 12px,#2E4A28 12px 15px)", borderBottom: "3px solid #101010", filter: "saturate(.8)" }} />
+        <div style={{ position: "absolute", left: 0, right: 0, top: 4, height: 3, background: "repeating-linear-gradient(90deg,#E8D8A0 0 2px, transparent 2px 7px)", opacity: .5 }} />
+        {/* checkered arcade turf */}
+        <div style={{ position: "absolute", left: 0, right: 0, top: 16, bottom: 0,
+          background: "repeating-linear-gradient(90deg,#2E8B47 0,#2E8B47 4.545%,#249039 4.545%,#249039 9.09%), repeating-linear-gradient(0deg, transparent 0 14px, #00000012 14px 28px)" }} />
+        <div style={{ position: "absolute", left: 0, right: 0, top: 16, bottom: 0, background: "repeating-linear-gradient(90deg, transparent 0, transparent calc(9.09% - 2px), #F2EFE2AA calc(9.09% - 2px), #F2EFE2AA 9.09%)" }} />
+        <div style={{ position: "absolute", left: 0, top: 16, bottom: 0, width: "5%", background: `repeating-linear-gradient(45deg, ${offT.color} 0 6px, ${offT.dark} 6px 12px)`, borderRight: "3px solid #F2EFE2" }} />
+        <div style={{ position: "absolute", right: 0, top: 16, bottom: 0, width: "5%", background: `repeating-linear-gradient(45deg, ${defT.color} 0 6px, ${defT.dark} 6px 12px)`, borderLeft: "3px solid #F2EFE2" }} />
+        <div style={{ position: "absolute", left: `${losPct}%`, top: 16, bottom: 0, width: 3, background: "#5EC3E8" }} />
+        <div style={{ position: "absolute", left: `${fdPct}%`, top: 16, bottom: 0, width: 3, background: "#FFD86B", boxShadow: "0 0 8px #FFD86B" }} />
 
         {/* DEFENSE 3 */}
         <PixelSprite team={defId} face={faceFor(defId, 0)} facing={-1} dur={0.45}
           pose={sacked && st >= 1 ? runPose : pancake && st >= 1 ? "STAND" : frame % 4 === 0 ? "RUNB" : "STAND"}
           flat={(fumb && st >= 2) || (pancake && st >= 1)}
-          style={{ left: `calc(${sacked && st >= 1 ? qbPct + 2 : dlPct}% - 21px)`, top: 34 }} />
+          style={{ left: `calc(${sacked && st >= 1 ? qbPct + 2 : dlPct}% - 24px)`, top: 44 }} />
         <PixelSprite team={defId} face={faceFor(defId, 1)} facing={-1} dur={runDur}
           pose={moving && st >= 1 ? runPose : frame % 3 === 0 ? "RUNB" : "STAND"}
-          style={{ left: `calc(${lbPct}% - 21px)`, top: 8 }} />
+          style={{ left: `calc(${lbPct}% - 24px)`, top: 20 }} />
         <PixelSprite team={defId} face={faceFor(defId, 2)} facing={-1} dur={runDur}
-          pose={dbPose} style={{ left: `calc(${dbPct}% - 21px)`, top: 62 }} />
+          pose={dbPose} style={{ left: `calc(${dbPct}% - 24px)`, top: 72 }} />
 
         {/* OFFENSE 3 */}
         <PixelSprite team={possession} face={faceFor(possession, 0)} facing={1} dur={0.4}
           pose={sc ? runPose : "STAND"} flat={sacked && st >= 1}
-          style={{ left: `calc(${Math.max(losPct - 2, 2) + (sc && st >= 0 ? 1 : 0)}% - 21px)`, top: 34 }} />
+          style={{ left: `calc(${Math.max(losPct - 2, 2) + (sc && st >= 0 ? 1 : 0)}% - 24px)`, top: 44 }} />
         <PixelSprite team={possession} face={faceFor(possession, 1)} facing={1} dur={0.4}
           pose={passing && st === 0 ? "ARMS" : "STAND"} flat={sacked && st >= 2}
-          style={{ left: `calc(${sacked && st >= 2 ? Math.max(qbPct - (sc.margin >= 25 ? 4 : 1), 1) : qbPct}% - 21px)`, top: 40 }} />
+          style={{ left: `calc(${sacked && st >= 2 ? Math.max(qbPct - (sc.margin >= 25 ? 4 : 1), 1) : qbPct}% - 24px)`, top: 50 }} />
         <PixelSprite team={possession} face={faceFor(possession, 2)} facing={T === "int" && st >= 2 ? -1 : 1} dur={runDur}
-          pose={carrierPose} style={{ left: `calc(${carrierPct ?? losPct}% - 21px)`, top: T === "td" && st >= 2 ? 20 : 56 }} />
+          pose={carrierPose} style={{ left: `calc(${carrierPct ?? losPct}% - 24px)`, top: T === "td" && st >= 2 ? 30 : 66 }} />
 
         {/* superstar sparkle trail */}
         {sc && sc.star && st >= 1 && [6, 11, 16].map((off, i) => (
@@ -2293,6 +2415,20 @@ function Title({ onPlay }) {
         Tap the <b style={{ color: "#FFD86B" }}>?</b> any time to learn the ropes.
       </p>
       <div style={{ marginTop: 22 }}><Btn big gold onClick={onPlay}>ENTER THE ARENA ➤</Btn></div>
+      <div style={{ marginTop: 26, maxWidth: 560, border: "2px solid #C89019", borderRadius: 12, background: "linear-gradient(170deg,#141B0C,#0A0F0B)", padding: "14px 18px" }}>
+        <div style={{ fontFamily: "Impact, sans-serif", fontSize: 13, letterSpacing: 3, color: "#FFD86B" }}>📖 FROM THE PAGES OF EPISODE 8</div>
+        <div style={{ fontSize: 11.5, color: "#B9C4B4", lineHeight: 1.6, margin: "8px 0 10px", fontStyle: "italic" }}>
+          Mid-tackle, star athlete Charlemagne Arceneaux-Wang gets yanked into a hundred-year-old version
+          of his own sport. He has no idea why. The answer has something to do with an organization
+          called Customer Buttcheeks.
+        </div>
+        <a href="https://a.co/d/0c1A8XNp" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+          <Btn gold onClick={() => {}}>BUY THE BOOK — CUSTOMER BUTTCHEEKS ➤</Btn>
+        </a>
+        <div style={{ fontSize: 8.5, color: "#5E7263", fontFamily: "Courier New, monospace", marginTop: 8 }}>
+          OUR AMPLIFIED EARTH · ACT I OF THE SPORTS-SATIRE TRILOGY · PATRICK FRANCIS WATERS — CROWN & COFFIN LTD / THE LUXARIUM
+        </div>
+      </div>
     </div>
   );
 }

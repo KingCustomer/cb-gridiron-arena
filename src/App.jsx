@@ -164,7 +164,7 @@ const rarity = (c) => c.elite
 const TEAMS = {
   estes: {
     id: "estes", city: "Estes Park", name: "Simulacra", conf: "THE HAVES · Prime",
-    color: "#8E7CC3", color2: "#C9C4D4", dark: "#241C38", glyph: "◈", logo: "/logos/ESTES.jpg", logoImg: false,
+    color: "#30D12B", color2: "#8E7CC3", dark: "#0F2A0D", glyph: "◈", logo: "/logos/ESTES.jpg", logoImg: false,
     ovr: 92, identity: "Clone-perfect precision. Elite twins at QB.",
     tendency: { run: 0.45, deep: 0.4 },
     offense: [
@@ -1356,11 +1356,13 @@ const CSS = `
 .cb-bookfab { transition: transform .15s ease, filter .15s ease; }
 .cb-bookfab:hover { transform: translateY(-2px); filter: brightness(1.1); }
 .cb-bookfab:active { transform: translateY(2px); box-shadow: none !important; }
+@keyframes cbBloom { 0% { text-shadow: 0 0 20px currentColor, 0 0 40px currentColor; filter: brightness(2.1); } 60% { text-shadow: 0 0 12px currentColor; filter: brightness(1.4); } 100% { text-shadow: 0 0 7px currentColor; filter: brightness(1); } }
+.cb-bloom { animation: cbBloom 1.1s ease-out; }
 @keyframes cbBanner { 0%,100% { opacity: 1; } 50% { opacity: .25; } }
 .cb-banner { animation: cbBanner .5s steps(2) infinite; }
 @keyframes cbShake { 0%,100% { transform: translate(0,0); } 20% { transform: translate(-4px,2px); } 40% { transform: translate(4px,-2px); } 60% { transform: translate(-3px,-2px); } 80% { transform: translate(3px,2px); } }
 .cb-shake { animation: cbShake .38s linear 2; }
-@keyframes cbConfetti { 0% { transform: translateY(0) rotate(0); opacity: 1; } 100% { transform: translateY(112px) rotate(540deg); opacity: .2; } }
+@keyframes cbConfetti { 0% { transform: translateY(0) rotate(0); opacity: 1; } 100% { transform: translateY(152px) rotate(540deg); opacity: .2; } }
 .cb-confetti { animation: cbConfetti 1.15s ease-in forwards; }
 @keyframes cbSparkle { 0% { opacity: 0; transform: scale(.4); } 40% { opacity: 1; transform: scale(1.25); } 100% { opacity: 0; transform: scale(.6) translateY(-8px); } }
 .cb-sparkle { animation: cbSparkle .9s ease-out infinite; }
@@ -1374,7 +1376,7 @@ const CSS = `
 .cb-btn:active:not(:disabled) { transform: translateY(2px); box-shadow: none !important; }
 @keyframes cbPulse { 0%,100% { box-shadow: 0 0 14px #E3B23C55; } 50% { box-shadow: 0 0 30px #E3B23CBB; } }
 .cb-pulse { animation: cbPulse 1.6s infinite; }
-@media (prefers-reduced-motion: reduce) { .cb-slam, .cb-pulse, .cb-die, .cb-banner, .cb-shake, .cb-confetti, .cb-sparkle, .cb-spiral { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .cb-slam, .cb-pulse, .cb-die, .cb-banner, .cb-shake, .cb-confetti, .cb-sparkle, .cb-spiral, .cb-bloom { animation: none; } }
 `;
 
 /* ============================ APP ============================ */
@@ -1849,9 +1851,10 @@ export default function App() {
         <div style={{ fontFamily: "Impact, sans-serif", letterSpacing: 2, fontSize: 15, color: "#FFD86B", marginBottom: 6 }}>{"📡"} 2151 BROADCAST</div>
         <div ref={logRef} style={{ overflowY: "auto", maxHeight: 128, fontFamily: "Courier New, monospace", fontSize: 13.5, lineHeight: 1.5 }}>
           {g.log.map((e, i) => (
-            <div key={i} style={{
+            <div key={i} className={(e.t === "score" || e.t === "good") && i === 0 ? "cb-bloom" : ""} style={{
               padding: "4px 8px", borderRadius: 4, marginBottom: 3,
               color: e.t === "score" ? "#FFD86B" : e.t === "bad" ? "#FF8A70" : e.t === "bad2" ? "#D6A15E" : e.t === "good" ? "#9BD53C" : e.t === "flag" ? "#FFD34D" : "#B9C4B4",
+              textShadow: (e.t === "score" || e.t === "good") ? "0 0 7px currentColor" : "none",
               background: e.t === "score" ? "#3A2E0E" : e.t === "bad" ? "#3A160E" : "transparent",
               opacity: i === 0 ? 1 : 0.85,
             }}>{e.m}</div>
@@ -2060,132 +2063,207 @@ export default function App() {
    superstar sparkle trails, burned-coverage separation, and screen shake. */
 const PIX = {
   STAND: [
-    ".....######.....",
-    "...##HHHHHH##...",
-    "..#HxxHHHHHHh#..",
-    "..#HxHHHHHHHh#..",
-    "..#HHHFFFFFHh#..",
-    "..#HHFbbFbbFh#..",
-    "..#HHFEeFEeF#...",
-    "..#HHFFFFFFF#...",
-    "...#MMMMMMM#....",
-    "...#jJJJJJj#....",
-    "..#GjJTTTJjG#...",
-    "..#GjJJJJJjG#...",
-    "...#jJJJJJj#....",
-    "....#PPPpp#.....",
-    "....#LLLLL#.....",
-    "...#KK#.#KK#....",
-    "...####.####....",
-    "................",
+    "..........######..........",
+    "........##HHHHHH##........",
+    ".......#HxxHHHHHHH#.......",
+    "......#HxxHHTTHHHHh#......",
+    "......#HxHHHTTHHHHh#......",
+    "......#HHHHHTTHHHHh#......",
+    "......#HHHHHTTHHHhh#......",
+    "......#HHHFFFFFFFhh#......",
+    "......#HHFbbFFbbFFh#......",
+    "......#HHFEeFFEeFFh#......",
+    "......#HHFFFFFFFFFh#......",
+    "......#MMMMMMMMMMMm#......",
+    ".......#FFFFFFFFFf#.......",
+    ".....##jJJJJJJJJJJj##.....",
+    "....#DDdJJJJJJJJJJdDD#....",
+    "...#DDDdjJJJJJJJJjdDDD#...",
+    "..#ADDDd#jJJNNJJj#dDDDA#..",
+    "..#AADD#.#JJNNJJ#.#DDAA#..",
+    "..#AAA#..#jJNNJj#..#AAA#..",
+    "..#Aaa#..#JJJJJJ#..#aaA#..",
+    "..#GWG#..#jJJJJj#..#GWG#..",
+    "..#GGG#..#JJJJJJ#..#GGG#..",
+    "...###...#PPPPPp#...###...",
+    ".........#PPPPPp#.........",
+    ".........#PpPPpp#.........",
+    ".........#PP##Pp#.........",
+    "........#PP#..#Pp#........",
+    "........#SS#..#Ss#........",
+    "........#SS#..#Ss#........",
+    "........#KK#..#Kk#........",
+    ".......#KKK#..#Kkk#.......",
+    ".......#####..#####.......",
   ],
   RUNA: [
-    ".....######.....",
-    "...##HHHHHH##...",
-    "..#HxxHHHHHHh#..",
-    "..#HxHHHHHHHh#..",
-    "..#HHHFFFFFHh#..",
-    "..#HHFbbFbbFh#..",
-    "..#HHFEeFEeF#...",
-    "..#HHFFFFFFF#...",
-    "...#MMMMMMM#....",
-    "....#jJJJJj#....",
-    "...#GjJTTJjG#...",
-    "....#jJJJJj#....",
-    "....#PPPpp#.....",
-    "...#LL##LLL#....",
-    "..#LL#..#LL#....",
-    ".#KK#....#KK#...",
-    ".####....####...",
-    "................",
+    "..........######..........",
+    "........##HHHHHH##........",
+    ".......#HxxHHHHHHH#.......",
+    "......#HxxHHTTHHHHh#......",
+    "......#HxHHHTTHHHHh#......",
+    "......#HHHHHTTHHHHh#......",
+    "......#HHHHHTTHHHhh#......",
+    "......#HHHFFFFFFFhh#......",
+    "......#HHFbbFFbbFFh#......",
+    "......#HHFEeFFEeFFh#......",
+    "......#HHFFFFFFFFFh#......",
+    "......#MMMMMMMMMMMm#......",
+    ".......#FFFFFFFFFf#.......",
+    ".....##jJJJJJJJJJJj##.....",
+    "....#DDdJJJJJJJJJJdDD#....",
+    "...#DDDdjJJJJJJJJjdDDD#...",
+    "....#DDd#jJJNNJJj#dDD#....",
+    ".....##.#JJNNJJj#.#AA#....",
+    "...#AA#.#jJNNJJ#..#AAA#...",
+    "..#AAA#.#JJJJJJ#...#aa#...",
+    "..#GWG#.#jJJJJj#...#GWG#..",
+    "..#GGG#.#JJJJJJ#....###...",
+    "...###..#PPPPPp#..........",
+    "........#PPPPppp#.........",
+    ".......#PPPp#PPp#.........",
+    "......#PPp#..#PPp#........",
+    ".....#PPp#....#PPp#.......",
+    "....#SSp#......#Ssp#......",
+    "....#SS#........#Ss#......",
+    "...#KK#..........#Kk#.....",
+    "..#KKK#..........#Kkk#....",
+    "..####............####....",
   ],
   RUNB: [
-    "................",
-    ".....######.....",
-    "...##HHHHHH##...",
-    "..#HxxHHHHHHh#..",
-    "..#HxHHHHHHHh#..",
-    "..#HHHFFFFFHh#..",
-    "..#HHFbbFbbFh#..",
-    "..#HHFEeFEeF#...",
-    "..#HHFFFFFFF#...",
-    "...#MMMMMMM#....",
-    "....#jJJJJj#....",
-    "...#GjJTTJjG#...",
-    "....#jJJJJj#....",
-    "....#PPPpp#.....",
-    "....#LLLL#......",
-    "....#KKKK#......",
-    "....######......",
-    "................",
+    "..........................",
+    "..........######..........",
+    "........##HHHHHH##........",
+    ".......#HxxHHHHHHH#.......",
+    "......#HxxHHTTHHHHh#......",
+    "......#HxHHHTTHHHHh#......",
+    "......#HHHHHTTHHHHh#......",
+    "......#HHHHHTTHHHhh#......",
+    "......#HHHFFFFFFFhh#......",
+    "......#HHFbbFFbbFFh#......",
+    "......#HHFEeFFEeFFh#......",
+    "......#HHFFFFFFFFFh#......",
+    "......#MMMMMMMMMMMm#......",
+    ".......#FFFFFFFFFf#.......",
+    ".....##jJJJJJJJJJJj##.....",
+    "....#DDdJJJJJJJJJJdDD#....",
+    "...#DDDdjJJJJJJJJjdDDD#...",
+    "....#DDd#jJJNNJJj#dDD#....",
+    "....#AA#.#JJNNJJ#.#AA#....",
+    "....#AA#.#jJNNJj#.#AA#....",
+    "....#GWG##JJJJJJ##GWG#....",
+    "....#GGG##jJJJJj##GGG#....",
+    ".....###.#JJJJJJ#.###.....",
+    ".........#PPPPPp#.........",
+    ".........#PPPPPp#.........",
+    ".........#PpPPpp#.........",
+    ".........#PPPPPp#.........",
+    ".........#SSSSSs#.........",
+    ".........#SSSSSs#.........",
+    ".........#KKKKKk#.........",
+    "........#KKKKKKkk#........",
+    "........##########........",
   ],
   RUNC: [
-    ".....######.....",
-    "...##HHHHHH##...",
-    "..#HxxHHHHHHh#..",
-    "..#HxHHHHHHHh#..",
-    "..#HHHFFFFFHh#..",
-    "..#HHFbbFbbFh#..",
-    "..#HHFEeFEeF#...",
-    "..#HHFFFFFFF#...",
-    "...#MMMMMMM#....",
-    "....#jJJJJj#....",
-    "...#GjJTTJjG#...",
-    "....#jJJJJj#....",
-    "....#PPPpp#.....",
-    "...#LLL##LL#....",
-    "...#LL#..#LL#...",
-    "..#KK#....#KK#..",
-    "..####....####..",
-    "................",
+    "..........######..........",
+    "........##HHHHHH##........",
+    ".......#HxxHHHHHHH#.......",
+    "......#HxxHHTTHHHHh#......",
+    "......#HxHHHTTHHHHh#......",
+    "......#HHHHHTTHHHHh#......",
+    "......#HHHHHTTHHHhh#......",
+    "......#HHHFFFFFFFhh#......",
+    "......#HHFbbFFbbFFh#......",
+    "......#HHFEeFFEeFFh#......",
+    "......#HHFFFFFFFFFh#......",
+    "......#MMMMMMMMMMMm#......",
+    ".......#FFFFFFFFFf#.......",
+    ".....##jJJJJJJJJJJj##.....",
+    "....#DDdJJJJJJJJJJdDD#....",
+    "...#DDDdjJJJJJJJJjdDDD#...",
+    "....#DDd#jJJNNJJj#dDD#....",
+    "....#AA#.#JJNNJJj#.##.....",
+    "...#AAA#.#jJNNJJ#.#AA#....",
+    "...#aa#..#JJJJJJ#.#AAA#...",
+    "..#GWG#..#jJJJJj#.#GWG#...",
+    "...###...#JJJJJJ#.#GGG#...",
+    ".........#PPPPPp#..###....",
+    "........#pppPPPp#.........",
+    ".........#PPp#PPPp#.......",
+    "........#PPp#..#PPp#......",
+    ".......#PPp#....#PPp#.....",
+    "......#SSp#......#Ssp#....",
+    "......#SS#........#Ss#....",
+    ".....#KK#..........#Kk#...",
+    "....#KKK#..........#Kkk#..",
+    "....####............####..",
   ],
   ARMS: [
-    ".#G#.......#G#..",
-    ".#A#######.#A#..",
-    ".#A#HHHHHH##A#..",
-    ".#A#xHHHHHh#A#..",
-    ".#TAHFFFFFhAT#..",
-    "..#HFbbFbbFh#...",
-    "..#HFEeFEeF#....",
-    "..#HFFFFFFF#....",
-    "...#MMMMMM#.....",
-    "...#jJJJJJj#....",
-    "....#JTTTJ#.....",
-    "....#JJJJJ#.....",
-    "....#jJJJj#.....",
-    "....#PPPpp#.....",
-    "....#LLLLL#.....",
-    "...#KK#.#KK#....",
-    "...####.####....",
-    "................",
+    "..#GWG#..........#GWG#....",
+    "..#AAA#..######..#AAA#....",
+    "..#AA###HHHHHH###aAA#.....",
+    "...#AA#HxxHHHHHH#AA#......",
+    "...#AA#HxHHTTHHh#Aa#......",
+    "....#A#HHHHTTHHh#A#.......",
+    "....#A#HHHHTTHhh#A#.......",
+    "....###HHFFFFFFF###.......",
+    "......#HFbbFFbbFh#........",
+    "......#HFEeFFEeFh#........",
+    "......#HFFFFFFFFh#........",
+    "......#MMMMMMMMMm#........",
+    ".......#FFFFFFFf#.........",
+    ".....##jJJJJJJJJj##.......",
+    "....#DDdJJJJJJJJdDD#......",
+    "...#DDDdjJJJJJJjdDDD#.....",
+    "....##.#jJJNNJJj#.##......",
+    ".......#JJJNNJJJ#.........",
+    ".......#jJJNNJJj#.........",
+    ".......#JJJJJJJJ#.........",
+    ".......#jJJJJJJj#.........",
+    ".......#JJJJJJJJ#.........",
+    ".......#PPPPPPPp#.........",
+    ".......#PPPPPPPp#.........",
+    ".......#PpPPPPpp#.........",
+    ".......#PPP##PPp#.........",
+    "......#PPP#..#PPp#........",
+    "......#SSS#..#SSs#........",
+    "......#SSS#..#SSs#........",
+    "......#KKK#..#KKk#........",
+    ".....#KKKK#..#KKkk#.......",
+    ".....######..######.......",
   ],
 };
-function PixelSprite({ team, pose = "STAND", facing = 1, face, px = 3, style = {}, flat = false, dur = 0.5 }) {
+function PixelSprite({ team, pose = "STAND", facing = 1, face, px = 2, style = {}, flat = false, dur = 0.5 }) {
   const t = TEAMS[team] || team;
-  const shade = (hex, f) => { // darken
+  const shade = (hex, f) => {
     const n = parseInt(hex.slice(1), 16);
-    const r = Math.floor(((n >> 16) & 255) * f), g2 = Math.floor(((n >> 8) & 255) * f), b = Math.floor((n & 255) * f);
-    return `rgb(${r},${g2},${b})`;
+    return `rgb(${Math.floor(((n >> 16) & 255) * f)},${Math.floor(((n >> 8) & 255) * f)},${Math.floor((n & 255) * f)})`;
   };
-  const lite = (hex, f) => { // lighten toward white for helmet highlights
+  const lite = (hex, f) => {
     const n = parseInt(hex.slice(1), 16);
     const mix = (v) => Math.min(255, Math.floor(v + (255 - v) * f));
     return `rgb(${mix((n >> 16) & 255)},${mix((n >> 8) & 255)},${mix(n & 255)})`;
   };
   const skin = face || "#C68B59";
+  const c2 = t.color2 || "#E3B23C";
   const C = {
-    "#": "#0A0A0A", H: t.color, h: shade(t.color, 0.5), x: lite(t.color, 0.5), M: "#DCE2E6", F: skin,
-    b: "#0A0A0A", E: "#FFFFFF", e: "#141414",
-    J: t.color, j: shade(t.color, 0.5), T: t.color2, A: t.color, G: skin,
-    P: "#F0ECE0", p: "#A8A292", L: "#F0ECE0", K: "#141414",
+    "#": "#0A0A0A",
+    H: t.color, h: shade(t.color, 0.55), x: lite(t.color, 0.55), T: c2,
+    M: "#DCE2E6", m: "#8E9AA4",
+    F: skin, f: shade(skin, 0.66), b: "#0A0A0A", E: "#FFFFFF", e: "#141414",
+    J: t.color, j: shade(t.color, 0.55), N: c2,
+    D: c2, d: shade(c2, 0.55),
+    A: skin, a: shade(skin, 0.66), G: "#1E1E1E", W: c2,
+    P: shade(t.color, 0.8), p: shade(t.color, 0.42),
+    S: "#F4F1E6", s: "#B9B4A2", K: "#141414", k: "#5A5F66",
   };
   const rows = PIX[pose] || PIX.STAND;
   return (
-    <div style={{ position: "absolute", width: 16 * px, height: 18 * px, transition: `left ${dur}s cubic-bezier(.3,.9,.4,1), top .35s ease`, ...style }}>
-      <div style={{ position: "absolute", left: "6%", right: "6%", bottom: px - 2, height: 7, borderRadius: "50%", background: "radial-gradient(ellipse, #000000A8, transparent 68%)" }} />
-      {flat && <div style={{ position: "absolute", top: -12, left: 6, fontSize: 11, color: "#FFE28A", textShadow: "0 1px 0 #000" }}>✶✶</div>}
-      <svg viewBox="0 0 16 18" width={16 * px} height={18 * px} shapeRendering="crispEdges"
-        style={{ transform: `scaleX(${facing}) ${flat ? "rotate(90deg)" : ""}`, imageRendering: "pixelated", transition: "transform .25s ease", position: "relative", filter: "contrast(1.14) saturate(1.18) drop-shadow(1px 2px 0 #00000055)" }}>
+    <div style={{ position: "absolute", width: 26 * px, height: 32 * px, transition: `left ${dur}s cubic-bezier(.3,.9,.4,1), top .35s ease`, ...style }}>
+      <div style={{ position: "absolute", left: "8%", right: "8%", bottom: px - 2, height: 8, borderRadius: "50%", background: "radial-gradient(ellipse, #000000A8, transparent 68%)" }} />
+      {flat && <div style={{ position: "absolute", top: -12, left: 10, fontSize: 12, color: "#FFE28A", textShadow: "0 1px 0 #000" }}>✶✶</div>}
+      <svg viewBox="0 0 26 32" width={26 * px} height={32 * px} shapeRendering="crispEdges"
+        style={{ transform: `scaleX(${facing}) ${flat ? "rotate(90deg)" : ""}`, imageRendering: "pixelated", transition: "transform .25s ease", position: "relative", filter: "contrast(1.12) saturate(1.15) drop-shadow(1px 2px 0 #00000055)" }}>
         {rows.map((row, y) => [...row].map((ch, x) => ch !== "." ? <rect key={x + "_" + y} x={x} y={y} width="1" height="1" fill={C[ch] || "#000"} /> : null))}
       </svg>
     </div>
@@ -2247,11 +2325,11 @@ function RetroField({ spot, line, possession, teams, anim }) {
     : sky && passing ? toPct
     : passing ? (st === 0 ? qbPct + 2 : toPct)
     : (carrierPct ?? losPct);
-  const ballTop = T === "kick" ? (st === 0 ? 60 : sc.good ? 8 : 0)
-    : sky && passing ? (st === 0 ? -16 : st === 1 ? 34 : T === "incomplete" ? 100 : 66)
-    : passing ? (st === 0 ? 56 : st === 1 ? 24 : T === "incomplete" ? 100 : T === "int" ? 74 : 66)
-    : fumb ? (st === 0 ? 64 : st === 1 ? 26 : 94)
-    : 66;
+  const ballTop = T === "kick" ? (st === 0 ? 78 : sc.good ? 10 : 0)
+    : sky && passing ? (st === 0 ? -18 : st === 1 ? 44 : T === "incomplete" ? 132 : 88)
+    : passing ? (st === 0 ? 72 : st === 1 ? 30 : T === "incomplete" ? 132 : T === "int" ? 98 : 88)
+    : fumb ? (st === 0 ? 84 : st === 1 ? 34 : 122)
+    : 88;
   // defenders: pursuit tracks the action
   const dlPct = sacked && st >= 1 ? qbPct + 1 : Math.min(losPct + 3, 96);
   const lbPct = moving && st >= 1 ? Math.max(toPct - 6, 3) : Math.min(losPct + 8, 97);
@@ -2274,7 +2352,7 @@ function RetroField({ spot, line, possession, teams, anim }) {
 
   return (
     <div style={{ margin: "8px 0 12px" }}>
-      <div className={shake ? "cb-shake" : ""} style={{ position: "relative", height: 130, borderRadius: 10, border: "3px solid #1B1B1B", overflow: "hidden", imageRendering: "pixelated", background: "#249039" }}>
+      <div className={shake ? "cb-shake" : ""} style={{ position: "relative", height: 170, borderRadius: 10, border: "3px solid #1B1B1B", overflow: "hidden", imageRendering: "pixelated", background: "#249039" }}>
         {/* arcade crowd band */}
         <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: 16, background: "repeating-linear-gradient(90deg,#3A2E52 0 3px,#52341E 3px 6px,#24425A 6px 9px,#5A2430 9px 12px,#2E4A28 12px 15px)", borderBottom: "3px solid #101010", filter: "saturate(.8)" }} />
         <div style={{ position: "absolute", left: 0, right: 0, top: 4, height: 3, background: "repeating-linear-gradient(90deg,#E8D8A0 0 2px, transparent 2px 7px)", opacity: .5 }} />
@@ -2298,26 +2376,26 @@ function RetroField({ spot, line, possession, teams, anim }) {
         <PixelSprite team={defId} face={faceFor(defId, 0)} facing={-1} dur={0.45}
           pose={sacked && st >= 1 ? runPose : pancake && st >= 1 ? "STAND" : frame % 4 === 0 ? "RUNB" : "STAND"}
           flat={(fumb && st >= 2) || (pancake && st >= 1)}
-          style={{ left: `calc(${sacked && st >= 1 ? qbPct + 2 : dlPct}% - 24px)`, top: 44 }} />
+          style={{ left: `calc(${sacked && st >= 1 ? qbPct + 2 : dlPct}% - 26px)`, top: 58 }} />
         <PixelSprite team={defId} face={faceFor(defId, 1)} facing={-1} dur={runDur}
           pose={moving && st >= 1 ? runPose : frame % 3 === 0 ? "RUNB" : "STAND"}
-          style={{ left: `calc(${lbPct}% - 24px)`, top: 20 }} />
+          style={{ left: `calc(${lbPct}% - 26px)`, top: 26 }} />
         <PixelSprite team={defId} face={faceFor(defId, 2)} facing={-1} dur={runDur}
-          pose={dbPose} style={{ left: `calc(${dbPct}% - 24px)`, top: 72 }} />
+          pose={dbPose} style={{ left: `calc(${dbPct}% - 26px)`, top: 94 }} />
 
         {/* OFFENSE 3 */}
         <PixelSprite team={possession} face={faceFor(possession, 0)} facing={1} dur={0.4}
           pose={sc ? runPose : "STAND"} flat={sacked && st >= 1}
-          style={{ left: `calc(${Math.max(losPct - 2, 2) + (sc && st >= 0 ? 1 : 0)}% - 24px)`, top: 44 }} />
+          style={{ left: `calc(${Math.max(losPct - 2, 2) + (sc && st >= 0 ? 1 : 0)}% - 26px)`, top: 58 }} />
         <PixelSprite team={possession} face={faceFor(possession, 1)} facing={1} dur={0.4}
           pose={passing && st === 0 ? "ARMS" : "STAND"} flat={sacked && st >= 2}
-          style={{ left: `calc(${sacked && st >= 2 ? Math.max(qbPct - (sc.margin >= 25 ? 4 : 1), 1) : qbPct}% - 24px)`, top: 50 }} />
+          style={{ left: `calc(${sacked && st >= 2 ? Math.max(qbPct - (sc.margin >= 25 ? 4 : 1), 1) : qbPct}% - 26px)`, top: 66 }} />
         <PixelSprite team={possession} face={faceFor(possession, 2)} facing={T === "int" && st >= 2 ? -1 : 1} dur={runDur}
-          pose={carrierPose} style={{ left: `calc(${carrierPct ?? losPct}% - 24px)`, top: T === "td" && st >= 2 ? 30 : 66 }} />
+          pose={carrierPose} style={{ left: `calc(${carrierPct ?? losPct}% - 26px)`, top: T === "td" && st >= 2 ? 40 : 88 }} />
 
         {/* superstar sparkle trail */}
-        {sc && sc.star && st >= 1 && [6, 11, 16].map((off, i) => (
-          <span key={i} className="cb-sparkle" style={{ position: "absolute", left: `calc(${Math.max((carrierPct ?? losPct) - off * 0.9, 1)}% - 4px)`, top: 60 + (i % 2) * 10, color: "#FFD86B", fontSize: 12 + i * 2, animationDelay: `${i * 0.12}s`, textShadow: "0 0 6px #FFD86B" }}>✦</span>
+        {sc && sc.star && st >= 1 && [7, 13, 19].map((off, i) => (
+          <span key={i} className="cb-sparkle" style={{ position: "absolute", left: `calc(${Math.max((carrierPct ?? losPct) - off * 0.9, 1)}% - 4px)`, top: 92 + (i % 2) * 14, color: "#FFD86B", fontSize: 12 + i * 2, animationDelay: `${i * 0.12}s`, textShadow: "0 0 6px #FFD86B" }}>✦</span>
         ))}
 
         {/* THE BALL */}
@@ -2336,7 +2414,7 @@ function RetroField({ spot, line, possession, teams, anim }) {
         ))}
 
         {banner && (
-          <div className="cb-banner" style={{ position: "absolute", left: 0, right: 0, top: 34, textAlign: "center", zIndex: 5,
+          <div className="cb-banner" style={{ position: "absolute", left: 0, right: 0, top: 58, textAlign: "center", zIndex: 5,
             fontFamily: "'Courier New', monospace", fontWeight: "bold", fontSize: 26, letterSpacing: 4,
             color: ["TOUCHDOWN!", "IT'S GOOD!", "PANCAKE!", "BURNED!"].includes(banner) ? "#FFE28A" : "#FF6B4A",
             textShadow: "2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 0 0 14px #000" }}>
